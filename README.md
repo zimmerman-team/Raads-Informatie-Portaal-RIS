@@ -10,11 +10,11 @@ UK | The local council information Portal (RIS) is open-source software that can
 
 ## About the project
 --------
-* Authors:          <a href="https://www.zimmermanzimmerman.nl/" target="_blank">Zimmerman & Zimmerman</a>
-* Municipalities:          <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> and  <a href="https://www.utrecht.nl/bestuur-en-organisatie/gemeenteraad/" target="_blank">Municipality of Utrecht</a> 
-* License:          AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
-* Github Repo:      <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
-* Bug Tracker:      <a href="https://github.com/zimmerman-zimmerman/OIPA/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
+* Authors: <a href="https://www.zimmermanzimmerman.nl/" target="_blank">Zimmerman & Zimmerman</a>
+* Municipalities: <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> and <a href="https://www.utrecht.nl/bestuur-en-organisatie/gemeenteraad/" target="_blank">Municipality of Utrecht</a> 
+* License: AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
+* Github Repo: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
+* Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/OIPA/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
 
 
 
@@ -66,14 +66,14 @@ To run the tests you need to edit the cypress.json file in the repo's root direc
 
 Adjust the following variables:
 
-- `baseUrl` - the url where the project runs at
-- `username` - admin username
-- `password` - admin password
-- `backendUrl` - the back-end url the project is using
-- `searchKeyword` - a keyword to test search functionality with
-- `deleteUsername` - validated test user's username
-- `deletePassword` - validated test user's password
-- `deleteUsername2` - new test username (for editing)
-- `deletePassword2` - new test password (for editing)
+* `baseUrl` - the url where the project runs at
+* `username` - admin username
+* `password` - admin password
+* `backendUrl` - the back-end url the project is using
+* `searchKeyword` - a keyword to test search functionality with
+* `deleteUsername` - validated test user's username
+* `deletePassword` - validated test user's password
+* `deleteUsername2` - new test username (for editing)
+* `deletePassword2` - new test password (for editing)
 
 Then run `npm cypress:open` or `yarn cypress:open`
