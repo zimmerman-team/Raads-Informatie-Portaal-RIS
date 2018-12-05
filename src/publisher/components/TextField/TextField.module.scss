@@ -1,0 +1,202 @@
+@import '../../../styles/variables.scss';
+@import '../../../scss/mixins.scss';
+@import '../../../scss/rfs.scss';
+
+$lg-breakpoint : 1050px;
+$color1 : #5a5a5a;
+$color2 : #717171;
+$color3 : #fff;
+$color4 : #3689d7;
+$color5 : #f6f9fa;
+$shadow : #999;
+$border : #f4f5f7;
+$borderWidth : 1px;
+
+.component {
+  //margin-top         : 30px;
+  background-color   : #f4f5f7;
+  border-radius      : 4px;
+  border             : solid 1px #f4f5f7;
+
+  &:hover {
+    background-color : #e3e3e3 !important;
+    border           : solid 1px #e3e3e3 !important;
+  }
+}
+
+.searchBox {
+  display     : inline-block;
+  width       : 100%;
+}
+
+.checkbox {
+  z-index       : 9999;
+  cursor        : pointer !important;
+  margin-right  : 10px !important;
+}
+
+.docName {
+  display: inline-flex;
+  max-width: calc(100% - 27px);
+  font-weight: bold;
+
+  > div {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.asterisk {
+  width          : 20px;
+  display        : inline-flex;
+  padding-left   : 6px;
+  margin-right   : -5px;
+  vertical-align : super;
+  font-size      : 20px;
+  color          : #ff4646;
+  background     : transparent;
+}
+
+.input {
+  font-size      : 21px;
+  outline        : none;
+  box-sizing     : border-box;
+  width          : calc(100% - 20px - 30px);
+  min-height     : 48px;
+  padding        : 5px;
+  margin         : 0;
+  flex           : 10;
+  background     : transparent;
+  border         : none;
+  resize         : none;
+
+  @include sm {
+    font-size    : 13px;
+  }
+}
+
+.arrowIcon {
+  display        : inline-flex;
+  cursor         : pointer;
+  width          : 30px;
+  vertical-align : middle;
+  background     : transparent;
+}
+
+.titleInput::placeholder {
+  color: #008eb5;
+}
+
+.descriptionInput {
+  min-height: 43px;
+  padding-top: 8px;
+
+  &::placeholder {
+    color: #008eb5;
+  }
+}
+
+.suggestionsContainer {
+  background-color : $color3;
+  width            : 100%;
+  box-shadow       : 0 6px 6px 0 rgba(0, 0, 0, 0.12);
+  border-radius    : 4px;
+  border           : solid 1px $color3;
+}
+
+.suggestionsList {
+  width            : 100%;
+  list-style       : none;
+  max-height       : 400px;
+  overflow-y       : overlay;
+  overflow-x       : hidden;
+}
+
+.button {
+  color               : $color3;
+  outline             : none;
+  font-size           : 14px;
+  padding             : 10px 15px;
+  border-radius       : 3px;
+  background          : #0ba534;
+  font-weight         : normal;
+  box-shadow          : 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border              : solid $borderWidth #0ba534;
+  transition          : background 0.8s;
+  margin-top          : 10px;
+}
+
+.selectedItem {
+  width: 100%;
+  height: 45px;
+  margin-top: 20px;
+  border-radius: 4px;
+  padding: 10px 0 10px 10px;
+}
+
+.itemName {
+  font-size: 12px;
+  color: #fff;
+  display: inline-block;
+  width: calc(100% - 30px);
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  -ms-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  -webkit-text-stroke: 1px rgba(0, 0, 0, 0);
+}
+
+.removeIcon {
+  color: #fff;
+  display: inline-block;
+  vertical-align: middle;
+
+  &:hover {
+    color: $color2;
+    cursor: pointer;
+  }
+}
+
+.eventRow {
+  margin: 5px 0;
+  padding: 3px 0;
+
+  &:hover {
+    cursor: pointer;
+    background: #ccc;
+  }
+}
+
+.agendaItemName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 50px);
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.loadingMessage {
+  padding: 5px 0;
+  text-align: center;
+}
+
+.numberInput::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.numberBtns {
+  width: 35px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.numberBtn {
+  width: 35px;
+  outline: none;
+  height: calc(100% / 2);
+  vertical-align: middle;
+  -webkit-appearance: none;
+}

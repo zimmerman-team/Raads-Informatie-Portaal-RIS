@@ -1,0 +1,240 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+@import '../../scss/rfs.scss';
+
+$lg-breakpoint : 1050px;
+$color1 : #454e53;
+$color2 : #717171;
+$color3 : #fff;
+$color4 : #3689d7;
+$color5 : #f6f9fa;
+$shadow : #999;
+$border : #ccc;
+$borderWidth : 1px;
+
+.search-block-container {
+  margin-top         : 22px;
+  -webkit-box-shadow : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+  -moz-box-shadow    : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+  box-shadow         : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+
+  @include sm {
+    //margin-top : 0;
+    }
+  }
+
+.search-box {
+  margin-left : 40px;
+  display     : inline-block;
+  width       : calc(100% - 40px - 103px);
+
+  @include md {
+    width : calc(100% - 40px - 40px);
+    }
+
+  @include sm {
+    margin-left : 0;
+    width : calc(100% - 40px);
+    }
+  }
+
+.search-icon-div {
+  width        : 40px;
+  height       : 81px;
+  padding-top  : 17px;
+  background   : $color3;
+  color        : $color2;
+  border-width : $borderWidth;
+  border-color : $border;
+  position     : absolute;
+  display      : inline-block;
+  border-style : solid none none solid;
+
+  @include sm {
+    display : none;
+    }
+  }
+
+.search-icon-div i {
+  font-size : 40px;
+  margin    : 3px 0 0 5px;
+  }
+
+.search-btn-div {
+  width        : 103px;
+  height       : 81px;
+  padding-top  : 12px;
+  background   : $color3;
+  border-width : $borderWidth;
+  border-color : $border;
+  position     : absolute;
+  display      : inline-block;
+  border-style : solid solid none none;
+
+  @include md {
+    width        : 40px;
+    border-style : none;
+    padding      : 0;
+  }
+
+  @include sm {
+    height       : 60px;
+  }
+}
+
+.search-btn {
+  color               : $color3;
+  outline             : none;
+  font-size           : 21px;
+  padding             : 16px 30px;
+  margin-left         : -40px;
+  margin-right        : 5px;
+  border-radius       : 3px;
+  background          : $color4;
+  font-weight         : normal;
+  box-shadow          : 0 0 4px $shadow;
+  border              : solid $borderWidth $color4;
+  background-position : center;
+  transition          : background 0.8s;
+
+  @include sm {
+    display             : none;
+    }
+  @include md {
+    display             : none;
+    }
+  }
+
+.search-btn-sm {
+  color               : $color3;
+  outline             : none;
+  width               : 40px;
+  font-size           : 21px;
+  padding             : 10px 0 0 0;
+  border-radius       : 3px;
+  background          : $color4;
+  font-weight         : normal;
+  box-shadow          : 0 0 4px $shadow;
+  border              : solid $borderWidth $color4;
+  background-position : center;
+  transition          : background 0.8s;
+  display             : none;
+
+  @include md {
+    display           : inline-block;
+    height            : 81px;
+    border-radius     : 0;
+  }
+  @include sm {
+    display           : inline-block;
+    height            : 60px;
+    border-radius     : 0;
+  }
+  }
+
+.search-btn:hover {
+  background : $color4 radial-gradient(circle, transparent 1%, $color4 1%) center/15000%;
+  }
+
+.search-btn:active {
+  background-size  : 100%;
+  background-color : $border;
+  transition       : background 0s;
+  }
+
+.react-autosuggest__container {
+  flex : 1;
+  }
+
+.react-autosuggest__container--open {
+  flex       : initial;
+  text-align : start;
+  display    : block;
+  width      : 100%;
+  }
+
+.react-autosuggest__input:focus {
+  outline : none;
+  }
+
+.react-autosuggest__input {
+  font-size      : 21px;
+  border         : $borderWidth solid $border;
+  /* todo: check if there is a reason for this duplicate code */
+  border-style   : solid none none none;
+  outline        : none;
+  box-sizing     : border-box;
+  width          : 100%;
+  min-height     : 81px;
+  padding-top    : 5px;
+  padding-right  : 5px;
+  padding-left   : 25px;
+  //padding-left   : 10px;
+  padding-bottom : 5px;
+  margin         : 0;
+  flex           : 10;
+  border-radius  : 0;
+
+  @include sm {
+    padding    : 5px 10px;
+    min-height : 60px;
+    font-size  : 13px;
+    //text-align : center;
+    border     : solid $borderWidth $border;
+    }
+  }
+
+.react-autosuggest__suggestions-container {
+  display          : block;
+  width            : calc(100% - 30px);
+  position         : absolute;
+  z-index          : 1000;
+  background-color : $color3;
+  margin           : 0 0 0 -40px;
+  border           : $borderWidth $border;
+  border-style     : none solid solid solid;
+  }
+
+.react-autosuggest__suggestions-container--open {
+  overflow-y : auto;
+  max-height : 400px;
+  }
+
+.react-autosuggest__suggestions-list {
+  left             : 0;
+  top              : 100%;
+  padding          : 0;
+  width            : 100%;
+  z-index          : 1000;
+  border           : $borderWidth $border;
+  list-style       : none;
+  background-color : $color3;
+  }
+
+.react-autosuggest__section-container--first {
+  margin-top : 15px;
+  }
+
+.react-autosuggest__section-container {
+  margin-bottom : 15px;
+  }
+
+.react-autosuggest__section-title {
+  color         : $color1;
+  font-size     : 15px;
+  margin-left   : 20px;
+  margin-bottom : 5px;
+  }
+
+.react-autosuggest__suggestion {
+  color   : $color1;
+  cursor  : pointer;
+
+  /* todo: check why the padding was specified two times */
+  //padding : 3px 10px;
+  padding : 5px 20px;
+  }
+
+.react-autosuggest__suggestion--highlighted {
+  background-color : $color5;
+  }

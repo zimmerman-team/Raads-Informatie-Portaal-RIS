@@ -1,0 +1,350 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+@import '../../scss/rfs.scss';
+
+.folder-header {
+  padding-left  : 15px;
+  margin-bottom : 50px;
+
+  i {
+    color          : #ffffff;
+    font-size      : 32px;
+    margin-right   : 10px;
+    vertical-align : sub;
+    }
+
+  .with-back {
+    padding       : 7px;
+    border-radius : 50%;
+    margin-right  : 0 !important;
+    }
+  }
+
+.opened-folder-header {
+  padding-left   : 15px;
+  padding-bottom : 30px;
+
+  @include sm {
+    padding-left : 0;
+    }
+  }
+
+.hide-header {
+  visibility : hidden;
+  }
+
+.header-folder-icon {
+  height           : 48px;
+  width            : 48px;
+  padding-top      : 12px;
+  text-align       : center;
+  font-size        : 1.5rem;
+  color            : #ffffff;
+  background-color : #deb21d;
+  border-radius    : 100%;
+  border           : 0 black solid;
+  }
+
+.header-open-folder-icon {
+  flex-shrink      : 0;
+  height           : 48px;
+  width            : 48px;
+  padding-top      : 12px;
+  text-align       : center;
+  font-size        : 1.5rem;
+  color            : #ffffff;
+  background-color : mainThemeColor();
+  border-radius    : 100%;
+  border           : 0 black solid;
+  }
+
+.header-title-container {
+  display     : flex;
+  align-items : center;
+  }
+
+.header-folder-title {
+  margin-left : 20px;
+  font-weight : 100;
+  color       : #525252 !important;
+  line-height : 28px;
+
+  @include responsive-font-size(32px);
+
+  }
+
+.folder-text-title {
+  display: inline-flex;
+  width: calc(100% - 48px);
+  vertical-align: text-top;
+}
+
+.folder-title-div {
+  font-size   : 16px;
+  color       : #0c74d5;
+  word-wrap   : break-word;
+  display     : inline-block;
+  margin-left : 15px;
+  width       : 80%;
+  }
+
+.folder-item-icon {
+  padding-right : 15px;
+  position      : center;
+  width         : 48px;
+  text-align    : center;
+  font-size     : 2rem;
+  color         : #fc5e69;
+  }
+
+.header-folder-text {
+  margin-top    : 15px;
+  margin-bottom : 50px;
+  font-size     : 16px !important;
+  color         : #504f4f;
+  }
+
+.folders-page-container {
+  padding    : 50px;
+  transition : background .2s ease;
+  min-height : calc(100vh - 42px - 178px);
+  @media screen and (max-width : 573px) {
+    padding : 50px 10px;
+    }
+  .focused {
+    height           : 100%;
+    width            : 100%;
+    background-color : #414141;
+    z-index          : 10;
+    }
+  }
+
+.sort-by-inside {
+  display     : block;
+  font-size   : 24px;
+  color       : #727272;
+  font-weight : normal;
+
+  @include sm {
+    font-size     : 16px !important;
+    margin-bottom : 15px;
+    }
+
+  button {
+    width          : inherit !important;
+    height         : inherit !important;
+    padding        : 0 !important;
+    margin-left    : 15px !important;
+    vertical-align : text-bottom !important;
+
+    svg {
+      fill  : #3689d7 !important;
+      color : #3689d7 !important;
+      }
+    }
+
+  .new-folder-div {
+    float     : right;
+    color     : #444444;
+    cursor    : pointer;
+    font-size : 20px;
+    margin-top: 3px;
+
+    @include sm {
+      font-size : 16px !important;
+      }
+
+    i {
+      margin-right   : 5px;
+      vertical-align : sub;
+      }
+    }
+  }
+
+.sort-by-outside {
+  margin-top : 20px;
+  hr {
+    border           : none;
+    height           : 4px;
+    background-color : #eeeeee;
+    color            : transparent;
+    margin           : 5px 0;
+    }
+
+  @include sm {
+    display        : flex;
+    flex-direction : column;
+    }
+  }
+
+.header-my-folders-title {
+  display     : inline-block;
+  font-size   : 1.8rem;
+  font-weight : bold;
+  }
+
+.header-my-folders-text {
+  font-size     : 20px;
+  margin-top    : 15px;
+  color         : #504f4f;
+  margin-bottom : 30px;
+  }
+
+.header-opened-folder-component {
+  padding-left   : 5px;
+  vertical-align : top;
+  display        : inline-block;
+  hr {
+    margin : auto;
+    width  : 450px;
+
+    }
+  p {
+    color         : #444444;
+    display       : inline-block;
+    font-size     : 16px;
+    margin-bottom : 0;
+    }
+  label {
+    color         : #444444;
+    padding-top   : 20px;
+    font-size     : 16px;
+    margin-bottom : 10px;
+
+    @include sm {
+      padding-top : 0;
+      }
+    }
+
+  &:first-of-type {
+    padding-left : 0px;
+    }
+
+  @include sm {
+    padding-left : 0;
+    }
+  }
+
+.inputfile {
+  width    : 0.1px;
+  height   : 0.1px;
+  opacity  : 0;
+  overflow : hidden;
+  position : absolute;
+  z-index  : -1;
+  }
+
+.inputfile + label {
+  cursor         : pointer;
+  @include paginationcolor();
+  color          : #ffffff;
+  border-radius  : 4px;
+  font-size      : 16px;
+  font-weight    : bold;
+  line-height    : 1.44;
+  text-align     : center;
+  vertical-align : middle;
+  padding        : 4px 8px 4px 8px;
+  }
+
+.folder-share-component {
+  margin : 5px 0;
+  > div {
+    &:first-of-type {
+      margin             : 10px 0 20px 0;
+      border             : #cccccc solid 1px;
+      padding            : 5px 5px 5px 10px;
+      box-shadow         : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+      -moz-box-shadow    : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+      -webkit-box-shadow : 1px 2px 50px 0 rgba(0, 0, 0, 0.11);
+
+      .hint-text {
+        color     : #444444;
+        font-size : 21px;
+        }
+
+      .chip-comp {
+        float         : left;
+        display       : flex;
+        color         : #444444;
+        padding       : 5px 10px;
+        background    : #eeeeee;
+        position      : relative;
+        border-radius : 23px;
+        margin        : 8px 8px 0px 0px;
+
+        i {
+          fill           : #aaaaaa;
+          cursor         : pointer;
+          margin-left    : 10px;
+          vertical-align : middle;
+          }
+        }
+
+      > div {
+        float : left;
+
+        div {
+          display : inline-block !important;
+          }
+
+        &:nth-of-type(2) {
+          margin-bottom : 0 !important;
+          }
+        }
+
+      > div:nth-of-type(3) {
+        width : 40% !important;
+
+        > div {
+          width : 100% !important;
+          }
+        }
+
+      input {
+        color       : #444444 !important;
+        font-size   : 21px !important;
+        padding-top : 5px !important;
+        }
+
+      hr {
+        display : none;
+        }
+      }
+    }
+  }
+
+.shared-users-list {
+  label {
+    font-size     : 16px;
+    margin-bottom : 10px;
+    }
+
+  ul {
+    padding-left : 15px;
+    }
+  }
+
+/* new */
+
+.folderHeaderContainer {
+  display : flex;
+  .header-open-folder-icon.glyphicon.glyphicon-file{
+    order: 0;
+  }
+  .header-folder-title{
+    order: 1;
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .item-menu{
+    order: 2;
+  }
+  }
+
+.filterMenu {
+  @include sm {
+    display        : flex;
+    flex-direction : column;
+    }
+  }

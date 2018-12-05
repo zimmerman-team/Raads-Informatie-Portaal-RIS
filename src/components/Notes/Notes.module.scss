@@ -1,0 +1,115 @@
+@import '../../styles/variables.scss';
+@import '../../scss/rfs.scss';
+@import '../../scss/mixins.scss';
+
+$borderPadding : 15px !default;
+
+.component {
+  //margin-top     : 0;
+  margin-top: 41px;
+  display        : flex;
+  flex-direction : column;
+  width          : 350px;
+
+
+  margin-left    : $borderPadding;
+  box-shadow     : 7px 7px 6px rgba(0, 0, 0, 0.16), 7px 7px 6px rgba(0, 0, 0, 0.23);
+  height         : 500px;
+
+  @include mboxshadow(2);
+
+  //Note - the last width(or any other reused property) will be used as the actual width
+  // so all the screen changes according to screen width need to be aligned appropriatly
+  // largest to smallest
+
+  @include lg{
+    width: 33vw;
+  }
+
+  @include doc{
+    width: 595px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include md {
+    //display: none;
+    height      : 300px;
+    margin-top  : 30px;
+    margin-left : 0;
+    width: 100% ;
+    }
+
+  }
+
+.notesInstruction {
+  display         : flex;
+  height          : 100%;
+  align-items     : center;
+  justify-content : center;
+
+  span {
+    font-size   : 16px;
+    font-weight : 100;
+    padding     : 30px;
+    text-align: center;
+
+
+    }
+  }
+
+.notesHeaderTitle {
+  height        : 76px;
+  display       : flex;
+  align-items   : center;
+  span {
+    line-height    : normal;
+    padding-left   : $borderPadding;
+    font-size      : 21px;
+    //color          : #4d4d4d;
+    color          : mainThemeColor();
+    font-weight    : 400;
+    vertical-align : text-bottom;
+    //@include responsive-font-size(21px) ;
+
+    }
+
+  border-bottom : 4px solid mainThemeColor();
+  }
+
+.notesTable {
+  display : block;
+  th {
+    padding-left : $borderPadding;
+    font-size    : 16px !important;
+    color        : #4d4d4d !important;
+    font-weight  : 100 !important;
+
+    &:first-of-type {
+      //padding-left : 0 !important;
+      }
+    }
+
+  tr {
+    border-bottom : 1px solid #e0e0e0;
+    }
+
+  td {
+    width: 33vw;
+    &:first-of-type {
+      padding-left : 18px !important;
+      }
+      @include lg{
+        padding-left: 3% !important;
+        padding-right: 3% !important;
+      }
+    }
+
+  a {
+    color : #0c74d5;
+    }
+  }
+
+.hiddenElement {
+  display : none;
+  }

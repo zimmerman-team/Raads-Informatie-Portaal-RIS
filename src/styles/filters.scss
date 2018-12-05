@@ -1,0 +1,155 @@
+@import './variables.scss';
+@import '../scss/mixins.scss';
+@import '../scss/rfs.scss';
+
+.applied-filters-container {
+
+  *[role="menu"] {
+    width   : 100% !important;
+    padding : 4px 0 !important;
+  }
+
+  display : block;
+  margin  : 50px 0 20px 0;
+
+  @include sm {
+    * {
+      font-size : 16px !important;
+      }
+    }
+
+  .first-row {
+    display       : block;
+    margin-bottom : 10px;
+
+    .glyphicon, .filters-label {
+      cursor       : pointer;
+      font-size    : 21px;
+      color        : #3689d7;
+      margin-right : 15px;
+      display      : inline-block;
+      }
+
+    .remove-filters-span {
+      font-size   : 21px;
+      cursor      : pointer;
+      color       : #b1b1b1;
+      font-weight : 300;
+      display     : inline-block;
+      }
+    }
+
+  .second-row {
+    display      : block;
+    border-width : 3px;
+    border-color : #eee;
+    border-style : solid none;
+
+    @media (max-width: 768px) {
+      border-style: none none solid none;
+    }
+
+    .results-count-label {
+      padding     : 5px 1px;
+      font-size   : 24px;
+      color       : #727272;
+      font-weight : normal;
+      display     : inline-block;
+      margin      : 0;
+
+      button {
+        width          : inherit !important;
+        height         : inherit !important;
+        padding        : 0 !important;
+        margin-left    : 15px !important;
+        vertical-align : text-bottom !important;
+
+        svg {
+          fill  : #3689d7 !important;
+          color : #3689d7 !important;
+          }
+        }
+      }
+
+    .go-back-label {
+      font-size   : 21px;
+      cursor      : pointer;
+      color       : #b1b1b1;
+      font-weight : 300;
+      margin-left : 20px;
+      display     : inline-block;
+
+      &:hover {
+        text-decoration : underline;
+        @include generallinkcolor();
+        }
+      }
+
+    .results-view-options {
+      float : right;
+      border-style: none;
+
+      @media (max-height: 768px) {
+        border-top : #eee 3px solid;
+      }
+
+      .tab-option {
+        height     : 40px;
+        font-size  : 16px;
+        cursor     : pointer;
+        padding    : 0 20px;
+        color      : #a7a7a7;
+        margin-top : 10px;
+        display    : inline-block;
+
+        i {
+          color          : #a7a7a7;
+          margin-right   : 2px;
+          vertical-align : sub;
+          }
+        }
+
+      .active {
+        color        : #3689d7;
+        border-width : 3px;
+        border-color : #3689d7;
+        border-style : none none solid none;
+
+        i {
+          color : #3689d7;
+          }
+        }
+
+      @media (max-width : 680px) {
+        float         : none;
+        display       : block;
+        margin-bottom : -3px;
+        }
+      }
+    }
+  }
+
+.datepicker {
+  input {
+    color : #fff !important;
+    }
+
+  > div {
+    > div {
+      color : #fff !important;
+      }
+    }
+  }
+
+*[role="presentation"] {
+  width : 100% !important;
+
+  > div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+}
+
+.sort-by-menu {
+  vertical-align: text-top;
+}

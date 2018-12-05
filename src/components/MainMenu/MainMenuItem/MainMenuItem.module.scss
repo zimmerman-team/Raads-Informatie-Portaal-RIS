@@ -1,0 +1,71 @@
+@import '../../../styles/variables.scss';
+
+$titleColor : #525252;
+$iconWidth : 24px;
+$iconHeight : 20px;
+$iconBackgroundColor : mainThemeColor();
+$iconForegroundColor : white;
+
+.component {
+
+  a {
+    display         : block;
+    color           : #fff;
+    padding         : .5rem;
+    text-decoration : none;
+    &:active {
+      background : #000;
+      svg {
+        @include darkenmaincolorsvg();
+        }
+      }
+    &:hover {
+      @include darkenmaincolor();
+      }
+    }
+
+  font-size : 16px;
+  cursor    : pointer;
+  }
+
+.text {
+  //padding-left : 5px;
+  display      : flex;
+  overflow     : hidden;
+  height       : 24px;
+  }
+
+.visibleText {
+  padding-left : 5px;
+}
+
+.homeBtn {
+  font-size   : 18px;
+  font-weight : bold;
+
+  }
+
+.menuItem {
+  display   : block;
+  font-size : 16px;
+  cursor    : pointer;
+
+  &:hover {
+    @include darkenmaincolor();
+    }
+  }
+
+.active {
+  @include darkenmaincolor();
+  }
+
+.menuBtn {
+  padding-top    : 10px;
+  padding-bottom : 10px;
+  margin-bottom  : 10px;
+  @include darkenmaincolor();
+  }
+
+.closeIcon{
+  transform: rotate(45deg);
+  }

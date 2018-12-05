@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+@import '../../scss/rfs.scss';
+@import '../../scss/mixins.scss';
+
+$titleColor : #525252;
+$descriptionColor : #504f4f;
+$iconWidth : 48px;
+$iconHeight : 48px;
+$fontWeight : 100;
+$iconBackgroundColor : mainThemeColor();
+$iconForegroundColor : white;
+
+.component {
+  display        : flex;
+  flex-direction : column;
+  align-content  : flex-start;
+  @include font();
+  }
+
+.headerTop {
+  display       : flex;
+  align-items   : center;
+  margin-bottom : 30px;
+  }
+
+.headerIcon {
+  // icon base
+  display          : flex;
+  flex-shrink      : 0;
+  align-items      : center;
+  justify-content  : center;
+  overflow         : hidden;
+  width            : $iconWidth;
+  height           : $iconHeight;
+  margin-right     : 20px;
+  user-select      : none;
+  border-radius    : 50%;
+
+  // icon styling
+  background-color : $iconBackgroundColor;
+
+  // icon content
+  font-size        : 1.25rem;
+  color            : $iconForegroundColor;
+  fill             : $iconForegroundColor;
+
+  svg {
+    width  : 40px;
+    height : 40px;
+    }
+  }
+
+.headerTitle {
+  @include responsive-font-size(35px);
+  font-weight    : $fontWeight;
+  letter-spacing : normal;
+  color          : $titleColor;
+  margin         : 0;
+  line-height    : normal;
+
+  @include sm{
+    margin-top: 2px;
+    line-height: 1.1;
+    }
+  }
+
+.headerDescription {
+  font-size   : 16px;
+  font-weight : $fontWeight;
+  color       : $descriptionColor;
+  margin      : 0;
+  }

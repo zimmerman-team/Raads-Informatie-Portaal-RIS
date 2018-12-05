@@ -1,0 +1,77 @@
+import moment from 'moment';
+
+const data = {
+  createTitle: 'Nieuw evenement toevoegen',
+  editTitle: 'Bewerk evenement',
+  initialState: {
+    date: moment().format('YYYY-MM-DD'),
+    title: '',
+    location: '',
+    description: '',
+    timeError: false,
+    editMode: false,
+    selectedEvent: null,
+    toEditEvent: null,
+    start_time: moment().format('HH:mm'),
+    end_time: moment()
+      .add(1, 'minutes')
+      .format('HH:mm'),
+    dateIsAvailable: true,
+    showTimeError: false,
+    endTimeDisabled: true,
+    validRooms: true,
+    loadingExistingEvent: false,
+    politiekeMarktNumber: null,
+    isLoading: false,
+    availableRooms: [
+      {
+        id: 0,
+        title: 'Plenair',
+        value: 'Plenair',
+        start_time: '19:00',
+        end_time: '21:30',
+        defaultStartTime: '19:00',
+        defaultEndTime: '21:30',
+      },
+      {
+        id: 1,
+        title: 'Zaal Hout',
+        value: 'Zaal Hout',
+        start_time: '19:00',
+        end_time: '21:00',
+        defaultStartTime: '19:00',
+        defaultEndTime: '21:00',
+      },
+      {
+        id: 2,
+        title: 'Zaal Haven',
+        value: 'Zaal Haven',
+        start_time: '19:00',
+        end_time: '21:00',
+        defaultStartTime: '19:00',
+        defaultEndTime: '21:00',
+      },
+      {
+        id: 3,
+        title: 'Zaal Stad',
+        value: 'Zaal Stad',
+        start_time: '19:00',
+        end_time: '21:00',
+        defaultStartTime: '19:00',
+        defaultEndTime: '21:00',
+      },
+      {
+        id: 4,
+        title: 'Zaal Buiten',
+        value: 'Zaal Buiten',
+        start_time: '19:00',
+        end_time: '21:00',
+        defaultStartTime: '19:00',
+        defaultEndTime: '21:00',
+      },
+    ],
+    savedRooms: [],
+    initialRooms: [],
+  },
+};
+export default data;

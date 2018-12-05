@@ -1,0 +1,235 @@
+$municipality: 'X'; // Almere | Utrecht | Rotterdam
+
+@mixin drawerbtncolor(){
+    @if $municipality == 'Rotterdam' {
+        color: #000;
+    } @else if $municipality == 'Almere' {
+        color: #fff;
+    } @else if $municipality == 'Utrecht' {
+        color: #fff;
+    } @else {
+        color: #fff;
+    }
+}
+
+@mixin tabinkbarcolor() {
+    @if $municipality == 'Rotterdam' {
+        background: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        background: #fff;
+    } @else if $municipality == 'Utrecht' {
+        background: #fff;
+    } @else {
+        color: #fff;
+    }
+}
+
+
+@mixin paginationcolor() {
+    @if $municipality == 'Rotterdam' {
+        background-color: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        background-color: #018FB3;
+    } @else if $municipality == 'Utrecht' {
+        background-color: #CC0200;
+    } @else {
+        background-color: #0c74d5;
+    }
+}
+
+@mixin bccolor() {
+    @if $municipality == 'Rotterdam' {
+        color: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        color: #018FB3;
+    } @else if $municipality == 'Utrecht' {
+        color: #2A5587;
+    } @else {
+        color: #0c74d5;
+    }
+}
+
+@mixin generallinkcolor() {
+    @if $municipality == 'Rotterdam' {
+          color: #00AC5B;
+      } @else if $municipality == 'Almere' {
+        color: #0C74D5;
+    } @else if $municipality == 'Utrecht' {
+        color: #2A5587;
+    } @else {
+        color: #0c74d5;
+    }
+}
+
+@mixin visitembordercolor() {
+    @if $municipality == 'Rotterdam' {
+        border-color: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        border-color: #018FB3;
+    } @else if $municipality == 'Utrecht' {
+        border-color: #2A5587;
+    } @else {
+        color: #0c74d5;
+    }
+}
+
+@mixin visitemcolor() {
+    @if $municipality == 'Rotterdam' {
+        color: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        color: #018FB3;
+    } @else if $municipality == 'Utrecht' {
+        color: #2A5587;
+    } @else {
+        color: #0c74d5;
+    }
+}
+
+@mixin maincolor() {
+    @if $municipality == 'Rotterdam' {
+        color: #4caf50 !important;
+    } @else if $municipality == 'Almere' {
+        color: #038fb3 !important;
+    } @else if $municipality == 'Utrecht' {
+        color: #333333 !important;
+    } @else {
+        color: #0c74d5 !important;
+    }
+}
+
+
+@function mainThemeColor() {
+  $color: #0c74d5;
+  @if $municipality == 'Rotterdam' {
+    $color: #4caf50;
+  } @else if $municipality == 'Almere' {
+    $color: #038fb3;
+  } @else if $municipality == 'Utrecht' {
+    $color: #333333;
+  }
+  @return $color;
+}
+
+
+
+@mixin agendatoolbaritem() {
+    @if $municipality == 'Rotterdam' {
+        color: #00AC5B;
+        border-color: #00AC5B;
+    } @else if $municipality == 'Almere' {
+        color: #018FB3;
+        border-color: #018FB3;
+    } @else if $municipality == 'Utrecht' {
+        color: #2A5587;
+        border-color: #2A5587;
+    } @else {
+        color: #0c74d5;
+        border-color: #0c74d5;
+    }
+}
+
+@mixin agendatodaycolor() {
+    @if $municipality == 'Rotterdam' {
+        background: rgba(76, 175, 80, 0.15) !important;
+    } @else if $municipality == 'Almere' {
+        background: rgba(3, 143, 179, 0.15) !important;
+    } @else if $municipality == 'Utrecht' {
+        background: rgba(51, 51, 51, 0.15) !important;
+    } @else {
+        background: rgba(12, 116, 213, 0.15) !important;
+    }
+}
+
+@mixin navbarcolor() {
+    @if $municipality == 'Rotterdam' {
+        background: #4caf50 !important;
+    } @else if $municipality == 'Almere' {
+        background: #038fb3 !important;
+    } @else if $municipality == 'Utrecht' {
+        background: #333333 !important;
+    } @else {
+        background: #0c74d5 !important;
+    }
+}
+
+@mixin resultsbtncolor() {
+    @if $municipality == 'Rotterdam' {
+        background: #356037 !important;
+    } @else if $municipality == 'Almere' {
+        background: #F75002 !important;
+    } @else if $municipality == 'Utrecht' {
+        background: #cc0200 !important;
+    } @else {
+        background: #F75002 !important;
+    }
+}
+
+@mixin darkenmaincolor() {
+    @if $municipality == 'Rotterdam' {
+        background: #356037;
+    } @else if $municipality == 'Almere' {
+        background: #0a6f89;
+    } @else if $municipality == 'Utrecht' {
+        background: #cc0200;
+    } @else {
+        background: darken(#0c74d5, 10%);
+    }
+}
+
+@mixin darkenmaincolorsvg() {
+  @if $municipality == 'Rotterdam' {
+    fill: #356037 !important;
+  } @else if $municipality == 'Almere' {
+    fill: #0a6f89 !important;
+  } @else if $municipality == 'Utrecht' {
+    fill: #cc0200 !important;
+  } @else {
+    fill: darken(#0c74d5, 10%) !important;
+  }
+}
+
+@mixin font() {
+    font-family: 'Roboto', sans-serif;
+}
+
+@mixin faidedbackmaincolor() {
+    @if $municipality == 'Rotterdam' {
+        background: rgba(76, 175, 80, 0.2);
+    } @else if $municipality == 'Almere' {
+        background: rgba(3, 143, 179, 0.2);
+    } @else if $municipality == 'Utrecht' {
+        background: rgba(51, 51, 51, 0.2);
+    } @else {
+        background: rgba(12, 116, 213, 0.2);
+    }
+}
+
+@mixin iconColor(){
+  @if $municipality == 'Rotterdam' {
+    color: #4d9851;
+  } @else if $municipality == 'Almere' {
+    color: #3a9ab2;
+  } @else if $municipality == 'Utrecht' {
+    color: #716f6f;
+  } @else {
+    color: #4486c4;
+  }
+}
+
+@mixin iconBackground()
+{
+  @if $municipality == 'Rotterdam' {
+    background: #4d9851;
+  } @else if $municipality == 'Almere' {
+    background: #3a9ab2;
+  } @else if $municipality == 'Utrecht' {
+    background: #716f6f;
+  } @else {
+    background: #4486c4;
+  }
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

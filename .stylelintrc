@@ -1,0 +1,22 @@
+{
+  "extends": "stylelint-config-recommended-scss",
+  "plugins": [
+    "stylelint-z-index-value-constraint",
+    "stylelint-scss",
+    "stylelint-declaration-use-variable",
+    "stylelint-declaration-block-no-ignored-properties"
+
+  ],
+  "rules": {
+    "plugin/declaration-block-no-ignored-properties": true,
+    "at-rule-empty-line-before": null,
+    "scss/dollar-variable-pattern": "^foo",
+    "scss/selector-no-redundant-nesting-selector": true,
+    "sh-waqar/declaration-use-variable": "color",
+    "plugin/z-index-value-constraint": {
+      "min": 0,
+      "max": 9999
+    }
+
+  }
+}

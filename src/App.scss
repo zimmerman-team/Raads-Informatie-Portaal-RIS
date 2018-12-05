@@ -1,0 +1,164 @@
+@charset 'utf-8';
+@import './styles/variables.scss';
+@import 'styles/general.scss';
+@import './styles/my_notes.scss';
+@import './styles/notifications.scss';
+@import './styles/table.scss';
+@import './styles/filters.scss';
+@import './styles/pagination.scss';
+@import './styles/daterangepicker.scss';
+@import './styles/error.scss';
+
+/* containers */
+@import './containers/About/About.legacy.scss';
+@import './containers/Home/Home.legacy.scss';
+@import './containers/Search/Search.legacy.scss';
+@import './containers/Agenda/Agenda.legacy.scss';
+@import './containers/Agenda/AgendaDetail/AgendaDetail.legacy.scss';
+@import './containers/Login/Login.legacy.scss';
+@import './containers/DocumentDetail/DocumentDetail.legacy.scss';
+@import './containers/MyFolders/MyFolders.legacy.scss';
+@import './containers/Profile/Profile.legacy.scss';
+/* components */
+
+@import './components/TopBar/TopBar.legacy.scss';
+@import './components/MainMenu/MainMenu.legacy.scss';
+@import './components/ActionMenu/ActionMenu.legacy.scss';
+@import './components/SearchField/SearchField.legacy.scss';
+@import './components/LoginForm/LoginForm.legacy.scss';
+@import './components/Notes/Notes.legacy.scss';
+@import './components/VerticalTimeline/VerticalTimeline.legacy.scss';
+@import './scss/ReactTable.scss';
+@import './scss/global.scss';
+@import './components/modals/Modals.legacy.scss';
+@import './components/modals/AddNote.legacy.scss';
+
+.mdl-layout.is-upgraded .mdl-layout__tab.is-active::after {
+  @include tabinkbarcolor();
+}
+
+button {
+  font-size: 1.2rem !important;
+  text-transform: none !important;
+}
+
+.rmq-e8727a19 {
+  > span {
+    top: 17px !important;
+    background-color: #ffffff !important;
+  }
+}
+
+html * {
+  @include font();
+}
+
+a {
+  text-decoration: none !important;
+  cursor: pointer;
+  @include generallinkcolor();
+}
+
+/* visjs timeline */
+
+.vis-item {
+  position: absolute;
+  color: #1a1a1a;
+  @include visitembordercolor();
+  border-width: 1px;
+  background-color: #d5ddf6;
+  display: inline-block;
+}
+
+.vis-item-content {
+  padding: 5px 10px !important;
+}
+
+.vis-time-axis .vis-text {
+  position: absolute;
+  @include visitemcolor();
+  padding: 3px;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.glyphicon {
+  top: initial !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @include font();
+
+  @include sm {
+    position: fixed;
+  }
+
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /*makes the body non-scrollable (we will add scrolling to the sidebar and main content containers)*/
+  display: flex; /*enables flex content for its children*/
+  box-sizing: border-box;
+
+  > div:nth-of-type(5) {
+    > div {
+      @media (min-width: #{$screen-md-min}) {
+        z-index: 2000 !important;
+        padding-top: 16px !important;
+      }
+    }
+  }
+  > div:nth-of-type(5)[role=tooltip] {
+    > div {
+      padding-top: 5px !important;
+    }
+  }
+  > div:nth-of-type(9) {
+    > div {
+      @media (min-width: #{$screen-md-min}) {
+        z-index: 2000 !important;
+        padding-top: 16px !important;
+      }
+    }
+  }
+  > div:nth-of-type(9)[role=tooltip] {
+    > div {
+      padding-top: 5px !important;
+    }
+  }
+}
+
+.global-snackbar {
+  z-index: 2000;
+  top: 20%;
+  > div {
+    //color: #000;
+    //background: #FFD803;
+    box-shadow: 0 0 99px 0 rgba(0, 0, 0, 0.6);
+  }
+  &.close {
+    opacity: 0 !important;
+  }
+}
+
+.general > div {
+  color: #000;
+  background: #FFD803;
+}
+
+.success > div {
+  color: #fff;
+  background: #3fb780;
+}
+
+.center-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

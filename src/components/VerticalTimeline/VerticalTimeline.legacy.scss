@@ -1,0 +1,39 @@
+@import '../../styles/variables.scss';
+@import "../../scss/mixins.scss";
+@import "../../scss/rfs.scss";
+
+.verticalTimelineTitle {
+  //word-break: break-all;
+  display        : flex;
+  flex-direction : row;
+
+  .timeLineItemLink {
+    font-weight : bold;
+    font-size: 1rem;
+    color: #444;
+    //word-break: break-all;
+    word-break: break-word;
+  }
+
+  .item-menu {
+    order       : 2;
+    margin-left : auto;
+    }
+  }
+.timelineItem {
+  display          : flex;
+  flex-direction   : column;
+  width            : 60vw;
+  background-color : #efefef !important;
+  text-align       : left;
+  cursor           : default;
+  @include sm {
+    width : 100%;
+    }
+  }
+
+.timelineItemContent {
+  max-width: 1080px;
+  display        : flex;
+  flex-direction : column;
+  }

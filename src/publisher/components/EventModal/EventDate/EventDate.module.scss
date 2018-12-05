@@ -1,0 +1,128 @@
+@import '../../../../styles/variables.scss';
+@import '../../../../scss/mixins.scss';
+@import '../../../../scss/rfs.scss';
+
+.container {
+  display: inline-flex;
+
+  @include md {
+    width: 50%;
+  }
+}
+
+.fullWidthContainer {
+  width: 100%;
+  display: block;
+  margin-bottom: 20px;
+}
+
+.checkbox {
+  width: 20px !important;
+  height: 20px !important;
+  margin-right: 10px !important;
+}
+
+.title {
+  width: 100%;
+  color: #444;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.asterisk {
+  display        : inline-flex;
+  padding-left   : 6px;
+  vertical-align : super;
+  font-size      : 20px;
+  color          : #ff4646;
+}
+
+.datePicker {
+  width: 100% !important;
+
+  > div {
+    width: 100% !important;
+
+    > div {
+      z-index: 1 !important;
+      color: #008eb5 !important;
+      font-size: 21px !important;
+      padding: 0 0 0 26px !important;
+    }
+  }
+
+  hr {
+    display: none;
+  }
+
+  input {
+    font-size      : 21px !important;
+    color          : #008eb5 !important;
+    outline        : none !important;
+    box-sizing     : border-box !important;
+    width          : 100% !important;
+    min-height     : 48px !important;
+    padding        : 0 0 0 26px !important;
+    margin         : 0 !important;
+    flex           : 10 !important;
+    background     : #f4f5f7 !important;
+    border         : none !important;
+    resize         : none !important;
+    border-radius  : 4px;
+
+    @include sm {
+      font-size    : 13px !important;
+    }
+
+    &:hover {
+      background   : #e3e3e3 !important;
+    }
+  }
+}
+
+.datePickerMd {
+  @include md {
+    width: 100% !important;
+
+    > div {
+      width: 100% !important;
+    }
+  }
+}
+
+.dropdownContainer {
+  margin-bottom: 40px;
+  display: inline-flex;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  @include sm {
+    margin: 0 0 0 10px !important;
+  }
+}
+
+.disabledDropdownContainer {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.dash {
+  width: 36px;
+  padding-top: 14px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.errorContainer {
+  display: block;
+  margin-top: 10px;
+  border: 1px solid #fa5858;
+  border-radius: 4px;
+  padding: 5px;
+
+  span {
+    margin-left: 5px;
+  }
+}

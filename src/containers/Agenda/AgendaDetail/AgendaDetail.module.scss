@@ -1,0 +1,36 @@
+@import '../../../scss/mixins.scss';
+
+.adminDivControls {
+  width               : 100%;
+  display             : flex;
+  justify-content     : flex-end;
+
+  @include sm {
+    margin-bottom     : 10px;
+    justify-content   : flex-start;
+  }
+}
+
+.draftButton {
+  color               : #fff;
+  outline             : none;
+  font-size           : 21px !important;
+  padding             : 15px 30px;
+  border-radius       : 3px;
+  font-weight         : normal;
+  box-shadow          : 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border              : none;
+  background          : #ff7f00;
+  transition          : background 0.8s;
+
+  &:not(:last-of-type) {
+    margin-right      : 40px;
+    @include sm {
+      margin-right    : 20px;
+    }
+  }
+
+  @include sm {
+    padding           : 15px 10px !important;
+  }
+}

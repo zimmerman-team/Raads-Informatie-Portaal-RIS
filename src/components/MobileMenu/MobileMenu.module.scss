@@ -1,0 +1,33 @@
+@import '../../styles/variables.scss';
+@import "../../scss/mixins.scss";
+
+.component {
+  position         : fixed;
+  top              : 10vh;
+  width            : 100vw;
+  height           : 90vh;
+  background-color : mainThemeColor();
+  z-index          : 9999;
+  overflow-y       : scroll;
+  visibility       : hidden;
+  box-shadow: inset 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+  }
+
+.menuOpen {
+  @include sm {
+    visibility : visible;
+    }
+  }
+
+.listHeader {
+  user-select   : none;
+  height        : 65px;
+  font-size     : 16px;
+  color         : white;
+  background-color : mainThemeColor();
+  font-weight   : bold;
+  border-bottom : solid 1px white;
+  display       : flex;
+  align-items   : center;
+  }

@@ -1,0 +1,155 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+
+.component {
+  //position        : relative;
+  position        : fixed;
+  width           : 100vw;
+  height          : 55px;
+  //line-height     : 40px;
+  display         : flex;
+  align-items     : center;
+  justify-content : space-between;
+  z-index         : 1200;
+
+  @include sm {
+    z-index: 2000;
+    //position : relative;
+    height   : 10vh;
+    }
+  }
+
+.backButton {
+  * {
+    fill : white;
+    }
+  }
+
+.currentPageTitle {
+  padding-left   : 10px;
+  padding-right  : 10px;
+  color          : #fff;
+  margin-left    : 1rem;
+  font-size      : 20px;
+  font-weight    : 500;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1;
+  letter-spacing : normal;
+
+  @include sm {
+    display : none;
+    }
+  }
+
+.currentPageBox {
+  display         : flex;
+  flex-direction  : row;
+  align-items     : center;
+  justify-content : space-between;
+  color           : #fff;
+  }
+
+.divider {
+  color       : #fff;
+  font-size   : 15px;
+  font-weight : normal;
+
+  @include sm {
+    display : none;
+    }
+  }
+
+.topbarTitleContainer {
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  }
+
+.topBarTitleSmall {
+  font-size      : 20px;
+  font-weight    : 100;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.1;
+  letter-spacing : normal;
+  color          : white;
+  display        : none;
+  flex-direction : column;
+
+  @include sm {
+    display : flex;
+    }
+  }
+
+.loginButton {
+  display : none;
+
+  @include sm {
+    //display : block;
+    }
+
+  * {
+    fill : white;
+    }
+  }
+
+.loginText {
+  color : white;
+  font-size: 16px;
+  @include sm {
+    display : none;
+    }
+  }
+
+.loginContainer {
+  margin-right     : 10px;
+  background-color : transparent !important;
+  color            : white;
+  text-align       : center;
+  font-size        : 16px;
+  cursor           : pointer;
+  }
+
+.mobileMenuButton {
+  display          : none;
+  width            : 22px;
+  height           : 22px;
+  background-color : white;
+
+  @include sm {
+    display : block;
+    }
+  }
+
+.menuButton {
+  display          : none;
+  //width            : 22px;
+  //height           : 22px;
+  svg{
+    width:10vh;
+    fill: #fff;
+  }
+
+  @include sm {
+    display : flex;
+    }
+  }
+
+.municipalityName {
+  text-transform : uppercase;
+  font-weight    : bold;
+  letter-spacing : 0px;
+  font-size      : 18px;
+  }
+
+.portalName {
+  text-transform : uppercase;
+  font-size      : 16px;
+  }
+
+.releaseLabel {
+  @include sm {
+    display : none;
+    }
+  }

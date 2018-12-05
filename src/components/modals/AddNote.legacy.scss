@@ -1,0 +1,114 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+@import '../../scss/rfs.scss';
+
+.add-note-page-container {
+  //padding: 50px;
+  width      : 75%;
+  margin     : 0 auto;
+  transition : background .2s ease;
+  min-height : calc(100vh - 42px - 178px);
+
+  }
+
+.add-note-header {
+  //height: 132px;
+  //padding-left: 15px;
+  display        : flex;
+  flex-direction : column;
+  i {
+
+    color          : #ffffff;
+    font-size      : 32px;
+    margin-right   : 10px;
+    vertical-align : sub;
+    }
+
+  .with-back {
+    padding       : 7px;
+    border-radius : 50%;
+    margin-right  : 15px;
+    }
+  }
+
+.add-note-title {
+  //display: inline-block;
+  margin-left    : 20px;
+  //font-size      : 32px;
+  @include responsive-font-size(32px);
+  font-weight    : 300;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 0.63;
+  letter-spacing : normal;
+  //text-align: left;
+  color          : #444444;
+  }
+
+.add-note-text {
+  margin-top     : 20px;
+  margin-bottom  : 15px;
+  font-size      : 16px;
+  font-weight    : normal;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.25;
+  letter-spacing : normal;
+  text-align     : left;
+  color          : #444444;
+  }
+
+.add-note-sub-text {
+  //margin-left    : 21px;
+  font-size      : 12px;
+  font-weight    : normal;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.67;
+  letter-spacing : normal;
+  text-align     : left;
+  color          : #444444;
+  .divider {
+    display : inline;
+    margin  : 8px;
+    }
+  }
+
+.add-note-icon {
+  display         : flex;
+  flex-shrink     : 0;
+  align-items     : center;
+  justify-content : center;
+  height          : 48px;
+  width           : 48px;
+  //margin-left: 24px;
+  //padding-top: 12px;
+  //text-align: center;
+  font-size       : 1.8rem;
+  color           : #ffffff;
+  @include paginationcolor();
+  border-radius   : 100%;
+  //border          : 0px "#000000" solid;
+  }
+
+.add-note-input-field {
+  //margin-left: 39px;
+  margin-top : 62px;
+  }
+
+/* new */
+
+.noteIconTitleContainer {
+  display     : flex;
+  align-items : center;
+  //justify-content : center;
+  }
+
+.noteDetailContainer {
+  margin-left : 0;
+  }
+
+.buttonContainer {
+  display         : flex;
+  justify-content : flex-end;
+  }

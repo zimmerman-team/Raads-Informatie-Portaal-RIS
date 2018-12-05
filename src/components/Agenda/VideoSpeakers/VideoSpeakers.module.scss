@@ -1,0 +1,15 @@
+.speakersContainer {
+  max-height: 200px;
+  overflow-y: overlay;
+}
+
+.speakersListItem {
+  cursor: pointer;
+  padding: 10px 0 10px 20px;
+
+  &:hover {
+    > div {
+      text-decoration: underline;
+    }
+  }
+}

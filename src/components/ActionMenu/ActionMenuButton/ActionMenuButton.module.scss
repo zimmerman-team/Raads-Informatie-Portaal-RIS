@@ -1,0 +1,28 @@
+@import '../../../styles/variables.scss';
+@import '../../../scss/mixins.scss';
+
+.component {
+  /* todo: solve element stacking in another way */
+  z-index    : 1300 !important;
+  margin-top : 23px !important;
+  position   : absolute !important;
+  left       : calc(50% - 28px) !important;
+
+  svg {
+    width : 35px !important;
+    }
+
+  &.closed {
+    //left: calc(50% - 20px) !important;
+    }
+
+  &.opened {
+    //left: calc(50% - 28px) !important;
+    }
+
+  @include sm {
+    top    : initial;
+    bottom : 2vh;
+    }
+  }
+

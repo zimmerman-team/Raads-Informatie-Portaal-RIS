@@ -1,0 +1,75 @@
+@import '../../scss/mixins.scss';
+
+.component{
+/* empty */
+}
+.document_normal{
+  // These are the default basic heights and widths of a readable document
+  height: 842px;
+  width: 595px;
+  margin: auto;
+  @include mboxshadow(2);
+
+  @include md{
+    height: 100%;
+    width: 100%;
+  }
+  canvas{
+    height: 100% !important;
+    width: 100% !important;
+    transition: width 1s, height 1s;
+  }
+}
+
+.document_increased{
+  // These are the default basic heights and widths of a readable document
+  height: 842px;
+  width: 595px;
+  margin: auto;
+  @include mboxshadow(2);
+  @include md{
+    height: 100%;
+    width: 100%;
+  }
+  overflow: scroll;
+  canvas{
+    height: 200% !important;
+    width: 200% !important;
+    transition: width 1s, height 1s;
+  }
+}
+
+.document_double_increased{
+  // These are the default basic heights and widths of a readable document
+  height: 842px;
+  width: 595px;
+  margin: auto;
+  @include mboxshadow(2);
+  @include md{
+    height: 100%;
+    width: 100%;
+  }
+  overflow: scroll;
+  canvas{
+    height: 275% !important;
+    width: 275% !important;
+    transition: width 1s, height 1s;
+  }
+}
+
+.documentLoading {
+  padding: 10px 20px;
+  text-align: center;
+}
+
+.adminDivControls {
+  width               : 100%;
+  margin-top          : -20px;
+  display             : flex;
+  justify-content     : flex-end;
+
+  @include sm {
+    margin-bottom     : 10px;
+    justify-content   : flex-start;
+  }
+}

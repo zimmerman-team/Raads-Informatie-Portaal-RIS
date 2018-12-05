@@ -1,0 +1,32 @@
+.adminRoomAgendaList {
+  max-height: 322px !important;
+  min-height: 322px !important;
+}
+
+.adminChildEventAgendaList {
+  max-height: 340px !important;
+  min-height: 340px !important;
+}
+
+.addAgendaItemBtnContainer {
+  display: flex;
+  padding: 10px 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.addAgendaItemBtn {
+  color               : #fff;
+  outline             : none;
+  font-size           : 21px !important;
+  padding             : 10px 20px;
+  border-radius       : 3px;
+  font-weight         : normal;
+  box-shadow          : 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border              : none;
+  transition          : background 0.8s;
+}
+
+.verticalDivider {
+  margin: 0 10px;
+}

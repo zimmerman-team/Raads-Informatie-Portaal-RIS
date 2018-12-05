@@ -1,0 +1,45 @@
+@import './scss/mixins.scss';
+
+.component {
+  height         : 100%;
+  width          : 100%;
+  display        : flex;
+  flex-direction : column;
+
+  }
+
+.contentContainer {
+  flex-grow    : 1;
+  overflow-y   : scroll;
+  overflow-x   : hidden;
+  padding-left : 45px;
+  padding-top  : 55px;
+  min-height   : 100vh;
+  max-height   : 100vh;
+
+  @include sm {
+    margin-top    : 0;
+    padding-left  : 0;
+    padding-top   : 0;
+    margin-bottom : 200px;
+    }
+  }
+
+.wrapper {
+  display        : flex;
+  flex-direction : row;
+  min-height     : 0;
+  @include sm{
+    margin-top: 10vh;
+    }
+  }
+
+.pusher {
+  transition : margin .2s ease;
+  }
+
+.pushed {
+  //@include lg {
+  //  margin-left : 220px;
+  //  }
+  }

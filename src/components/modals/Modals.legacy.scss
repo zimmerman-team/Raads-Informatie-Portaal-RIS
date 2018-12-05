@@ -1,0 +1,345 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+
+.filters-modal-header {
+  color       : white;
+  cursor      : default;
+  font-weight : bold;
+  @include navbarcolor();
+  }
+
+.filters-modal-sluiten-btn {
+  color       : white;
+  cursor      : pointer;
+  font-size   : 1rem;
+  font-weight : normal;
+  float       : right;
+  }
+
+.fullscreen--modal-content {
+  width      : 100% !important;
+  transform  : translate(0, 0) !important;
+  position   : absolute !important;
+  top        : 0 !important;
+  height     : 100vh !important;
+  max-width  : none !important;
+  max-height : none !important;
+
+  > div {
+    height : 100vh !important;
+    // background: #0c74d5 !important;
+    @include navbarcolor();
+    }
+  }
+
+.fullscreen--modal-content-new-folder {
+  top        : 0 !important;
+  width      : 100% !important;
+  height     : 100vh !important;
+  max-width  : none !important;
+  max-height : none !important;
+  position   : absolute !important;
+  transform  : translate(0, 0) !important;
+
+  > div {
+    height     : 100vh !important;
+    padding    : 50px 0 !important;
+    background : #ffffff !important;
+
+    @include sm {
+      padding-top : 15vh !important;
+      }
+    }
+
+  .step2 {
+    @include sm {
+      margin-bottom: 20px !important;
+    }
+  }
+
+  .header {
+    display       : block;
+    margin-bottom : 100px;
+
+    @include sm {
+      display       : flex;
+      margin-bottom : 50px;
+      }
+
+    .title-div {
+      height         : 60px;
+      display        : inline-block;
+      vertical-align : middle;
+      width          : calc(100% - 280px);
+
+      div {
+        margin       : 0;
+        font-size    : 32px;
+        font-weight  : bold;
+        @include maincolor();
+        padding      : 15px 0 20px 0;
+        @include agendatoolbaritem();
+        border-style : none none solid none;
+
+        @include sm {
+          font-size : 19px;
+          }
+        }
+
+      hr {
+        opacity      : 0.3;
+        border-width : 3px;
+        margin       : -3px 0 0 0;
+        @include agendatoolbaritem();
+        }
+      }
+
+    .back {
+      cursor                     : pointer;
+      margin-right               : 20px;
+      border-top-right-radius    : 35px;
+      border-bottom-right-radius : 35px;
+      }
+
+    .arrow-div {
+      height         : 60px;
+      width          : 120px;
+      display        : inline-block;
+      vertical-align : top;
+      @include faidedbackmaincolor();
+
+      .rectangle {
+        width      : 60px;
+        height     : 60px;
+        text-align : center;
+        display    : inline-block;
+
+        i {
+          fill        : #ffffff;
+          color       : #ffffff;
+          padding-top : 17px;
+          }
+        }
+
+      .circle {
+        width         : 60px;
+        height        : 60px;
+        color         : #ffffff;
+        font-size     : 24px;
+        padding-top   : 13px;
+        border-radius : 50%;
+        text-align    : center;
+        position      : absolute;
+        display       : inline-block;
+        @include navbarcolor();
+        }
+      }
+
+    .next {
+      cursor                    : pointer;
+      margin-left               : 20px;
+      border-top-left-radius    : 35px;
+      border-bottom-left-radius : 35px;
+
+      .rectangle {
+        float : right;
+        }
+      }
+    }
+
+  .below-header {
+    padding : 0 140px;
+
+    @include sm {
+      padding : 0 40px;
+      }
+
+    h3 {
+      font-weight   : 300;
+      margin-bottom : 40px;
+
+      @include sm {
+        margin-bottom : 20px;
+        }
+
+      i {
+        padding        : 7px;
+        color          : #ffffff;
+        font-size      : 28px;
+        margin-right   : 15px;
+        border-radius  : 50%;
+        @include navbarcolor();
+        vertical-align : bottom;
+        }
+      }
+
+    .sub-heading {
+      font-size     : 18px;
+      font-weight   : 300;
+      margin-bottom : 100px;
+      color         : rgba(68, 68, 68, 0.6);
+      }
+
+    hr {
+      border-bottom-color : #444444 !important;
+      }
+
+    .color-div {
+      margin-bottom : 40px;
+
+      @include sm {
+        display        : flex;
+        flex-direction : column;
+        align-items    : center;
+        width          : 33% !important;
+        margin-bottom  : 5px;
+        }
+
+      .check {
+        padding : 0 !important;
+        margin  : 0 auto !important;
+        display : table !important;
+        @include sm {
+          span{
+            right : -11px!important;
+            }
+          }
+        }
+
+      .hidden {
+        > span {
+          display : none !important;
+          }
+        }
+
+      i {
+        width         : 92px;
+        height        : 92px;
+        padding       : 22px;
+        color         : #ffffff;
+        display       : block;
+        margin        : 0 auto;
+        cursor        : pointer;
+        font-size     : 50px;
+        border-radius : 50%;
+
+        @include sm {
+          flex-shrink     : 0;
+          width           : 42px;
+          display         : flex;
+          align-items     : center;
+          justify-content : center;
+          height          : 42px;
+          font-size       : 20px;
+          }
+        }
+
+      label {
+        color       : #444444;
+        margin      : 10px 0;
+        display     : block;
+        font-size   : 20px;
+        cursor      : pointer;
+        font-weight : 300;
+        text-align  : center;
+        @include sm {
+          //font-size: ;
+          font-size : 16px;
+          }
+        }
+      }
+    }
+  }
+
+.fullscreen--modal-body {
+  padding    : 0 !important;
+  max-height : none !important;
+  }
+
+.fullscreen--modal-paper {
+  overflow : auto !important;
+  height   : 100vh !important;
+  }
+
+.filters-modal-content {
+  width   : 555px;
+  margin  : 0 auto;
+  padding : 100px 0;
+
+  @include sm {
+    width         : 100vw;
+    padding-left  : 5vw;
+    padding-right : 5vw;
+    }
+
+  h1 {
+    margin-bottom : 10px;
+    color         : #ffffff !important;
+    font-weight   : normal !important;
+
+    }
+
+  .btns-div {
+    margin-bottom : 35px;
+    .results-btn {
+      width        : 69%;
+      display      : inline;
+      margin-right : 2%;
+      color        : #ffffff !important;
+      @include resultsbtncolor();
+
+      @include sm {
+        width : 60%;
+        }
+      }
+
+    .cancel-btn {
+      width      : 29%;
+      display    : inline;
+      color      : #545454 !important;
+      background : #ffffff !important;
+      @include sm {
+        width : 38%;
+        }
+      }
+    }
+
+  .filter-name {
+    color       : #ffffff;
+    display     : block;
+    font-size   : 21px;
+    cursor      : pointer;
+    font-weight : normal;
+
+    i {
+      float     : right;
+      font-size : 30px;
+      }
+    }
+
+  .filter-expandable-block {
+    label {
+      color : #ffffff !important;
+      }
+
+    .options-div {
+      padding-left : 10px;
+      svg {
+        fill  : #ffffff !important;
+        color : #ffffff !important;
+        }
+      }
+    }
+  }
+
+.filter-list-div {
+  overflow   : auto;
+  max-height : calc(100vh - 300px);
+  }
+
+/* new */
+
+.dossierModalRow {
+  display   : flex;
+  flex-wrap : wrap;
+  }

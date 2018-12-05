@@ -1,0 +1,13 @@
+.searchCheckboxDiv {
+  margin-top : 10px;
+}
+
+.searchChipsContainer {
+  margin-top: 10px;
+  order: 0;
+  div {
+    display      : inline-flex !important;
+    margin-right : 10px !important;
+    margin-top   : 5px !important;
+  }
+}

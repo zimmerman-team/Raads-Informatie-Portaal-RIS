@@ -1,0 +1,17 @@
+.popover {
+  margin-top: 10px;
+  max-height: 170px;
+  background-color: #fff;
+}
+
+.menuScrollDiv {
+  max-height: 170px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.itemText {
+  font-size: 20px;
+  text-align: center;
+  width: calc(100% - 24px);
+}

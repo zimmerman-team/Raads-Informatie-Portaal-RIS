@@ -1,0 +1,98 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+
+.modal {
+
+}
+
+.modalPaper {
+  border-radius: 8px;
+
+  @include sm {
+    overflow : auto !important;
+    height   : 100vh !important;
+  }
+}
+
+.modalContent {
+  top: -60px;
+
+  @include xl {
+    width         : 100vw !important;
+  }
+}
+
+.modalBody {
+  max-height      : calc(100vh - 81px - 138px - 75px) !important;
+  padding         : 0 50px 10px 50px !important;
+  overflow-y      : overlay !important;
+  border          : none !important;
+
+  @include xl {
+    padding       : 10px 20px !important;
+  }
+
+  @include md {
+    max-height    : 46vh !important;
+  }
+}
+
+.title {
+  padding         : 50px 50px 0 50px !important;
+
+  @include sm {
+    padding       : 60px 10px 0 10px !important;
+  }
+}
+
+.asteriskMeaning {
+  right          : 50px;
+  margin-top     : -50px;
+  position       : absolute;
+
+  @include xl {
+    right        : 10px;
+    margin-top   : -40px;
+  }
+}
+
+.asterisk {
+  font-size      : 20px;
+  color          : #ff4646;
+}
+
+.asteriskText {
+  font-size      : 12px;
+}
+
+.btnContainer {
+  text-align     : start !important;
+  padding        : 30px 50px !important;
+  @include sm {
+    padding      : 30px 10px !important;
+  }
+}
+
+.button {
+  color               : #fff;
+  outline             : none;
+  font-size           : 21px !important;
+  padding             : 15px 30px;
+  border-radius       : 3px;
+  font-weight         : normal;
+  box-shadow          : 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+  border              : solid 1px #0ba534;
+  transition          : background 0.8s;
+
+  &:first-of-type {
+    margin-right      : 40px;
+    @include sm {
+      margin-right    : 20px;
+    }
+  }
+
+  @include sm {
+    padding           : 10px !important;
+    font-size         : 17px !important;
+  }
+}

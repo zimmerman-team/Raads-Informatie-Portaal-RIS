@@ -1,0 +1,60 @@
+@import "./mixins.scss";
+
+.global-snackbar {
+  @include sm {
+    //display : none;
+    }
+  }
+
+.global-snackbar-content {
+  font-size: 20px;
+  padding: 5px 15px;
+  text-align: center;
+
+  > div {
+    margin-bottom: 15px;
+  }
+
+  > a {
+    color: #fff;
+    text-decoration: underline !important;
+  }
+}
+
+#react-autowhatever-1 {
+  @include sm {
+    display : none;
+    }
+  }
+
+.basePage {
+  padding : 50px;
+  //padding-left: 50;
+  @include sm {
+    padding-bottom : 15vh;
+    padding-left   : 15px;
+    padding-right  : 15px;
+    padding-top    : 30px;
+    }
+  }
+
+::-webkit-scrollbar {
+  width: 8px;  /* for vertical scrollbars */
+  height: 8px; /* for horizontal scrollbars */
+  @include sm {
+    width: 4px;
+    height: 4px;
+  }
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+input[type="text"] {
+  -webkit-appearance: none;
+}

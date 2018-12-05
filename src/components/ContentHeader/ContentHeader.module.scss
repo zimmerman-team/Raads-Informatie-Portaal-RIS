@@ -1,0 +1,29 @@
+@import "../../styles/variables.scss";
+
+.component {
+  display        : flex;
+  flex-direction : row;
+  align-items    : center;
+  margin-bottom  : 20px;
+  //outline        : 1px solid green;
+  }
+
+.glyphIcon{
+  text-align: center;
+  padding-top: 10px;
+  height : 42px;
+  width  : 42px;
+  color  : #fff;
+  @include iconBackground();
+}
+
+.materialUiIcon{
+  height : 42px;
+  width  : 42px;
+  @include iconColor();
+}
+
+.contentHeaderTitle {
+  line-height: 1.1;
+  margin-bottom : 0;
+  }

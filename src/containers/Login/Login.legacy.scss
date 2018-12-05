@@ -1,0 +1,20 @@
+.login-page {
+  background-color: white !important;
+  color: #525252;
+  min-height: calc(100vh - 42px);
+
+  div {
+    color: #444444 !important;
+  }
+
+  button {
+    border-radius: 0 !important;
+    color: #fff !important;
+  }
+}
+.register-textboxes {
+  hr {
+    position: initial !important;
+    height: 0;
+  }
+}

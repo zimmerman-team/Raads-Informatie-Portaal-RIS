@@ -1,0 +1,99 @@
+version: 2
+jobs:
+
+  #  CHECKOUT REPOSITORY
+  checkout_repo:
+    #    machine: true
+    docker:
+      - image: circleci/node:9.10.0
+    working_directory: ~/RAADS-INFORMATIE-PORTAAL-RIS
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/RAADS-INFORMATIE-PORTAAL-RIS
+      - restore_cache:
+          keys:
+            - yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - yarn-cache-{{ .Branch }}
+            - yarn-cache-
+      - run: yarn install
+      - save_cache:
+          key: yarn-cache-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths: node_modules
+      - persist_to_workspace:
+          root: .
+          paths: .
+
+  #  CHECKOUT FOR VULNERABILITIES IN LIBRARIES
+  check_vulnerabilities:
+    docker:
+      - image: circleci/node:9.10.0
+    working_directory: ~/RAADS-INFORMATIE-PORTAAL-RIS
+    steps:
+      - attach_workspace:
+          at: ~/RAADS-INFORMATIE-PORTAAL-RIS
+      - run: yarn validate:dependencies
+
+  #  BUILD SOURCE AND DEPLOY TO SERVER
+  build_&_deploy:
+    #    machine: true
+    docker:
+      - image: circleci/node:9.10.0
+    working_directory: ~/RAADS-INFORMATIE-PORTAAL-RIS
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/RAADS-INFORMATIE-PORTAAL-RIS
+      - run: sed -i -e "s/'X'/'Almere'/g" src/config.js
+      - run: sed -i -e "s/'X'/'Almere'/g" src/styles/variables.scss
+      - run: yarn build
+      - run: sudo apt install rsync
+      - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      - add_ssh_keys:
+          name: Add SSH KEY
+          fingerprints:
+            - $FINGERPRINT
+      - run: eval ssh-agent -s
+      - run: rsync -ave ssh ~/RAADS-INFORMATIE-PORTAAL-RIS/build/ $SSH_USER@$SSH_HOST:~/RAADS-INFORMATIE-PORTAAL-RIS/build
+
+  #  EVALUATE BROWSER PERFORMANCE WITH LIGHTHOUSE
+  test_performance:
+    docker:
+      - image: circleci/node:9.10.0-browsers
+    working_directory: ~/RAADS-INFORMATIE-PORTAAL-RIS
+    steps:
+      - attach_workspace:
+          at: ~/RAADS-INFORMATIE-PORTAAL-RIS
+      - run: CI=true yarn lighthouse
+
+  test_e2e:
+    docker:
+      - image: cypress/browsers:chrome67
+    working_directory: ~/RAADS-INFORMATIE-PORTAAL-RIS
+    steps:
+      - attach_workspace:
+          at: ~/RAADS-INFORMATIE-PORTAAL-RIS
+      - run: yarn add cypress
+      - run: export "CYPRESS_backendUrl=https://ris2-almere.zz-demos.net"
+      - run: sed -i -e "s/'X'/'Almere'/g" src/config.js
+      - run: sed -i -e "s/'X'/'Almere'/g" src/styles/variables.scss
+      - run:
+          command: yarn start
+          background: true
+      - run: yarn cy:record
+
+# WORKFLOWS
+workflows:
+  version: 2
+  test_build_deploy:
+    jobs:
+      - checkout_repo
+      - build_&_deploy:
+          requires:
+            - checkout_repo
+      - test_performance:
+          requires:
+            - build_&_deploy
+      - test_e2e:
+          requires:
+            - build_&_deploy

@@ -1,0 +1,263 @@
+@import '../../styles/variables.scss';
+@import '../../scss/rfs.scss';
+@import '../../scss/mixins.scss';
+
+/* todo: need to clean this up and migrate to css module */
+
+.document-detail-container {
+  padding-top : 15px;
+
+  /* todo: find better solution for this border*/
+  hr {
+    opacity      : 0.3;
+    border-width : 3px;
+    margin       : -3px 0 10px 0;
+    color        : mainThemeColor();
+    border-color : mainThemeColor();
+    }
+
+  .detail-header-container {
+    margin         : auto;
+    margin-bottom  : 40px;
+    display        : flex;
+    flex-direction : column;
+
+    }
+
+  .detail-header-container-icon {
+    flex-shrink   : 0;
+    margin-right  : 15px;
+    height        : 48px;
+    width         : 48px;
+    padding-top   : 12px;
+    padding-left  : 5px;
+    text-align    : center;
+    font-size     : 24px;
+    color         : #ffffff;
+    //@include paginationcolor();
+    background-color: mainThemeColor();
+    border-radius : 100%;
+    border        : 0 black solid;
+    }
+
+  .viewer-col {
+    display        : flex;
+    flex-direction : column;
+    padding        : 0;
+    > canvas {
+      box-shadow : 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+      }
+    }
+
+  .about-doc-container {
+    .title {
+      i {
+        padding       : 7px;
+        color         : #ffffff;
+        margin-right  : 20px;
+        border-radius : 20px;
+        background    : #5fd33d;
+        }
+
+      label {
+        font-size      : 25px;
+        color          : #4d4d4d;
+        vertical-align : text-bottom;
+        }
+
+      .menu-icon {
+        float : right;
+
+        > button {
+          padding        : 0 !important;
+          width          : 30px !important;
+          height         : 30px !important;
+          vertical-align : super !important;
+          }
+        }
+      }
+
+    .list {
+      margin-top : 10px;
+      color      : #4d4d4d;
+
+      .row-item {
+        padding       : 20px;
+        border-bottom : 1px #e0e0e0 solid;
+
+        .item-descriptor {
+          width        : 130px;
+          font-size    : 16px;
+          margin-right : 60px;
+          font-weight  : bold;
+          display      : inline-block;
+          }
+
+        .item-value {
+          font-size : 16px;
+          display   : inline-block;
+          }
+
+        .item-status {
+          font-size   : 16px;
+          margin-left : 20px;
+          display     : inline-block;
+
+          i {
+            padding       : 5px;
+            color         : #ffffff;
+            font-size     : 13px;
+            margin-right  : 5px;
+            font-weight   : bold;
+            border-radius : 20px;
+            background    : #5fd33d;
+            }
+          }
+        }
+      }
+    }
+
+  .footer-pagination {
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    margin-bottom   : 15px;
+
+    > div {
+      text-align : center;
+      }
+
+    .nav-btn {
+      cursor        : pointer;
+      color         : #5da0de;
+      background    : #ffffff;
+      border-radius : 16px;
+      display       : inline-block;
+
+      > i {
+        vertical-align : text-bottom;
+        }
+      }
+
+    .page-div {
+      color          : #444444;
+      margin         : 0 10px;
+      display        : inline-block;
+      vertical-align : text-bottom;
+      }
+    }
+  }
+
+/////////////////////////////////////////////////////////////////////////////////////
+
+.detail-header-title {
+  display        : flex;
+  font-size      : 24px;
+  font-weight    : normal;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.5;
+  letter-spacing : normal;
+  text-align     : left;
+  color          : #444444;
+  margin-bottom  : 15px;
+  align-items    : center;
+  }
+
+.detailHeaderControl {
+  margin-top  : 14px;
+  margin-left : auto;
+  order       : 2;
+
+  @include sm{
+    margin-left: initial;
+    order: initial;
+    }
+  }
+
+.detailHeaderContainer {
+  display        : flex;
+  flex-direction : row;
+  margin-bottom  : 20px;
+  }
+
+.titleGroup {
+  display        : flex;
+  flex-direction : column;
+  margin-top     : 13px;
+
+  @include sm{
+    width: 71%;
+    }
+  }
+
+.detailSubHeader {
+  display : flex;
+  }
+
+.detailSubHeaderText {
+  &:first-child {
+    &:after {
+      content      : '|';
+      margin-right : 8px;
+      margin-left  : 8px;
+
+      @include sm{
+        content : '';
+        }
+      }
+    }
+  }
+
+.iconContainer {
+  margin-right : 15px;
+  flex-shrink  : 0;
+  width        : 42px;
+  height       : 42px;
+  }
+
+.documentDetailLabel {
+  text-align    : left;
+  font-size     : 14px;
+  margin-right  : 5px;
+  display       : inline-block;
+  max-width     : 100%;
+  margin-bottom : 5px;
+  font-weight   : 700;
+  }
+
+.detailHeaderTitle {
+  display        : inline-block;
+  font-weight    : 300;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 0.94;
+  letter-spacing : normal;
+  color          : #444444;
+  @include responsive-font-size(28px);
+  }
+
+/* document */
+.documentContainer {
+  display         : flex;
+  justify-content : center;
+  margin-bottom   : 15px;
+
+  @include doc{
+    flex-direction: column;
+    }
+  }
+
+/* notes */
+
+.canvasContainer{
+  //width : 24%;
+  }
+
+.pusher {
+  width : 24%;
+
+  @include xl{
+    display: none;
+    }
+  }

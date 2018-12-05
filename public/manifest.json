@@ -1,0 +1,10 @@
+{
+  "short_name": "RAADS-INFORMATIE-PORTAAL-RIS",
+  "attribute": "RAADS-INFORMATIE-PORTAAL-RIS",
+  "start_url": "/",
+  "background_color": "#0C74D5",
+  "display": "fullscreen",
+  "scope": "/",
+  "orientation": "portrait",
+  "theme_color": "#0C74D5"
+}

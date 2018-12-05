@@ -1,0 +1,64 @@
+@import '../../styles/variables.scss';
+@import '../../scss/mixins.scss';
+
+.component::-webkit-scrollbar {
+  width : 5px;
+  }
+
+.component::-webkit-scrollbar-track {
+  background : #ddd;
+  }
+
+.component::-webkit-scrollbar-thumb {
+  background : #aaa;
+  }
+
+.component::-webkit-scrollbar-thumb:hover {
+  background : rgb(160, 160, 160);
+  }
+
+.component {
+  position       : fixed;
+  top: 55px;
+  display        : flex;
+  flex-direction : column;
+  max-height     : 100vh;
+  left           : 0;
+  background     : #4486c4;
+  font-size      : .9rem;
+  font-weight    : 700;
+  width          : 265px;
+  z-index        : 1001;
+  transform      : translate(-220px, 0);
+  transition     : transform .2s ease;
+  height         : 100%;
+
+  @include sm {
+    //visibility : hidden;
+    display: none;
+    transform  : translate(-270px, 0);
+    }
+
+  }
+
+.open {
+
+  }
+
+.toggleButton {
+  @media screen and (max-width : 600px) {
+    //display: none;
+    }
+  }
+
+.navList {
+  list-style : none;
+  margin     : 0;
+  }
+
+.homeButtonIcon{
+
+  svg{
+    height: 20px!important;
+    }
+  }

@@ -1,0 +1,68 @@
+@import "../../styles/variables.scss";
+
+$textColorAlpha: rgba(68, 68, 68, 0.52);
+$textColor: rgba(68, 68, 68, 1);
+$fillColor:#444;
+$titleColor: #4d4d4d;
+$boxShadow: 0 2px 2px 0 rgba(0, 0, 0, 0.24);
+$alertColor: #f75001;
+
+.register-form-container {
+  padding      : 4rem;
+  padding-left : 2rem;
+  //outline: 1px solid red;
+  }
+
+.register-title {
+  margin-bottom  : 5px;
+  font-size      : 32px;
+  font-weight    : normal;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.19;
+  letter-spacing : normal;
+  text-align     : left;
+  color          : $textColor;
+  }
+
+.register-text {
+  width          : 100%;
+  font-size      : 16px;
+  font-weight    : normal;
+  font-style     : normal;
+  font-stretch   : normal;
+  line-height    : 1.43;
+  letter-spacing : normal;
+  text-align     : left;
+  color          : $textColorAlpha;
+  }
+
+.register-textboxes {
+  padding-top : 20px;
+  }
+
+.wachtwoord-vergeten {
+  width          : 100%;
+  text-align     : center;
+  vertical-align : bottom;
+  cursor         : pointer;
+  }
+
+.login-submit-div a:link {
+  color : $alertColor;
+  }
+
+.login-submit-div a:hover {
+  color : $alertColor;
+  }
+
+.login-submit-div a:visited {
+  color : $alertColor;
+  }
+
+.social-login-title {
+  font-size   : 1.5rem;
+  color       : $titleColor;
+  line-height : 25px;
+  margin-top  : 6rem;
+  }

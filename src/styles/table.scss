@@ -1,0 +1,473 @@
+.ReactTable {
+    border-style: none !important;
+
+    .rt-thead {
+        box-shadow: none !important;
+
+        .rt-tr {
+
+            .rt-th {
+                border-style: none !important;
+                padding: 10px 15px;
+                font-size: 12px;
+                color: #444444;
+
+                .rt-resizable-header-content {
+                    text-align: start;
+                    font-size: 14px;
+                    color: #444444;
+                    font-weight: bold;
+                    padding: 7px 0;
+                }
+
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+
+    .rt-tbody {
+        .rt-tr-group {
+            border-bottom: 1px #fff solid !important;
+
+            .rt-tr {
+                .rt-td {
+                    padding: 20px 15px;
+                    line-height: normal;
+                    font-size: 12px;
+                    color: #444444;
+                    vertical-align: middle;
+                    background: #eeeeee;
+                    border-right: 1px #fff solid;
+                    white-space: inherit !important;
+                }
+              .small-cell{
+                padding-top: 0;
+              }
+              .search-big-cell{
+                padding-top: 12px;
+              }
+            }
+        }
+    }
+}
+
+.column-name {
+    display: inline-block;
+}
+
+.title-cell {
+    .title-div {
+        width: calc(100% - 40px);
+        display: inline-block;
+        font-size: 16px;
+        word-wrap: break-word;
+
+        .glyphicon {
+            font-size: 20px !important;
+        }
+    }
+
+    .glyphicon{
+        font-size: 20px !important;
+        vertical-align: top;
+    }
+
+    .material-icons {
+        float: right;
+        display: inline-block;
+        font-size: 2.1rem;
+    }
+
+    .description-div {
+        font-size: 12px;
+        color: #444444;
+        word-wrap: break-word;
+        line-height: normal;
+        padding-top: 10px;
+        padding-left: 35px;
+    }
+
+    .highlight-text {
+        font-weight: 600;
+        background-color: #f4ff81;
+    }
+
+  @media screen and (max-width: 760px) {
+    margin-top: 0 !important;
+  }
+}
+
+.icon-text-cell {
+    i, div {
+        display: inline-block;
+    }
+
+    i, svg {
+        font-size: 20px;
+        margin-right: 10px;
+        background: #fff;
+        vertical-align: middle;
+        border: 1px #fff solid;
+        border-radius: 15px;
+        padding: 2px;
+    }
+}
+
+.one-column-header{
+    display: none;
+}
+
+.menu-cell {
+    margin-top: -13px;
+    text-align: center;
+}
+
+.query-big-cell {
+    padding: 20px 15px !important;
+}
+
+.pagination-bottom {
+    display: none;
+}
+
+.small-header, .small-cell {
+  width: 80px !important;
+  @media screen and (max-width: 760px) {
+    display: block;
+    width: 20px !important;
+  }
+}
+
+// Search cells
+
+.search-big-header-admin, .search-big-cell-admin {
+  width: calc(100% - 150px - 150px - 150px - 150px - 80px) !important;
+
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 100px - 100px - 100px - 150px - 80px) !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: calc(100% - 150px - 80px) !important;
+  }
+}
+
+.search-big-header, .search-big-cell {
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.search-generic-header, .search-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 50px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.search-toggle {
+  @media screen and (max-width: 760px) {
+    display: block;
+    width: 20px !important;
+  }
+}
+
+// Folders cells
+
+.folders-big-header, .folders-big-cell {
+    width: calc(100% - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.folders-generic-header, .folders-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+// My agenda cells
+
+.my-agenda-big-header, .my-agenda-big-cell {
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% - 80px) !important;
+    }
+}
+
+.my-agenda-generic-header, .my-agenda-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+// My notes cells
+
+.notes-big-header, .notes-big-cell {
+  width: calc(100% - 150px - 150px - 150px - 150px - 80px) !important;
+
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 100px - 100px - 100px - 100px - 80px) !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: calc(100% - 80px) !important;
+  }
+}
+
+.notes-generic-header, .notes-generic-cell {
+  width: 150px !important;
+
+  @media screen and (max-width: 1000px) {
+    width: 100px !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+}
+
+// Folder content cells
+
+.folder-content-big-header, .folder-content-big-cell {
+  color: #444;
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.folder-content-generic-header, .folder-content-generic-cell {
+  color: #444;
+  width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+// Favorites cells
+
+.favorite-big-header, .favorite-big-cell {
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.favorite-generic-header, .favorite-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+// Event detail document tab cells
+
+.tab-big-header, .tab-big-cell {
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.tab-generic-header, .tab-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.tab-small-header, .tab-small-cell {
+    width: 80px !important;
+}
+
+
+.tab-small-header, .tab-big-header, .tab-generic-header{
+    padding-top: 4px !important;
+    padding-bottom: 4px !important;
+}
+
+.avatar-header, .avatar-cell {
+  flex: none !important;
+  width:  76px!important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.griffie-opties-header, .griffie-opties-cell {
+  flex: none !important;
+  width:  76px!important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+.griffie-big-header, .griffie-big-cell {
+  display: flex;
+  width: 40% !important;
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+// Notifications cells
+
+.notif-big-header, .notif-big-cell {
+    width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+    @media screen and (max-width: 1000px) {
+        width: calc(100% - 100px - 100px - 100px - 80px) !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        width: calc(100% -  80px) !important;
+    }
+}
+
+.notif-generic-header, .notif-generic-cell {
+    width: 150px !important;
+
+    @media screen and (max-width: 1000px) {
+        width: 100px !important;
+    }
+
+    @media screen and (max-width: 760px) {
+        display: none;
+    }
+}
+
+.icon-title-cell{
+    height: 100%;
+    .icon-title-div{
+        margin-top: 3px;
+        margin-left: 6px;
+        display: inline-block;
+        font-size: 16px;
+        word-wrap: break-word;
+    }
+}
+
+// Public folders cells
+
+.public-folders-big-header, .public-folders-big-cell {
+  width: calc(100% - 150px - 150px - 150px - 80px) !important;
+
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 100px - 100px - 150px - 80px) !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: calc(100% - 80px - 80px) !important;
+  }
+}
+
+.public-folders-generic-header, .public-folders-generic-cell {
+  width: 150px !important;
+
+  @media screen and (max-width: 1000px) {
+    width: 100px !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+}
+
+.public-folder-toggle {
+  @media screen and (max-width: 760px) {
+    display: block;
+    width: 80px !important;
+  }
+}
+
+// Public folder content cells
+
+.public-folder-content-big-header, .public-folder-content-big-cell {
+  color: #444;
+  width: calc(100% - 150px - 150px - 150px - 150px - 80px) !important;
+
+  @media screen and (max-width: 1000px) {
+    width: calc(100% - 100px - 100px - 100px - 100px - 80px) !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    width: calc(100% - 80px - 80px) !important;
+  }
+}
+
+.public-folder-content-generic-header, .public-folder-content-generic-cell {
+  color: #444;
+  width: 150px !important;
+
+  @media screen and (max-width: 1000px) {
+    width: 100px !important;
+  }
+
+  @media screen and (max-width: 760px) {
+    display: none;
+  }
+}

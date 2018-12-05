@@ -1,0 +1,43 @@
+.option-menu-title {
+  display: flex;
+  color: grey;
+  .option-menu-text{
+    order: 0;
+    margin: 4px 0 4px 16px;
+  }
+  .close-menu{
+    cursor: pointer;
+    order: 1;
+    margin: 2px 8px 4px auto;
+    display: flex;
+    .option-close-text{
+      margin-top: 2px;
+      order: 0;
+    }
+    .material-icons{
+      order: 1;
+    }
+  }
+}
+
+.divider-line{
+  background: grey;
+  border-top-color: grey;
+  padding-top: 0.5px;
+  margin: 0 0 4px 0;
+  border-color: grey;
+}
+
+.option-menu-item{
+  color: grey !important;
+  div{
+    div{
+      svg{
+        left: 12px !important;
+      }
+      .material-icons{
+        left: 12px !important;
+      }
+    }
+  }
+}

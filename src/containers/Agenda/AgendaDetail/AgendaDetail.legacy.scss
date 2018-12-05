@@ -1,0 +1,594 @@
+@import "../../../styles/variables.scss";
+@import "../../../scss/mixins.scss";
+@import "../../../scss/rfs.scss";
+
+.agenda-detail-container {
+  min-height: calc(100vh - 42px - 178px);
+
+  padding: 50px 50px 8vh 50px;
+
+  @include sm {
+    padding: 30px 0 !important;
+  }
+
+  .header-container {
+    opacity: 0.85;
+    padding: 20px 50px;
+    @include navbarcolor();
+
+    h1 {
+      color: #ffffff;
+      //font-size     : 30px;
+      font-weight: 300;
+      line-height: 0.67;
+      margin-bottom: 15px;
+
+      @include responsive-font-size(30px);
+    }
+
+    label {
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: normal;
+    }
+  }
+
+  .main-container {
+    margin-top: 20px;
+
+
+    @include sm{
+      padding-top: 0;
+      padding-bottom: 30px;
+      }
+
+    .rt-expander {
+      margin: 0 !important;
+    }
+
+    .title {
+      display: block;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+
+      .agenda-icon {
+        //flex-basis: no;
+        flex-shrink: 0;
+        width: 48px;
+        height: 48px;
+        color: #ffffff;
+        padding-top: 12px;
+        font-size: 26px;
+        padding-left: 2px;
+        border-radius: 50%;
+        text-align: center;
+        display: inline-block;
+        @include navbarcolor();
+      }
+
+      h2 {
+        display: inline-block;
+        font-size: 32px;
+        font-weight: 300;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 0.94;
+        letter-spacing: normal;
+        text-align: left;
+        color: #444444;
+        margin-left: 20px;
+        vertical-align: 3px;
+
+        @include responsive-font-size(32px);
+      }
+
+    }
+
+    .sub-title {
+      display: block;
+      margin-left: 68px;
+      font-size: 14px;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.71;
+      letter-spacing: normal;
+      text-align: left;
+      color: #444444;
+
+      .sub-title-text {
+        display: inline-block;
+
+        @include sm{
+          width: 100%;
+          }
+        b {
+          margin-right: 2px;
+        }
+        .divider {
+          display: inline-block;
+          margin: 0 8px 0 8px;
+
+          @include sm{
+            display: none;
+            }
+        }
+      }
+    }
+
+    .description {
+      color: #444444;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .event-tabs {
+      width: 100%;
+      overflow: hidden;
+      text-align: start;
+      white-space: nowrap;
+      margin-bottom: 20px;
+
+      hr {
+        opacity: 0.3;
+        border-width: 3px;
+        margin: -3px 0 10px 0;
+        @include agendatoolbaritem();
+      }
+
+      .tab {
+        width: 276px;
+        opacity: 0.3;
+        font-size: 20px;
+        cursor: pointer;
+        text-align: center;
+        padding: 20px 0;
+        font-weight: bold;
+        border-width: 3px;
+        text-align: center;
+        display: inline-block;
+        @include agendatoolbaritem();
+        border-style: none none solid none;
+
+        > span {
+          width: 28px;
+          height: 28px;
+          color: #ffffff;
+          font-size: 17px;
+          margin-left: 10px;
+          border-radius: 50%;
+          text-align: center;
+          padding-top: 4px;
+          display: inline-block;
+          @include navbarcolor();
+        }
+
+        .tab-name {
+          display: inline-block;
+          vertical-align: middle;
+
+          @include responsive-font-size(20px);
+        }
+      }
+
+      .selected {
+        opacity: 1;
+        padding-bottom: 15px;
+        border-width: 8px !important;
+      }
+
+      &:hover {
+        overflow: auto;
+      }
+    }
+
+    .event-tab-view {
+      .tab-view-container {
+        .row-view-container {
+          padding: 20px;
+          display: block;
+          background: #eeeeee;
+          margin-bottom: 10px;
+
+          .top-div {
+            display: block;
+            margin-bottom: 10px;
+
+            i {
+              color: #444444;
+              cursor: pointer;
+              display: inline-block;
+            }
+
+            label {
+              font-size: 16px;
+              cursor: pointer;
+              margin: 0 0 0 10px;
+              vertical-align: top;
+              display: inline-block;
+
+              @include sm {
+                max-width: 200px;
+                //margin-left: 0;
+              }
+            }
+          }
+
+          .low-div {
+            color: #444444;
+            display: block;
+            font-size: 13px;
+            padding-left: 15px;
+
+            div {
+              padding: 0 20px;
+              text-align: start;
+              display: inline-block;
+              border-right: 1px solid #444444;
+
+              @media screen and (max-width: 1200px) {
+                text-align: start;
+                border-right: none;
+              }
+
+              &:last-of-type {
+                border-right: none;
+              }
+
+            }
+
+            @include sm {
+              //padding-left: 0;
+
+              div {
+                //padding-left: 0;
+              }
+            }
+
+          }
+        }
+
+        .expandable-view-container {
+          .tabs {
+            width: 100%;
+            height: 36px;
+            overflow: hidden;
+            text-align: start;
+            white-space: nowrap;
+
+            .tab {
+              opacity: 0.3;
+              height: 100%;
+              padding-top: 8px;
+              width: 220px;
+              font-size: 16px;
+              cursor: pointer;
+              font-weight: normal;
+              text-align: center;
+              display: inline-block;
+              @include agendatoolbaritem();
+            }
+
+            .selected {
+              opacity: 1;
+              border-width: 3px !important;
+              border-style: none none solid none;
+            }
+          }
+
+          hr {
+            opacity: 0.3;
+            border-width: 3px;
+            margin: -3px 0 0 0;
+            @include agendatoolbaritem();
+          }
+
+          .view {
+            margin-bottom: 20px;
+
+            .ReactTable {
+              .rt-thead {
+                border-color: #f7f7f7 !important;
+              }
+
+              .rt-tbody {
+                .rt-tr-group {
+                  .rt-tr {
+                    .rt-td {
+                      background: #f7f7f7 !important;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .event-tiles {
+      .rooms-dropdown-container {
+        display: block;
+
+        > div {
+          height: 50px;
+          display: block;
+          background: #fff;
+          border-radius: 0;
+          border-style: none;
+
+          @include mboxshadow(2);
+
+          &:first-of-type {
+            margin-right: 10px;
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          .date-control-text {
+            font-size: 20px;
+            margin-left: -28px;
+          }
+        }
+
+        .glyphicon {
+          top: 1px !important;
+        }
+      }
+
+      .container-fluid {
+        padding: 0;
+      }
+
+      .room-tile {
+        //overflow-y: auto;
+        max-height: 539px;
+        min-height: 477px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+
+        @include mboxshadow(2);
+
+        .room-header {
+          background-color: #fff;
+
+          .room-title {
+            .item-menu {
+              display: inline-block;
+              vertical-align: middle;
+            }
+
+            label {
+              margin-top: 5px;
+              font-size: 24px;
+              overflow: hidden;
+              font-weight: normal;
+              white-space: nowrap;
+              display: inline-block;
+              vertical-align: middle;
+              text-overflow: ellipsis;
+              width: calc(100% - 48px);
+
+              &:hover {
+                cursor: pointer;
+                text-decoration: underline;
+              }
+            }
+
+          }
+
+          .room-sub-title {
+            label {
+              font-size: 14px;
+              font-weight: normal;
+            }
+
+            .room-times {
+              color: #444;
+              padding-left: 48px;
+            }
+
+            .room-agendas-count {
+              float: right;
+              color: #808080;
+              padding-right: 10px;
+            }
+
+
+          }
+        }
+
+        .agenda-list-stepper {
+          padding: 15px;
+          display: block;
+          background: #eee;
+
+          i {
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            font-size: 32px;
+            cursor: pointer;
+            border-radius: 20px;
+            display: inline-block;
+            vertical-align: middle;
+
+            &:nth-of-type(2) {
+              padding-left: 2px;
+            }
+          }
+
+          label {
+            color: #444;
+            margin: 0 10px;
+            font-size: 14px;
+            padding-left: 0px;
+            font-weight: normal;
+            display: inline-block;
+
+            &:hover {
+              cursor: default;
+              text-decoration: none;
+            }
+          }
+        }
+
+        .bottom-fade {
+          &:after {
+            content: "";
+            position: absolute;
+            z-index: 1;
+            bottom: 0;
+            left: 0;
+            pointer-events: none;
+            background-image: linear-gradient(to bottom,
+              rgba(255, 255, 255, 0),
+              rgba(255, 255, 255, 1) 90%);
+            width: 100%;
+            height: 4em;
+          }
+        }
+
+        .room-agenda-list {
+          overflow-y: auto;
+          max-height: 392px;
+          min-height: 392px;
+
+          .agenda-list-item {
+            padding: 20px;
+            cursor: pointer;
+            min-height: 100px;
+
+            &:hover {
+              div:nth-of-type(2) {
+                label {
+                  cursor: pointer;
+                  text-decoration: underline;
+                }
+              }
+            }
+
+            div:nth-of-type(1) {
+              label {
+                color: #444;
+                font-size: 14px;
+                font-weight: normal;
+              }
+            }
+
+            div:nth-of-type(2) {
+              label {
+                font-size: 16px;
+                font-weight: 500;
+
+                &:hover {
+                  cursor: pointer;
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+
+          .doc-list-item {
+            padding: 20px 0 20px 20px;
+
+            .before {
+              vertical-align: top;
+              display: inline-block;
+
+              i {
+                display: inline-block;
+              }
+            }
+
+            .main {
+              vertical-align: top;
+              padding: 0 5px 0 10px;
+              display: inline-block;
+              width: calc(100% - 72px);
+
+              label {
+                color: #444;
+                display: block;
+                font-size: 14px;
+                font-weight: bold;
+                margin-bottom: 10px;
+
+                &:hover {
+                  cursor: pointer;
+                  text-decoration: underline;
+                }
+              }
+            }
+
+            .after {
+              margin-top: -13px;
+              vertical-align: top;
+              display: inline-block;
+
+              .item-menu {
+                display: inline-block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .list-item-div {
+    display: block;
+    padding: 15px 0 10px 0;
+    border-bottom: 1px solid #aaaaaa;
+
+    i {
+      width: 10%;
+      float: left;
+    }
+
+    .doc {
+      fill: #5fd33d;
+      color: #5fd33d;
+    }
+
+    .note {
+      fill: #25a3db;
+      color: #25a3db;
+      padding-top: 5px;
+    }
+
+    .decision {
+      fill: #fa511e;
+      color: #fa511e;
+      padding-top: 5px;
+    }
+
+    .title {
+      width: 75%;
+      color: #444444;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: normal;
+      display: inline-block;
+    }
+
+    .item-menu {
+      width: 10%;
+      float: right;
+
+      > div {
+        > button {
+          padding: 0 !important;
+          width: 30px !important;
+          height: 30px !important;
+        }
+      }
+    }
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
+}

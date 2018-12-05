@@ -1,0 +1,35 @@
+@import '../../../styles/variables.scss';
+@import "../../../scss/mixins.scss";
+
+.menuItem {
+  height        : 40px;
+  border-bottom : 1px solid white;
+  color         : white;
+  svg {
+    fill         : white;
+    width        : 35px;
+    height       : 35px;
+    margin-right : 0;
+    }
+
+  }
+
+.icon {
+  width        : 30px !important;
+  height       : 30px !important;
+  fill         : white !important;
+  margin-right : 4px !important;
+  padding-left : 2px !important;
+
+  svg {
+    fill : white !important;
+    }
+  }
+
+.itemText {
+  h3 {
+    @include font();
+    color     : white;
+    font-size : 16px;
+    }
+  }

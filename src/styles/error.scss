@@ -1,0 +1,56 @@
+@import '../scss/mixins.scss';
+
+.error-page {
+  text-align: center;
+  position: relative;
+  min-height: calc(100vh - 55px - 144px);
+
+  .inner-container {
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+  
+    .header {
+      margin-bottom: 0px;
+      display: flex;
+      @include md {
+        display: block;
+      }
+
+      img {
+        margin: auto;
+        width: 80px;
+        color: #e85b5b;
+        order: 0;
+      }
+
+      .big-text {
+        @include md {
+          margin-top: 50px;
+          margin-bottom: 50px;
+        }
+        @include sm {
+          margin: 0;
+        }
+        margin: auto;
+        color: #e85b5b;
+        font-size: 150px;
+        font-weight: normal;
+        order: 1;
+      }
+    }
+
+    .small-text {
+      margin: 20px;
+      display: block;
+      font-size: 23px;
+      font-weight: normal;
+    }
+  }
+}
+
+.logged-in-label {
+  margin: 0;
+  color: #CC0000;
+}

@@ -1,0 +1,98 @@
+@import './styles/variables.scss';
+
+.my-note-title {
+  display: inline-block;
+  font-size: 32px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 0.94;
+  letter-spacing: normal;
+  text-align: left;
+  padding-left: 20px;
+  color: #444444;
+}
+
+.my-note-text {
+  margin-top: 36px;
+  margin-bottom: 36px;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #444444;
+}
+
+.my-note-icon {
+  height: 48px;
+  width: 48px;
+  padding-top: 12px;
+  text-align: center;
+  font-size: 1.8rem;
+  color: #ffffff;
+  @include paginationcolor();
+  border-radius: 100%;
+  border: 0 #000000 solid;
+}
+
+.note-content-div {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  @include font();
+  flex-wrap: wrap;
+  word-wrap: break-word;
+}
+
+.notes-tooltip {
+
+  .notes-tooltip-text {
+    visibility: hidden;
+    width: 863.3px;
+    height: 355.7px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 12px 20px 12px 16px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+    @include font();
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #444444;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    margin-top: 24px;
+  }
+
+  .notes-tooltip-text-left{
+    visibility: hidden;
+    width: 90%;
+    height: 355.7px;
+    background-color: #ffffff;
+    border-radius: 6px;
+    padding: 12px 20px 12px 16px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.24);
+    @include font();
+    font-size: 14px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.6;
+    letter-spacing: normal;
+    text-align: left;
+    color: #444444;
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    left: 40px;
+    margin-top: 20px;
+  }
+}

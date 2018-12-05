@@ -1,0 +1,45 @@
+@import '../../styles/variables.scss';
+@import "../../scss/mixins.scss";
+@import "../../scss/rfs.scss";
+
+.component {
+  margin : 0 50px;
+
+  @include sm {
+    margin-right : 10px;
+    margin-left  : 10px;
+    }
+
+  hr {
+    margin : 50px 0;
+    color  : #707070;
+    }
+  }
+
+.homepageHeader {
+  margin : 35px 0 100px 0;
+  h1 {
+    font-weight : 400;
+    }
+
+  h2 {
+    font-weight : 100;
+    }
+
+  @include sm {
+    margin-bottom : 50px;
+    }
+  }
+
+.searchCheckboxDiv {
+  margin-top : 10px;
+}
+
+.searchChipsContainer {
+  margin-top: 10px;
+  order: 0;
+  div {
+    display      : inline-flex !important;
+    margin-right : 10px !important;
+  }
+}

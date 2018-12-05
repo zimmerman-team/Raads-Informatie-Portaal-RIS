@@ -1,0 +1,7 @@
+
+dist/**
+.history/**
+.next/**
+.vscode/**
+.idea/**
+

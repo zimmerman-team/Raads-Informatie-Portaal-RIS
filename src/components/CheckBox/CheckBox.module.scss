@@ -1,0 +1,50 @@
+/* checkbox */
+$checkBoxLabelColor : #444;
+$whiteColor : #fff;
+
+.component{
+  display     : inline-flex;
+  align-items : center;
+  cursor      : pointer;
+  padding     : .5rem 0;
+  width       : fit-content;
+  color       : $checkBoxLabelColor;
+  font-size   : 16px;
+}
+
+.input{
+  display : none;
+}
+
+.input:checked + .checkbox{
+  border-color: #009688;
+  background  : #009688;
+}
+
+.checkbox{
+  display          : flex;
+  align-items      : center;
+  justify-content  : center;
+  transition       : background-color 150ms ease-out, border-color 50ms ease-out;
+  margin-right     : 1rem;
+  border           : 2px solid $checkBoxLabelColor;
+  border-radius    : 3px;
+  background-color : transparent;
+  width            : 20px;
+  height           : 20px;
+  color            : $whiteColor;
+}
+
+.icon{
+  margin-right : 0 !important;
+}
+
+.labelSpan{
+  width         : fit-content;
+  overflow      : hidden;
+  text-overflow : ellipsis;
+  white-space   : nowrap;
+  font-weight   : normal;
+  color         : $checkBoxLabelColor;
+  font-size     : 20px;
+}
