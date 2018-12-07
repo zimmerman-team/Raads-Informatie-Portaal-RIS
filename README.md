@@ -16,7 +16,13 @@ UK | The local council information Portal (RIS) is open-source software that can
 * Github Repo: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
 * Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
 
+## Requirements
+--------
 
+| Name                 | Recommended version |
+| ---                  | ---                 |
+| Node                 | latest              |
+| NPM or Yarn          | latest              |
 
 ## Install dependencies
 --------
