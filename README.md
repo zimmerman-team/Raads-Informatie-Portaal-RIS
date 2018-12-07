@@ -1,4 +1,4 @@
-[![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://github.com/zimmerman-zimmerman/RAADS-INFORMATIE-PORTAAL-RIS/blob/master/LICENSE.MD)
+[![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://github.com/zimmerman-zimmerman/RAADS-INFORMATIE-PORTAAL-RIS/blob/master/License.md)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/456beda376f04d5e82c245c510e8f653)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zimmerman-zimmerman/Raads-informatie-Portaal-RIS&amp;utm_campaign=Badge_Grade)
 
 # Raads Informatie Portaal (RIS) - frontend
@@ -12,7 +12,7 @@ UK | The local council information Portal (RIS) is open-source software that can
 --------
 * Authors: <a href="https://www.zimmermanzimmerman.nl/" target="_blank">Zimmerman & Zimmerman</a>
 * Municipalities: <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> and <a href="https://www.utrecht.nl/bestuur-en-organisatie/gemeenteraad/" target="_blank">Municipality of Utrecht</a> 
-* License: AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
+* License: AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/License.md" target="_blank">LICENSE</a> file for full license)
 * Github Repo: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
 * Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
 
