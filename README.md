@@ -14,7 +14,7 @@ UK | The local council information Portal (RIS) is open-source software that can
 * Municipalities: <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> and <a href="https://www.utrecht.nl/bestuur-en-organisatie/gemeenteraad/" target="_blank">Municipality of Utrecht</a> 
 * License: AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/LICENSE.MD" target="_blank">LICENSE</a> file for full license)
 * Github Repo: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
-* Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/OIPA/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
+* Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
 
 
 
