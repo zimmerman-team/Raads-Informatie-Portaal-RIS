@@ -1,7 +1,7 @@
 [![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://github.com/zimmerman-zimmerman/RAADS-INFORMATIE-PORTAAL-RIS/blob/master/LICENSE.MD)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/456beda376f04d5e82c245c510e8f653)](https://www.codacy.com?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=zimmerman-zimmerman/Raads-informatie-Portaal-RIS&amp;utm_campaign=Badge_Grade)
 
-# Raads Informatie Portaal (RIS)
+# Raads Informatie Portaal (RIS) - frontend
 --------
 
 NL | Het Raads informatie Portaal (RIS) levert open-source software voor Nederlandse Gemeente om alle besluiten die door de raad worden genomen te volgen. Nederlandse griffies kunnen gebruik maken van de de online agenda om vergaderingen te organiseren. Burgers kunnen alle besluiten en agende punten volgen en inloggen om zo hun eigen dossier aan te maken en te volgen. Raadsdocumenten kunnen worden ontsloten en via de zoekmachine zijn deze voor iederen vindbaar en inzichtelijk. Alle data welke reeds is ontsloten via Ibabs of Notubiz wordt automatisch ingelezen. RIS is een iniatief van de <a href="https://gemeenteraad.almere.nl/" target="_blank">Gemeente Almere</a>.
