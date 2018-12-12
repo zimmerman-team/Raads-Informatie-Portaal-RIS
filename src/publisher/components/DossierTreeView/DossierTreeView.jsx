@@ -85,8 +85,11 @@ class DossierTreeView extends React.Component {
         const isInitial = find(this.props.initialItems, dossier => {
           return dossier[this.props.modalType === 'dossier' ? 'id' : 'item_id'] === node.item_id;
         });
+        const isSameDossier = this.props.modalType === 'dossier' &&
+          parseInt(this.props.editingDossierID, 10) === node.id;
         const _style = {
           ...style.base,
+          cursor: isSameDossier ? 'not-allowed' : 'pointer',
           width:
             node.has_dossiers &&
             !(isInitial && node.child_dossiers_count === 1 && !this.props.modalType === 'dossier')
@@ -100,10 +103,15 @@ class DossierTreeView extends React.Component {
         };
         const addIconStyle = {
           ...style.iconBtn,
-          color: isAdded || isInitial ? 'rgb(255, 127, 0)' : '#009d42',
+          color: isSameDossier ? 'grey' : isAdded || isInitial ? 'rgb(255, 127, 0)' : '#009d42',
+          pointerEvents: isSameDossier ? 'none' : 'auto',
         };
         return (
-          <div style={_style}>
+          <div
+            style={_style}
+            title={
+              isSameDossier ? "Dossier kan niet als subdossier aan zichzelf worden toegevoegd": ""}
+          >
             <i
               style={addIconStyle}
               className={cx('material-icons', styles.addIcon)}

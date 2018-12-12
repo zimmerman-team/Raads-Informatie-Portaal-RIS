@@ -56,6 +56,12 @@ class DossierModal extends React.Component {
         type: d.type,
       };
     });
+    const dossiers = this.props.dossiers.map(d => {
+      return {
+        id: d.id,
+        type: 'public_dossier',
+      };
+    });
     const removeDocs = map(
       filter(this.state.selectedPublicDossierDocuments, d => {
         return d._delete;
@@ -86,7 +92,7 @@ class DossierModal extends React.Component {
         removeDocs,
         docs,
         removeFromDossiers,
-        this.props.dossiers,
+        dossiers,
         this.state.published,
         id => {
           if (
@@ -106,7 +112,7 @@ class DossierModal extends React.Component {
       this.props.createPublicDossier(
         this.state.title,
         docs,
-        this.props.dossiers,
+        dossiers,
         this.state.published,
         id => {
           browserHistory.push(`/publieke-dossiers/${id}`);
@@ -289,7 +295,7 @@ class DossierModal extends React.Component {
                 token={this.props.token}
                 reduxItems={this.props.dossiers}
                 editInitialItem={this.editInitialItem}
-                hintText="Of voeg toe als sub dossier aan bestaand dossier"
+                hintText="Voeg dossiers toe als sub dossiers"
                 reduxItemsAdd={this.props.setPublicDossierSelectedDossiers}
                 selectedPublicDossierID={this.props.selectedPublicDossierID}
                 initialItems={filter(this.state.selectedPublicDossierDossiers, d => {

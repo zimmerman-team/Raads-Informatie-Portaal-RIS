@@ -67,16 +67,9 @@ export function createPublicDossier(
         if (documents.length > 0) {
           dispatch(addPublicDossierContent(parseInt(response.data.id, 10), documents));
         }
-        dossiers.forEach(d => {
-          dispatch(
-            addPublicDossierContent(parseInt(d.id, 10), [
-              {
-                id: parseInt(response.data.combined_id, 10),
-                type: 'public_dossier',
-              },
-            ]),
-          );
-        });
+        if (dossiers.length > 0) {
+          dispatch(addPublicDossierContent(parseInt(response.data.id, 10), dossiers));
+        }
         that.setState({ ...initialState });
         dispatch(clearPublicDossierModalData());
         dispatch(setPublicDossierModal());
@@ -118,16 +111,9 @@ export function editPublicDossier(
         if (documents.length > 0) {
           dispatch(addPublicDossierContent(parseInt(id, 10), documents));
         }
-        dossiers.forEach(d => {
-          dispatch(
-            addPublicDossierContent(parseInt(d.id, 10), [
-              {
-                id: parseInt(response.data.combined_id, 10),
-                type: 'public_dossier',
-              },
-            ]),
-          );
-        });
+        if (dossiers.length > 0) {
+          dispatch(addPublicDossierContent(parseInt(id, 10), dossiers));
+        }
         that.setState({ isLoading: false });
         dispatch(setPublicDossierModal());
         dispatch(clearPublicDossierModalData());
