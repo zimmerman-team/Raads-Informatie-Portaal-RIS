@@ -154,10 +154,7 @@ class DossierModal extends React.Component {
   }
 
   componentDidMount() {
-    const that = this;
-    window.onbeforeunload = function(e) {
-      that.close();
-    };
+    window.addEventListener('beforeunload', e => { this.close(); });
   }
 
   render() {

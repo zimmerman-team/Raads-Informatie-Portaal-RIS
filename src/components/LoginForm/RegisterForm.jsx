@@ -445,7 +445,7 @@ class RegisterForm extends React.Component {
 }
 
 export default compose(
-  withStyles(),
+  withStyles({}),
   connect(null, {
     setSnackBar,
   }),

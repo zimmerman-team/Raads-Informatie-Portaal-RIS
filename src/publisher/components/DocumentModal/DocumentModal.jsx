@@ -10,6 +10,7 @@ import filter from 'lodash/filter';
 import findIndex from 'lodash/findIndex';
 import Dialog from 'material-ui/Dialog';
 import { Tooltip } from 'react-tippy';
+import Toggle from 'material-ui/Toggle';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import TextField from '../TextField/TextField';
 import CheckBox from '../../../components/CheckBox/CheckBox';
@@ -24,7 +25,6 @@ import appResources from '../../../appResources';
 import styles from './DocumentModal.module.scss';
 import genericStyles from '../../../components/modals/PublisherModal.module.scss';
 import mock from './DocumentModal.mock';
-import Toggle from 'material-ui/Toggle';
 
 class DocumentModal extends React.Component {
   constructor(props) {
@@ -111,6 +111,10 @@ class DocumentModal extends React.Component {
         });
       }
     }
+  }
+
+  componentDidMount() {
+    window.addEventListener('beforeunload', e => { this.close(); });
   }
 
   onSubmit() {
@@ -357,6 +361,7 @@ class DocumentModal extends React.Component {
               />
               <TextField
                 required
+                isReadOnly
                 type="doc_type"
                 reduxItemsAdd={this.onDocTypeSelect}
                 template={this.state.selectedDocType}
@@ -367,19 +372,19 @@ class DocumentModal extends React.Component {
                 type="status"
                 reduxItemsAdd={this.onStatusSelect}
                 template={this.state.selectedStatus}
-                hintText="Selecteer de status van het document"
+                hintText="Selecteer of Typ de status van het document"
               />
               <TextField
                 required
                 type="subject"
-                hintText="Selecteer een onderwerp"
+                hintText="Selecteer of Typ een onderwerp"
                 reduxItemsAdd={this.onSubjectSelect}
                 template={this.state.selectedSubject}
               />
               <TextField
                 required
                 type="portfolio"
-                hintText="Selecteer een Portefeuille"
+                hintText="Selecteer of Typ een Portefeuille"
                 reduxItemsAdd={this.onPortfolioSelect}
                 template={this.state.selectedPortfolio}
               />
