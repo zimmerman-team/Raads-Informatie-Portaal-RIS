@@ -4,7 +4,7 @@ import { browserHistory } from 'react-router';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Document, Page } from 'react-pdf';
+import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import Toggle from 'material-ui/Toggle';
 import MenuItem from '@material-ui/core/MenuItem';
 import Snackbar from '@material-ui/core/Snackbar';

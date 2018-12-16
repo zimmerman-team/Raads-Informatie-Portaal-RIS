@@ -4,9 +4,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-import Anchor from '@trendmicro/react-anchor';
-import Breadcrumbs from '@trendmicro/react-breadcrumbs';
-import appResources from '../appResources.js';
+import appResources from '../appResources';
 
 class FAQ extends React.Component {
   constructor(props) {
@@ -97,14 +95,6 @@ class FAQ extends React.Component {
   render() {
     return (
       <div className="main-no-top-padding" id="top">
-        <div className="breadcrumb-div" style={{ background: appResources.breadcrumbs.background }}>
-          <Breadcrumbs>
-            <Breadcrumbs.Item>
-              <Anchor href="/">HOME</Anchor>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item active>VEELGESTELDE VRAGEN</Breadcrumbs.Item>
-          </Breadcrumbs>
-        </div>
         <Dialog
           open={this.state.showModal}
           autoScrollBodyContent={false}
