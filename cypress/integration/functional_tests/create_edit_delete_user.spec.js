@@ -23,7 +23,7 @@ context('Create/Edit/Delete user', () => {
     cy.wait(1000);
     cy.get('.sort-by-menu').children().eq(0).click({ force: true });
     cy.wait(1000);
-    cy.queryByText('Naam z/a').click({ force: true });
+    cy.queryByText('Datum aflopend').click({ force: true });
     cy.get('#content-wrap').click();
     cy.wait(1000);
     cy.get('.item-menu').eq(0).children().eq(0).children().eq(0).click({ force: true });
@@ -39,7 +39,7 @@ context('Create/Edit/Delete user', () => {
   it('Delete user', () => {
     cy.get('.sort-by-menu').children().eq(0).click({ force: true });
     cy.wait(1000);
-    cy.queryByText('Naam z/a').click({ force: true });
+    cy.queryByText('Datum aflopend').click({ force: true });
     cy.get('#content-wrap').click();
     cy.wait(1000);
     cy.get('.item-menu').eq(0).children().eq(0).children().eq(0).click({ force: true });
