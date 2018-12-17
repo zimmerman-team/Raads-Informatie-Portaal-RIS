@@ -11,12 +11,12 @@ const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin');
 const WatchMissingNodeModulesPlugin = require('react-dev-utils/WatchMissingNodeModulesPlugin');
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
-const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const getClientEnvironment = require('./env');
 const paths = require('./paths');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const loaderUtils = require('loader-utils');
 
 // Webpack uses `publicPath` to determine where the app is being served from.
 // In development, we always serve from the root. This makes config easier.
@@ -66,6 +66,28 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
     loaders.push(require.resolve(preProcessor));
   }
   return loaders;
+};
+
+const getCSSModuleLocalIdent = (
+  context,
+  localIdentName,
+  localName,
+  options
+) => {
+  // Use the filename or folder name, based on some uses the index.js / index.module.(css|scss|sass) project style
+  const fileNameOrFolder = context.resourcePath.match(
+    /index\.module\.(css|scss|sass)$/
+  )
+    ? '[folder]'
+    : '[name]';
+  // Use loaderUtils to find the file or folder name
+  const className = loaderUtils.interpolateName(
+    context,
+    `${fileNameOrFolder}-${localName}`,
+    options,
+  );
+  // remove the .module that appears in every classname when based on the file.
+  return className.replace('.module-', '-module-');
 };
 
 // This is the development configuration.
