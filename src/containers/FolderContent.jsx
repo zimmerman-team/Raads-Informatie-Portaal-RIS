@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
+import isEqual from 'lodash/isEqual';
+import find from 'lodash/find';
+import remove from 'lodash/remove';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -74,7 +77,7 @@ class FolderContent extends React.Component {
     this._addToDossier = this._addToDossier.bind(this);
     this.filterContent = this.filterContent.bind(this);
     this.searchBtnClick = this.searchBtnClick.bind(this);
-    this.getSuggestions = _.debounce(this.getSuggestions.bind(this), 500);
+    this.getSuggestions = debounce(this.getSuggestions.bind(this), 500);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.getSectionSuggestions = this.getSectionSuggestions.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
@@ -86,7 +89,7 @@ class FolderContent extends React.Component {
   componentWillMount() {
     if (this.props.location.pathname.indexOf('publieke-dossiers') !== -1) {
       this.setState({
-        folder: _.find(appResources.sampleDossiers, { id: parseInt(this.props.params.id, 10) }),
+        folder: find(appResources.sampleDossiers, { id: parseInt(this.props.params.id, 10) }),
         publicFolder: true,
       });
     } else {
@@ -98,7 +101,7 @@ class FolderContent extends React.Component {
           this.state.chips,
         );
         this.setState({
-          folder: _.find(this.props.dossiers, { id: parseInt(this.props.params.id, 10) }),
+          folder: find(this.props.dossiers, { id: parseInt(this.props.params.id, 10) }),
         });
       } else {
         browserHistory.push('/folders');
@@ -108,7 +111,7 @@ class FolderContent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { content } = this.props;
-    if (!_.isEqual(prevProps.content, content)) {
+    if (!isEqual(prevProps.content, content)) {
       this.setState({
         files: formatFileResults(content),
       });
@@ -117,7 +120,7 @@ class FolderContent extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { content } = this.props;
-    if (!_.isEqual(nextProps.content, content)) {
+    if (!isEqual(nextProps.content, content)) {
       this.setState({
         files: formatFileResults(nextProps.content),
       });
@@ -159,7 +162,7 @@ class FolderContent extends React.Component {
 
   deleteChip(id, type) {
     const { chips } = this.state;
-    const _chips = _.remove(chips, c => {
+    const _chips = remove(chips, c => {
       return c.id !== id;
     });
     this.setState({ chips: _chips }, this.filterContent);

@@ -10,7 +10,7 @@ import IconMenu from 'material-ui/IconMenu';
 import IconButton from '@material-ui/core/IconButton';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import moment from 'moment/moment';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
 import SocialShare from '@material-ui/icons/Share';
 import CommunicationEmail from '@material-ui/icons/Email';
 import ContentLink from '@material-ui/icons/Link';
@@ -69,7 +69,7 @@ class AddNote extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { note } = nextProps;
-    if (note && !_.isEmpty(note)) {
+    if (note && !isEmpty(note)) {
       const tit = note.title.title ? note.title.title : note.title;
       this.setState({
         title: tit,
@@ -98,7 +98,7 @@ class AddNote extends React.Component {
     } else if (description === '') {
       setSnackBar('De beschrijving mag niet leeg zijn');
     } else {
-      if (note && !_.isEmpty(note)) {
+      if (note && !isEmpty(note)) {
         editNote(note.id, title, description);
       } else {
         createNote(this.props.params.docID, this.props.params.type, document, title, description);
@@ -176,7 +176,7 @@ class AddNote extends React.Component {
             <div className="noteIconTitleContainer">
               <Glyphicon glyph="pencil" className="add-note-icon" />
               <div className="add-note-title">
-                {note && !_.isEmpty(note) ? 'Mijn notitie bewerken' : 'Een notitie toevoegen'}
+                {note && !isEmpty(note) ? 'Mijn notitie bewerken' : 'Een notitie toevoegen'}
               </div>
             </div>
 
@@ -241,7 +241,7 @@ class AddNote extends React.Component {
                   this.onSubmit();
                 }}
               >
-                {note && !_.isEmpty(note) ? 'Notitie opslaan' : 'Notitie toevoegen'}
+                {note && !isEmpty(note) ? 'Notitie opslaan' : 'Notitie toevoegen'}
               </Button>
             </div>
           </div>

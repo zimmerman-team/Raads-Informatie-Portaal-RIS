@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import { connect } from 'react-redux';
 import { Col, Row, Grid } from 'react-bootstrap';
 import CircularProgress from 'material-ui/CircularProgress';
@@ -50,7 +50,7 @@ class MyQuerries extends React.Component {
     const { queries } = this.props;
     const sortField = sort_by[0] === '-' ? sort_by.substring(1) : sort_by;
 
-    let result = _.sortBy(queries, sortField);
+    let result = sortBy(queries, sortField);
     result = sort_by[0] !== '-' ? result : result.reverse();
     return result;
   }

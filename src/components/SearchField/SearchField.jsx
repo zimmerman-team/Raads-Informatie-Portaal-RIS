@@ -5,13 +5,13 @@ import { browserHistory } from 'react-router';
 import Autosuggest from 'react-autosuggest';
 import Row from 'react-bootstrap/lib/Row';
 import Col from 'react-bootstrap/lib/Col';
-import appResources from '../../appResources';
+import debounce from 'lodash/debounce';
 import moment from 'moment';
+import appResources from '../../appResources';
 import { getItemDetailUrl } from '../../helpers';
 import { addFilter } from '../../actions/filterActions';
 import { UPLOADED_FILE } from '../../constants';
 import { backendUrl } from '../../config';
-import _ from 'lodash';
 
 let search_box_ref;
 
@@ -35,7 +35,7 @@ class SearchField extends React.Component {
     this.onSuggestionSelected = this.onSuggestionSelected.bind(this);
     this.getSectionSuggestions = this.getSectionSuggestions.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
-    this.debouncedLoadSuggestions = _.debounce(this.onSuggestionsFetchRequested.bind(this), 400);
+    this.debouncedLoadSuggestions = debounce(this.onSuggestionsFetchRequested.bind(this), 400);
   }
 
   componentDidMount() {

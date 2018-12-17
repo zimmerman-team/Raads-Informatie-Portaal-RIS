@@ -1,13 +1,11 @@
 import React from 'react';
-import _ from 'lodash';
-import moment from 'moment';
+import find from 'lodash/find';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { ListItem } from 'material-ui/List';
 import Glyphicon from 'react-bootstrap/lib/Glyphicon';
 import Popover, { PopoverAnimationVertical } from 'material-ui/Popover';
 import styles from './ValueDropdown.module.scss';
-import appResources from '../../../../appResources';
 
 class ValueDropdown extends React.Component {
   constructor(props) {
@@ -28,7 +26,7 @@ class ValueDropdown extends React.Component {
   render() {
     const { open, anchorEl } = this.state;
     const { width, items, selectedValue } = this.props;
-    const selected = _.find(items, i => {
+    const selected = find(items, i => {
       return i === selectedValue;
     });
     return (

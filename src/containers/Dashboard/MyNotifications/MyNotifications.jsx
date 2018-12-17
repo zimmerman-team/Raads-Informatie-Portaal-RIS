@@ -1,5 +1,6 @@
 import React from 'react';
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
+import remove from 'lodash/remove';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import Toggle from 'material-ui/Toggle';
@@ -62,7 +63,7 @@ class MyNotifications extends React.Component {
     if (isChecked) {
       array.push(item_id);
     } else {
-      _.remove(array, a => {
+      remove(array, a => {
         return a === item_id;
       });
     }
@@ -85,6 +86,7 @@ class MyNotifications extends React.Component {
           description: '',
           link: getItemDetailUrl(i.item_type, i.item_origin_id, i.parent_id),
         },
+        name: i.name,
         date_added: moment(i.date_added).format('DD-MM-YYYY'),
         created_at: moment(i.date).format('DD-MM-YYYY'),
         last_modified: moment(i.last_modified).format('DD-MM-YYYY'),
@@ -97,7 +99,7 @@ class MyNotifications extends React.Component {
         },
       };
     });
-    let result = _.sortBy(noties, sortField);
+    let result = sortBy(noties, sortField);
     result = sort_by[0] !== '-' ? result : result.reverse();
     return result;
   }
@@ -178,11 +180,11 @@ class MyNotifications extends React.Component {
           selectedMenuItemStyle={{ color: appResources.in_content_color }}
           desktop
         >
-          <MenuItem value="title" primaryText="Naam a/z" onClick={() => this.setSortBy('title')} />
+          <MenuItem value="name" primaryText="Naam a/z" onClick={() => this.setSortBy('name')} />
           <MenuItem
-            value="-title"
+            value="-name"
             primaryText="Naam z/a"
-            onClick={() => this.setSortBy('-title')}
+            onClick={() => this.setSortBy('-name')}
           />
           <MenuItem
             value="date_added"

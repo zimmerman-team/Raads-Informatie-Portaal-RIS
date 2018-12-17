@@ -3,7 +3,7 @@ import React from 'react';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import filter from 'lodash/filter';
 import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import Toggle from 'material-ui/Toggle';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -424,7 +424,7 @@ class DocumentDetail extends React.Component {
     const { notes, params, dossiers } = this.props;
     const { docURL, downloadURL, docDate, docCombinedID, docName, docType } = this.state;
 
-    const docNotes = _.filter(notes, n => {
+    const docNotes = filter(notes, n => {
       return parseInt(params.docID, 10) === n.doc_id && parseInt(params.type, 10) === n.type;
     });
 

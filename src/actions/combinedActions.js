@@ -1,5 +1,5 @@
-import _ from 'lodash';
 import axios from 'axios';
+import filter from 'lodash/filter';
 import * as types from './actionTypes';
 import {
   getTimelineDates,
@@ -29,11 +29,11 @@ export function loadCombined() {
     dispatch(loadCombinedRequest());
 
     const { user, filters, sortBy, page, combined } = getState();
-    const keywords = _.filter(filters, { type: 'search' })
+    const keywords = filter(filters, { type: 'search' })
       .map(c => c.value)
       .join();
     const groupedFilters = groupFilters(
-      _.filter(filters, f => {
+      filter(filters, f => {
         return f.type !== 'search';
       }),
     );
