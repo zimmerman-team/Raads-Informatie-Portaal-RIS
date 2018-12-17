@@ -1,26 +1,26 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 export default function asyncComponent(importComponent) {
   class AsyncComponent extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        component: null
+        component: null,
       };
     }
 
     async componentDidMount() {
       const { default: component } = await importComponent();
       this.setState({
-        component: component
+        component,
       });
     }
 
     render() {
       const C = this.state.component;
-      return <div>
-        {C ? <C {...this.props} /> : null}
-      </div>
+      const loader = <div className="general-loader"><CircularProgress /></div>;
+      return <div>{C ? <C {...this.props} /> : loader}</div>;
     }
   }
 

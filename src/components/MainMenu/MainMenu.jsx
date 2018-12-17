@@ -79,7 +79,10 @@ class MainMenu extends React.Component {
 
   isSelected(routeName) {
     const { pathname } = this.props.location;
-    return routeName === pathname;
+    if (routeName === '/') {
+      return pathname === '' || pathname === '/';
+    }
+    return pathname.replace(/\//g, '').indexOf(routeName.replace(/\//g, '')) > -1;
   }
 
   handleClickOutside = evt => {
