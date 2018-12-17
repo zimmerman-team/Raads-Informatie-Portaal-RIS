@@ -41,24 +41,33 @@ export function getSuggestions(type, page = 1, keyword = '', that) {
       });
     }
     if (type === 'status') {
+      const items = filter(mock.statuses, status => {
+        return status.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+      });
       that.setState({
         loading: false,
-        suggestions: mock.statuses,
-        itemsTotal: mock.statuses.length,
+        suggestions: items,
+        itemsTotal: items.length,
       });
     }
     if (type === 'subject') {
+      const items = filter(mock.subjects, subject => {
+        return subject.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+      });
       that.setState({
         loading: false,
-        suggestions: mock.subjects,
-        itemsTotal: mock.subjects.length,
+        suggestions: items,
+        itemsTotal: items.length,
       });
     }
     if (type === 'portfolio') {
+      const items = filter(mock.portfolios, portfolio => {
+        return portfolio.name.toLowerCase().indexOf(keyword.toLowerCase()) > -1;
+      });
       that.setState({
         loading: false,
-        suggestions: mock.portfolios,
-        itemsTotal: mock.portfolios.length,
+        suggestions: items,
+        itemsTotal: items.length,
       });
     }
     that.setState({ loading: false });
