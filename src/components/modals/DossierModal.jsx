@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, browserHistory } from 'react-router';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
 import compose from 'recompose/compose';
 import { withStyles } from '@material-ui/core/styles';
 import Badge from 'material-ui/Badge';
@@ -85,7 +85,7 @@ class DossierModal extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!_.isEqual(this.props.folder, nextProps.folder) && nextProps.folder !== null) {
+    if (!isEqual(this.props.folder, nextProps.folder) && nextProps.folder !== null) {
       this.setState({
         title: nextProps.folder.title,
         selectedColorIndex: colors.findIndex(element => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import { connect } from 'react-redux';
 import Table from '../components/Table/Table';
 import Pagination from '../components/general/Pagination';
@@ -86,7 +86,7 @@ class FavoritesPage extends React.Component {
     const { favorites } = this.props;
     const sortField = sort_by[0] === '-' ? sort_by.substring(1) : sort_by;
 
-    let result = _.sortBy(favorites, sortField);
+    let result = sortBy(favorites, sortField);
     result = sort_by[0] !== '-' ? result : result.reverse();
     return result;
   }
@@ -162,11 +162,11 @@ class FavoritesPage extends React.Component {
           selectedMenuItemStyle={{ color: appResources.in_content_color }}
           desktop
         >
-          <MenuItem value="title" primaryText="Naam a/z" onClick={() => this.setSortBy('title')} />
+          <MenuItem value="name" primaryText="Naam a/z" onClick={() => this.setSortBy('name')} />
           <MenuItem
-            value="-title"
+            value="-name"
             primaryText="Naam z/a"
-            onClick={() => this.setSortBy('-title')}
+            onClick={() => this.setSortBy('-name')}
           />
           <MenuItem
             value="created_at"

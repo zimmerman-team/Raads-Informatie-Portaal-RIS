@@ -1,9 +1,10 @@
 import axios from 'axios';
-import * as types from './actionTypes';
-import _ from 'lodash';
+import isEmpty from 'lodash/isEmpty';
+import find from 'lodash/find';
 import moment from 'moment';
 import { browserHistory } from 'react-router';
 import appResources from '../appResources';
+import * as types from './actionTypes';
 import { isLoggedIn, getCookie } from '../helpers';
 import { confirmShareDossier } from './folderActions';
 import { setSnackBar, setDossierModal, setQueryModal, fromPasswordReset } from './generalActions';
@@ -173,7 +174,7 @@ export function loadDossierContents(
     if (isLoggedIn()) {
       // So here we convert the chips into an array of queries
       const queries =
-        q && q !== null && !_.isEmpty(q)
+        q && q !== null && !isEmpty(q)
           ? q.map(query => {
               return query.value;
             })
@@ -1036,7 +1037,7 @@ export function loadNotificationsRequest() {
 export function addNotification(item_id) {
   return function(dispatch, getState) {
     const { user } = getState();
-    const isItemNotification = _.find(user.notifications, n => {
+    const isItemNotification = find(user.notifications, n => {
       if (n.id === item_id) {
         return true;
       }

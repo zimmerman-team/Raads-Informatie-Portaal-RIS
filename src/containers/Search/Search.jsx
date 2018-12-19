@@ -2,7 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter, browserHistory } from 'react-router';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
+import filter from 'lodash/filter';
 import { Chip, CircularProgress, RadioButton, RadioButtonGroup, Toggle } from 'material-ui';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -98,7 +99,7 @@ class Search extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!_.isEqual(this.props.filters, nextProps)) {
+    if (!isEqual(this.props.filters, nextProps)) {
       this.setState({
         filters: this.props.filters,
       });
@@ -217,7 +218,7 @@ class Search extends React.Component {
       searchType,
     } = this.props;
 
-    const isSearch = _.filter(filters, f => {
+    const isSearch = filter(filters, f => {
       return f.type === 'search';
     });
 

@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import find from 'lodash/find';
 import { browserHistory } from 'react-router';
 import * as types from './actionTypes';
 import { addAgenda, deleteDossier, addNotification, addFavorite } from './userActions';
@@ -164,7 +164,7 @@ export function handleActionClick(type, urlParams = {}) {
         dispatch(setAddNote(addNote.document, true));
         break;
       case DELETE_FOLDER:
-        const folderUser = _.find(user.dossiers, d => {
+        const folderUser = find(user.dossiers, d => {
           return d.id === parseInt(urlParams.id, 10);
         });
         dispatch(deleteDossier(urlParams.id, folderUser.owner.id));

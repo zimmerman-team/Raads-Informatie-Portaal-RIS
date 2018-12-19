@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import find from 'lodash/find';
 import moment from 'moment';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
@@ -85,7 +85,7 @@ class CalendarControlDropdown extends React.Component {
               }}
             >
               {
-                _.find(items, i => {
+                find(items, i => {
                   return i.id === selectedValue;
                 }).name
               }

@@ -1,7 +1,5 @@
 import React from 'react';
-import Anchor from '@trendmicro/react-anchor';
-import Breadcrumbs from '@trendmicro/react-breadcrumbs';
-import appResources from '../appResources.js';
+import appResources from '../appResources';
 
 export default class Contact extends React.Component {
   componentDidMount() {
@@ -12,14 +10,6 @@ export default class Contact extends React.Component {
   render() {
     return (
       <div className="main-no-top-padding content-contact">
-        <div className="breadcrumb-div" style={{ background: appResources.breadcrumbs.background }}>
-          <Breadcrumbs>
-            <Breadcrumbs.Item>
-              <Anchor href="/">HOME</Anchor>
-            </Breadcrumbs.Item>
-            <Breadcrumbs.Item active>CONTACT</Breadcrumbs.Item>
-          </Breadcrumbs>
-        </div>
         <div className="about-container">
           <div className="notesHeaderTitle">CONTACT</div>
           <br />

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
-import _ from 'lodash';
+import filter from 'lodash/filter';
 import axios from 'axios';
 import moment from 'moment';
 import { Snackbar } from 'material-ui';
@@ -89,7 +89,7 @@ class DayView extends React.Component {
 
   getDayEvents() {
     const { events, date } = this.props;
-    return _.filter(events, e => {
+    return filter(events, e => {
       if (moment(e.date).format('DD-MM-YYYY') === moment(date).format('DD-MM-YYYY')) {
         return e;
       }
@@ -111,7 +111,7 @@ class DayView extends React.Component {
             .hour(slot.hour + 2)
             .minutes(0)
             .seconds(0);
-          const slotEvents = _.filter(events, e => {
+          const slotEvents = filter(events, e => {
             if (moment(e.date).isBetween(time1, time2, 'hour', '[)')) {
               return e;
             }
