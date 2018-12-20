@@ -40,6 +40,7 @@ const propTypes = {
   initialValue: PropTypes.string,
   inputType: PropTypes.string,
   modalType: PropTypes.string,
+  isReadOnly: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -54,6 +55,7 @@ const defaultProps = {
   initialValue: '',
   inputType: 'text',
   modalType: '',
+  isReadOnly: false,
 };
 
 class TextField extends React.Component {
@@ -240,6 +242,12 @@ class TextField extends React.Component {
     //   this.checkIfTitleExists(event.target.value);
     // }
     if (
+      this.props.type === 'status' ||
+      this.props.type === 'subject' ||
+      this.props.type === 'portfolio'
+    ) {
+      this.props.reduxItemsAdd({ id: event.target.value, name: event.target.value });
+    } else if (
       this.props.type !== 'public_dossier' &&
       this.props.type !== 'document' &&
       this.props.type !== 'agenda_item'
@@ -376,6 +384,7 @@ class TextField extends React.Component {
         this.nameInput = input;
       },
       rows: this.props.type === 'description' ? (value.length > 0 ? 5 : 1) : 1,
+      readOnly: this.props.isReadOnly,
     };
     if (this.props.type === 'number') {
       inputProps.min = this.props.min;

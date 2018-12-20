@@ -258,7 +258,7 @@ function mapStateToProps(state) {
 
 export default withRouter(
   compose(
-    withStyles(),
+    withStyles({}),
     connect(mapStateToProps, {
       setSnackBar,
       setDossierModal,

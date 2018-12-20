@@ -170,7 +170,7 @@ class App extends React.Component {
                   <div className="content-div">{this.props.children}</div>
                 </ErrorBoundary>
                 {/* app footer */}
-                {false && !hideFoot && <Footer toggleNav={() => this.toggleMenu()} />}
+                <Footer toggleNav={() => this.toggleMenu()} />
               </div>
             </div>
             <DossierModal />
