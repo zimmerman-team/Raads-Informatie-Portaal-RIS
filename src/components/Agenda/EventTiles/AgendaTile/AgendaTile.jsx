@@ -256,7 +256,18 @@ class AgendaTile extends React.Component {
 
       if (room.event_media) {
         if (room.event_media.length !== 0) {
-          video = room.event_media[0].httpstream;
+          if (room.event_media.length > 1) {
+            // If there's more than 1 video stream show the latest one
+            let maxEventMediaID = -1;
+            room.event_media.forEach(em => {
+              if (em.id > maxEventMediaID) {
+                video = em.httpstream;
+                maxEventMediaID = em.id;
+              }
+            });
+          } else {
+            video = room.event_media[0].httpstream;
+          }
         }
       }
       return {
