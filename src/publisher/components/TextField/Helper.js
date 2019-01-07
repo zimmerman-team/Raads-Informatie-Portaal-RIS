@@ -134,9 +134,7 @@ function getURL(type, page, keyword, that) {
     case 'document':
       return `combined/?format=json&item_type=document,received_document,council_address,written_question,format,policy_document,management_document,motion,commitment&ordering=-last_modified&page=${page}&page_size=50&q=${keyword}`;
     case 'public_dossier':
-      return `public-dossiers/?page=${page}&page_size=50&ordering=-last_modified&search=${keyword}${
-        that.props.selectedPublicDossierID ? `&dossier=${that.props.selectedPublicDossierID}` : ''
-      }`;
+      return `public-dossiers/?page=${page}&page_size=50&ordering=-last_modified&search=${keyword}`;
     case 'event':
       return `combined/?format=json&item_type=event&ordering=-last_modified&page=${page}&page_size=50&q=${keyword}`;
     case 'author':
@@ -153,7 +151,7 @@ export function getDossierChildren(userToken, that, node, toggled) {
   axios
     .post(
       `${appResources.backendUrl}public-dossiers/child_dossiers/`,
-      { id: node.item_id },
+      { id: that.props.modalType === 'dossier' ? node.id : node.item_id },
       { headers: { Authorization: `Token ${userToken}` } },
     )
     .then(response => {
@@ -162,8 +160,8 @@ export function getDossierChildren(userToken, that, node, toggled) {
       }).map(r => {
         return {
           name: r.name,
-          id: r.combined_id,
-          item_id: r.id,
+          id: that.props.modalType === 'dossier' ? r.id : r.combined_id,
+          item_id: that.props.modalType === 'dossier' ? r.combined_id : r.id,
           has_dossiers: r.has_dossiers,
         };
       });

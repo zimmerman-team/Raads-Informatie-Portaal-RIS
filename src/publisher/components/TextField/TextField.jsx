@@ -343,7 +343,7 @@ class TextField extends React.Component {
   render() {
     const { value, focused } = this.state;
     let suggestions = this.state.suggestions;
-    if (this.props.initialItems) {
+    if (this.props.initialItems && (this.props.type !== 'public_dossier' && this.props.modalType !== 'dossier')) {
       for (let i = 0; i < this.props.initialItems.length; i++) {
         for (let x = 0; x < suggestions.length; x++) {
           if (
@@ -481,9 +481,9 @@ class TextField extends React.Component {
               <DossierTreeView
                 data={suggestions.map(s => {
                   return {
-                    id: s.id,
+                    id: this.props.modalType === 'dossier' ? s.item_id : s.id,
                     name: s.name,
-                    item_id: s.item_id,
+                    item_id: this.props.modalType === 'dossier' ? s.id : s.item_id,
                     has_dossiers: s.has_dossiers,
                     child_dossiers_count: s.child_dossiers_count,
                   };
@@ -498,6 +498,7 @@ class TextField extends React.Component {
                 }}
                 initialItems={this.props.initialItems}
                 editInitialItem={this.props.editInitialItem}
+                editingDossierID={this.props.selectedPublicDossierID}
               />
             )}
             {this.state.loading && <div className={styles.loadingMessage}>Loading...</div>}
