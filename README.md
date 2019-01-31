@@ -39,11 +39,11 @@ Change municipality
 
  In `src/config.js` there is a variable called `muni`
  
- Adjust the variable's value with one of these options `Almere | Utrecht | Rotterdam`
+ Adjust the variable's value with one of these options `Almere`
   
  In `src/styles/variables.scss` there is a variable called `$municipality`
  
- Adjust the variable's value with one of these options `Almere | Utrecht | Rotterdam`
+ Adjust the variable's value with one of these options `Almere`
 
 
 ## Run
