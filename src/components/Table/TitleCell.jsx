@@ -37,8 +37,8 @@ const TitleCell = ({ data, folders, isSearch, marginTop = 17, showExcerpt = fals
     type.toLowerCase() === 'event' || type.toLowerCase() === 'events'
       ? calendar_icon
       : type === FORMATED_PUBLIC_DOSSIER
-        ? briefcase_icon
-        : file_icon;
+      ? briefcase_icon
+      : file_icon;
   return (
     <div
       className="title-cell"
@@ -49,22 +49,23 @@ const TitleCell = ({ data, folders, isSearch, marginTop = 17, showExcerpt = fals
         {folders && opened_folder_icon}
         <Link to={data.value.link} style={{ color: appResources.in_content_color }}>
           <Highlighter
+            autoEscape
             highlightClassName="highlight-text"
             searchWords={isSearch ? isSearch.map(i => decodeURIComponent(i.value)) : []}
             textToHighlight={data.value.title}
           />
         </Link>
       </div>
-      {data.value.description !== '' &&
-        showExcerpt && (
-          <div className="description-div">
-            <Highlighter
-              highlightClassName="highlight-text"
-              searchWords={isSearch ? isSearch.map(i => decodeURIComponent(i.value)) : []}
-              textToHighlight={data.value.description}
-            />
-          </div>
-        )}
+      {data.value.description !== '' && showExcerpt && (
+        <div className="description-div">
+          <Highlighter
+            autoEscape
+            highlightClassName="highlight-text"
+            searchWords={isSearch ? isSearch.map(i => decodeURIComponent(i.value)) : []}
+            textToHighlight={data.value.description}
+          />
+        </div>
+      )}
     </div>
   );
 };

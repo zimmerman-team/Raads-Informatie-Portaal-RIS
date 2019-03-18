@@ -179,7 +179,7 @@ export function getURLfilters(that) {
     }
   }
 
-  if (zoekterms) {
+  if (typeof zoekterms === 'string' && zoekterms.length > 0) {
     const items = zoekterms.split(',');
     for (let i = 0; i < items.length; i++) {
       if (

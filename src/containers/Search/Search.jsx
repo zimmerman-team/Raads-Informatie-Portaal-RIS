@@ -139,12 +139,12 @@ class Search extends React.Component {
 
   removeFilter(type, id) {
     this.props.removeFilter(type, id);
-    browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, this.props.page));
+    browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
   }
 
   removeAllFilters() {
     this.props.removeAllFilters();
-    browserHistory.push(setURLfilters([], this.props.sortBy, this.props.page));
+    browserHistory.push(setURLfilters([], this.props.sortBy, 1));
   }
 
   onPageChange(page) {
@@ -371,9 +371,7 @@ class Search extends React.Component {
                     isSearchPage
                     hintText="Zoek op motie’s, agenda’s, of documenten"
                     addURLParam={() => {
-                      browserHistory.push(
-                        setURLfilters(this.props.filters, this.props.sortBy, this.props.page),
-                      );
+                      browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
                     }}
                   />
                   <div className={styles.searchCheckboxDiv}>
@@ -487,26 +485,29 @@ function mapStateToProps(state) {
 }
 
 export default withRouter(
-  connect(mapStateToProps, {
-    addFilter,
-    setSortBy,
-    setFilters,
-    addFavorite,
-    loadCombined,
-    removeFilter,
-    addToDossier,
-    setActiveTab,
-    setActivePage,
-    specifySearch,
-    setDossierModal,
-    removeAllFilters,
-    addAgenda,
-    loadUserDossiers,
-    addNotification,
-    setDocumentModal,
-    deleteCouncilDoc,
-    changeEventPublishStatus,
-    changeDocumentPublishStatus,
-    setPublicDossierPublishStatus,
-  })(Search),
+  connect(
+    mapStateToProps,
+    {
+      addFilter,
+      setSortBy,
+      setFilters,
+      addFavorite,
+      loadCombined,
+      removeFilter,
+      addToDossier,
+      setActiveTab,
+      setActivePage,
+      specifySearch,
+      setDossierModal,
+      removeAllFilters,
+      addAgenda,
+      loadUserDossiers,
+      addNotification,
+      setDocumentModal,
+      deleteCouncilDoc,
+      changeEventPublishStatus,
+      changeDocumentPublishStatus,
+      setPublicDossierPublishStatus,
+    },
+  )(Search),
 );
