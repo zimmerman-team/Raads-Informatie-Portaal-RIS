@@ -3,7 +3,7 @@ import almere from './styles/municipalities/almere';
 import utrecht from './styles/municipalities/utrecht';
 import generalX from './styles/municipalities/generalX';
 
-const muni = 'X'; // Almere | Utrecht | Rotterdam
+const muni = 'Almere'; // Almere | Utrecht | Rotterdam
 
 const getMunicipalityStyle = function(municipality) {
   switch (municipality) {

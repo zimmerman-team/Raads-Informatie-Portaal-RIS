@@ -34,7 +34,7 @@ import {
 export function setSortBy(value, loadData = true) {
   return function(dispatch, getState) {
     dispatch(fetchSetSortBy(value));
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 
@@ -53,7 +53,7 @@ export function setSortBySuccess(value) {
 export function setActivePage(value, loadData = true) {
   return function(dispatch, getState) {
     dispatch(fetchSetActivePage(value));
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 

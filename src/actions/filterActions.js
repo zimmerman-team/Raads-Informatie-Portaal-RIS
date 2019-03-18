@@ -38,7 +38,7 @@ export function removeFilter(type, id, loadData = true) {
   return function(dispatch, getState) {
     const { filters } = getState();
     dispatch(fetchRemoveFilter(filters, type, id));
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 
@@ -58,7 +58,7 @@ export function removeFilterSuccess(filters) {
 export function removeAllFilters(loadData = true) {
   return function(dispatch, getState) {
     dispatch(fetchRemoveAllFilters());
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 
@@ -77,7 +77,7 @@ export function removeAllFilterSuccess() {
 export function setFilters(filters) {
   return function(dispatch, getState) {
     dispatch(fetchSetFilters(filters));
-    dispatch(loadCombined());
+    // dispatch(loadCombined());
   };
 }
 
