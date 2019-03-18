@@ -11,7 +11,7 @@ export default function combinedReducer(state = combined, action) {
         timelineData: action.data.timelineData,
         timelineStart: action.data.timelineStart,
         timelineEnd: action.data.timelineEnd,
-        isLoading: state.apiCallCount - 1 !== 0,
+        isLoading: false,
         apiCallCount: state.apiCallCount - 1,
       };
     case types.LOAD_COMBINED_REQUEST:
