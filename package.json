@@ -190,7 +190,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar -q --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "node scripts/start.js",
     "start": "npm-run-all -p watch-css start-js",
-    "build": "CI=false yarn build-css && node scripts/build.js",
+    "build": "yarn build-css && node scripts/build.js",
     "analyze": "source-map-explorer build/static/js/main.*",
     "test": "node scripts/test.js --env=jsdom",
     "storybook": "start-storybook -p 9009 -s public",
