@@ -5,12 +5,12 @@ import appResources from '../appResources';
 import not_found_svg from '../images/404svg.svg';
 
 const buttonStyle = {
-  margin: '0 10px',
+  margin: '0 10px'
 };
 
 const buttonLabelStyle = {
   fontWeight: 'bold',
-  padding: '0 15px',
+  padding: '0 15px'
 };
 
 export default class NotFound extends React.Component {

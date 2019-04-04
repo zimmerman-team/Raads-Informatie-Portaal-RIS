@@ -20,19 +20,19 @@ const AgendaDetail = AsyncComponent(() => import('./containers/Agenda/AgendaDeta
 const DocumentDetail = AsyncComponent(() => import('./containers/DocumentDetail/DocumentDetail'));
 const Profile = AsyncComponent(() => import('./containers/Profile/Profile'));
 const ActivatePage = AsyncComponent(() =>
-  import('./containers/Activation/ActivateInfoPage/ActivatePage'),
+  import('./containers/Activation/ActivateInfoPage/ActivatePage')
 );
 const Login = AsyncComponent(() => import('./containers/Login/Login'));
 const ActivateAccount = AsyncComponent(() =>
-  import('./containers/Activation/ActivateAccount/ActivateAccount'),
+  import('./containers/Activation/ActivateAccount/ActivateAccount')
 );
 const PasswordReset = AsyncComponent(() => import('./containers/PasswordReset'));
 const NotFound = AsyncComponent(() => import('./containers/NotFound'));
 const MyNotifications = AsyncComponent(() =>
-  import('./containers/Dashboard/MyNotifications/MyNotifications'),
+  import('./containers/Dashboard/MyNotifications/MyNotifications')
 );
 const MyNotes = AsyncComponent(() => import('./containers/Dashboard/MyNotes/MyNotes'));
-const MyAgenda = AsyncComponent(() => import('./containers/Dashboard/MyAgenda/MyAgenda'));
+// const MyAgenda = AsyncComponent(() => import('./containers/Dashboard/MyAgenda/MyAgenda'));
 const FolderInvitation = AsyncComponent(() => import('./containers/FolderInvitation'));
 const PublicFolder = AsyncComponent(() => import('./containers/PublicFolder/PublicFolder'));
 const UserManagement = AsyncComponent(() => import('./containers/UserManagement/UserManagement'));
@@ -53,7 +53,7 @@ export default (
     <Route path="publieke-dossiers" component={PublicFolders} />
     <Route path="publieke-dossiers/:id" component={PublicFolder} />
 
-    <Route path="mijn_kalender" component={MyAgenda} />
+    {/* <Route path="mijn_kalender" component={MyAgenda} /> */}
     <Route path="mijn_notities" component={MyNotes} />
     <Route path="notificaties" component={MyNotifications} />
     <Route path="bewaarde_zoekopdrachten" component={MyQueries} />
