@@ -308,7 +308,14 @@ module.exports = {
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
-              require.resolve('thread-loader'),
+              {
+                loader: require.resolve('thread-loader'),
+                options: {
+                  // the number of spawned workers, defaults to (number of cpus - 1) or
+                  // fallback to 1 when require('os').cpus() is undefined
+                  workers: process.env.CIRCLE_NODE_TOTAL || 2,
+                },
+              },
               {
                 loader: require.resolve('babel-loader'),
                 options: {

@@ -215,6 +215,7 @@ module.exports = {
                 loader: require.resolve('thread-loader'),
                 options: {
                   poolTimeout: Infinity, // keep workers alive for more effective watch mode
+                  workers: process.env.CIRCLE_NODE_TOTAL || 2,
                 },
               },
               {
