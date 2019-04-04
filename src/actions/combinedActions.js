@@ -1,17 +1,13 @@
 import axios from 'axios';
 import filter from 'lodash/filter';
 import * as types from './actionTypes';
-import {
-  getTimelineDates,
-  formatTimelineData,
-  formatSearchResults,
-} from '../data-formatters/SearchResultsDataFormatter';
+import { formatSearchResults } from '../data-formatters/SearchResultsDataFormatter';
 import appResources from '../appResources';
 
 function groupFilters(filters) {
   const filtersObj = {
     date: [],
-    item_type: [],
+    item_type: []
   };
   for (let i = 0; i < filters.length; i++) {
     const f = filters[i];
@@ -35,7 +31,7 @@ export function loadCombined() {
     const groupedFilters = groupFilters(
       filter(filters, f => {
         return f.type !== 'search';
-      }),
+      })
     );
     let filterString = '';
     for (const prop in groupedFilters) {
@@ -52,13 +48,9 @@ export function loadCombined() {
     axios
       .get(url, user.token !== '' ? { headers: { Authorization: `Token ${user.token}` } } : {})
       .then(response => {
-        const timelineDates = getTimelineDates(response.data.results);
         const data = {
           resultsCount: response.data.count,
-          data: formatSearchResults(response),
-          timelineData: formatTimelineData(response.data.results),
-          timelineStart: timelineDates[0],
-          timelineEnd: timelineDates[1],
+          data: formatSearchResults(response)
         };
         dispatch(loadCombinedSuccess(data));
       })

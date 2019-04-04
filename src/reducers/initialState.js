@@ -1,21 +1,17 @@
-import vis from 'vis';
 import appResources from '../appResources';
 
 export const events = {
   data: [],
   isLoading: false,
-  date: '',
+  date: ''
 };
 
 export const combined = {
   resultsCount: 0,
   data: [],
-  timelineData: new vis.DataSet([]),
-  timelineStart: new Date(),
-  timelineEnd: new Date(),
   isLoading: false,
   apiCallCount: 0,
-  searchType: 'q',
+  searchType: 'q'
 };
 
 export const sortByState = '-last_modified';
@@ -30,18 +26,18 @@ export const snackBar = {
   message: '',
   visibility: false,
   type: 'general',
-  action: null,
+  action: null
 };
 
 export const dossierInitial = {
   itemID: '',
   visibility: false,
-  item_type: 'combined',
+  item_type: 'combined'
 };
 
 export const addNoteInitial = {
   document: [],
-  visibility: false,
+  visibility: false
 };
 
 export const userInitial = {
@@ -68,13 +64,13 @@ export const userInitial = {
   allUsersCount: 0,
   myAgenda: [],
   notes: [],
-  selectedCombinedItem: null,
+  selectedCombinedItem: null
 };
 
 export const latestDataInitial = {
   data: [],
   isLoading: false,
-  resultsCount: 0,
+  resultsCount: 0
 };
 
 export const publicDossierInitial = {
@@ -88,22 +84,22 @@ export const publicDossierInitial = {
   dossier_count: 0,
   published: false,
   documents: [],
-  dossiers: [],
+  dossiers: []
 };
 
 export const singleEventInitial = {
   loading: false,
   eventData: {},
   childEventsData: [],
-  speakers: [],
+  speakers: []
 };
 
 export const actionMenuInitial = {
-  open: false,
+  open: false
 };
 
 export const queryInitial = {
-  visibility: false,
+  visibility: false
 };
 
 export const loadingInitial = false;
@@ -126,5 +122,5 @@ export const publisherInitial = {
   newAgendaItemSelectedDossiers: [],
   newAgendaItemSelectedIndex: null,
   selectedEventID: null,
-  newDocumentModalVisibility: false,
+  newDocumentModalVisibility: false
 };
