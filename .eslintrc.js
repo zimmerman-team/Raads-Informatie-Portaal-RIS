@@ -27,6 +27,7 @@ module.exports = {
     },
   },
   rules: {
+    'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': 'off', // Don't play nicely with Windows.
     'arrow-body-style': 'off', // Not our taste?
     'arrow-parens': 'off', // Incompatible with prettier
@@ -88,9 +89,7 @@ module.exports = {
     'react/sort-prop-types': 'error', // airbnb do nothing here.
     'react/default-props-match-prop-types': 'off', // Buggy
     'react/jsx-curly-brace-presence': 'off', // Buggy
-    'react/prop-types': [ "enabled",
-      { "ignore": "ignore", "customValidators": "customValidator" }
-    ],
+    'react/prop-types': ['enabled', { ignore: 'ignore', customValidators: 'customValidator' }],
 
     'prettier/prettier': ['error'],
   },
