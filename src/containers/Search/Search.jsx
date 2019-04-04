@@ -23,7 +23,7 @@ import {
   addToDossier,
   addFavorite,
   addAgenda,
-  addNotification,
+  addNotification
 } from '../../actions/userActions';
 import HeaderIcon from '../../components/icons/Search';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -34,7 +34,7 @@ import {
   setDocumentModal,
   changeEventPublishStatus,
   changeDocumentPublishStatus,
-  setPublicDossierPublishStatus,
+  setPublicDossierPublishStatus
 } from '../../actions/publisherActions';
 import {
   COMMITMENT,
@@ -47,14 +47,14 @@ import {
   POLICY_DOCUMENT,
   PUBLIC_DOSSIER,
   RECEIVED_DOCUMENT,
-  WRITTEN_QUESTION,
+  WRITTEN_QUESTION
 } from '../../constants';
 
 const radioStyle = {
   width: 'fit-content',
   display: 'inline-flex',
   whiteSpace: 'nowrap',
-  marginRight: 30,
+  marginRight: 30
 };
 
 class Search extends React.Component {
@@ -63,7 +63,7 @@ class Search extends React.Component {
 
     this.state = {
       focused: false,
-      filters: props.filters ? props.filters : [],
+      filters: props.filters ? props.filters : []
     };
 
     this.onCheck = this.onCheck.bind(this);
@@ -94,7 +94,7 @@ class Search extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (!isEqual(this.props.filters, nextProps)) {
       this.setState({
-        filters: this.props.filters,
+        filters: this.props.filters
       });
     }
   }
@@ -125,7 +125,7 @@ class Search extends React.Component {
     this.props.setActivePage(1, false);
     this.props.addFilter(type, value, label);
     this.setState({
-      filters: this.props.filters,
+      filters: this.props.filters
     });
     browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
   }
@@ -216,7 +216,7 @@ class Search extends React.Component {
           : 'search-big-header-admin',
         className: !(this.props.is_admin || this.props.is_author)
           ? 'search-big-cell'
-          : 'search-big-cell-admin',
+          : 'search-big-cell-admin'
       },
       {
         Header: 'Type document',
@@ -229,7 +229,7 @@ class Search extends React.Component {
           />
         ),
         headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
+        className: 'search-generic-cell'
       },
       {
         Header: 'Evenement datum',
@@ -242,7 +242,7 @@ class Search extends React.Component {
           />
         ),
         headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
+        className: 'search-generic-cell'
       },
       {
         Header: 'Laatst gewijzigd',
@@ -255,7 +255,7 @@ class Search extends React.Component {
           />
         ),
         headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
+        className: 'search-generic-cell'
       },
       {
         Header: 'Gepubliceerd op RIS portaal',
@@ -270,7 +270,7 @@ class Search extends React.Component {
               this.onPublishToggle(
                 props.original.options.type,
                 value,
-                props.original.options.origin_id,
+                props.original.options.origin_id
               );
             }}
           />
@@ -278,7 +278,7 @@ class Search extends React.Component {
         headerClassName: 'search-generic-header search-toggle',
         className: 'search-generic-cell search-toggle',
         style: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {},
-        headerStyle: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {},
+        headerStyle: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {}
       },
       {
         Header: 'Opties',
@@ -298,15 +298,15 @@ class Search extends React.Component {
           </div>
         ),
         headerClassName: 'small-header',
-        className: 'small-cell',
-      },
+        className: 'small-cell'
+      }
     ];
 
     const searchPageClass = classNames('search-page-container', {
-      focused,
+      focused
     });
     const searchResultsClass = classNames('show-grid', 'search-results', {
-      hide: focused,
+      hide: focused
     });
     const renderChips = (
       <div className={styles.searchChipsContainer}>
@@ -365,7 +365,7 @@ class Search extends React.Component {
                       labelStyle={{ color: '#717171' }}
                       iconStyle={{
                         fill: searchType === 'q' ? appResources.in_content_color : '#ccc',
-                        marginRight: 6,
+                        marginRight: 6
                       }}
                       style={radioStyle}
                     />
@@ -376,7 +376,7 @@ class Search extends React.Component {
                       iconStyle={{
                         fill:
                           searchType === 'name__icontains' ? appResources.in_content_color : '#ccc',
-                        marginRight: 6,
+                        marginRight: 6
                       }}
                       style={radioStyle}
                     />
@@ -402,7 +402,7 @@ class Search extends React.Component {
                   this.props.setFilters(filters);
                   setTimeout(() => {
                     browserHistory.replace(
-                      setURLfilters(this.props.filters, this.props.sortBy, this.props.page),
+                      setURLfilters(this.props.filters, this.props.sortBy, this.props.page)
                     );
                   }, 1000);
                 }}
@@ -440,7 +440,7 @@ function mapStateToProps(state) {
     page,
     tab,
     dossiers: user.dossiers,
-    searchType: combined.searchType,
+    searchType: combined.searchType
   };
 }
 
@@ -466,7 +466,7 @@ export default withRouter(
       deleteCouncilDoc,
       changeEventPublishStatus,
       changeDocumentPublishStatus,
-      setPublicDossierPublishStatus,
-    },
-  )(Search),
+      setPublicDossierPublishStatus
+    }
+  )(Search)
 );

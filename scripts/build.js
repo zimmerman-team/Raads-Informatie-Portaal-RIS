@@ -72,10 +72,10 @@ checkBrowsers(paths.appPath, isInteractive)
         console.log(
           '\nSearch for the ' +
             chalk.underline(chalk.yellow('keywords')) +
-            ' to learn more about each warning.',
+            ' to learn more about each warning.'
         );
         console.log(
-          'To ignore, add ' + chalk.cyan('// eslint-disable-next-line') + ' to the line before.\n',
+          'To ignore, add ' + chalk.cyan('// eslint-disable-next-line') + ' to the line before.\n'
         );
       } else {
         console.log(chalk.green('Compiled successfully.\n'));
@@ -87,7 +87,7 @@ checkBrowsers(paths.appPath, isInteractive)
         previousFileSizes,
         paths.appBuild,
         WARN_AFTER_BUNDLE_GZIP_SIZE,
-        WARN_AFTER_CHUNK_GZIP_SIZE,
+        WARN_AFTER_CHUNK_GZIP_SIZE
       );
       console.log();
 
@@ -101,7 +101,7 @@ checkBrowsers(paths.appPath, isInteractive)
       console.log(chalk.red('Failed to compile.\n'));
       printBuildError(err);
       process.exit(1);
-    },
+    }
   )
   .catch(err => {
     if (err && err.message) {
@@ -114,7 +114,7 @@ checkBrowsers(paths.appPath, isInteractive)
 function build(previousFileSizes) {
   console.log('Creating an optimized production build...');
 
-  console.log(process.env.CIRCLE_NODE_TOTAL);
+  console.log(process.env.CI);
 
   let compiler = webpack(config);
   return new Promise((resolve, reject) => {
@@ -139,8 +139,8 @@ function build(previousFileSizes) {
         console.log(
           chalk.yellow(
             '\nTreating warnings as errors because process.env.CI = true.\n' +
-              'Most CI servers set it automatically.\n',
-          ),
+              'Most CI servers set it automatically.\n'
+          )
         );
         return reject(new Error(messages.warnings.join('\n\n')));
       }
@@ -148,7 +148,7 @@ function build(previousFileSizes) {
       const resolveArgs = {
         stats,
         previousFileSizes,
-        warnings: messages.warnings,
+        warnings: messages.warnings
       };
       if (writeStatsJson) {
         return bfj
@@ -165,6 +165,6 @@ function build(previousFileSizes) {
 function copyPublicFolder() {
   fs.copySync(paths.appPublic, paths.appBuild, {
     dereference: true,
-    filter: file => file !== paths.appHtml,
+    filter: file => file !== paths.appHtml
   });
 }
