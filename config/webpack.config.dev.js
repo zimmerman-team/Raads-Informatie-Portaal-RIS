@@ -68,16 +68,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   return loaders;
 };
 
-const getCSSModuleLocalIdent = (
-  context,
-  localIdentName,
-  localName,
-  options
-) => {
+const getCSSModuleLocalIdent = (context, localIdentName, localName, options) => {
   // Use the filename or folder name, based on some uses the index.js / index.module.(css|scss|sass) project style
-  const fileNameOrFolder = context.resourcePath.match(
-    /index\.module\.(css|scss|sass)$/
-  )
+  const fileNameOrFolder = context.resourcePath.match(/index\.module\.(css|scss|sass)$/)
     ? '[folder]'
     : '[name]';
   // Use loaderUtils to find the file or folder name
@@ -156,7 +149,7 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/253
     modules: ['node_modules'].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
     ),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
@@ -166,7 +159,6 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-
       // Support React Native Web
       // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
       'react-native': 'react-native-web',
@@ -228,15 +220,13 @@ module.exports = {
               {
                 loader: require.resolve('babel-loader'),
                 options: {
-
                   plugins: [
                     [
                       require.resolve('babel-plugin-named-asset-import'),
                       {
                         loaderMap: {
                           svg: {
-                            ReactComponent:
-                              '@svgr/webpack?-prettier,-svgo![path]',
+                            ReactComponent: '@svgr/webpack?-prettier,-svgo![path]',
                           },
                         },
                       },
@@ -264,6 +254,7 @@ module.exports = {
                 loader: require.resolve('thread-loader'),
                 options: {
                   poolTimeout: Infinity, // keep workers alive for more effective watch mode
+                  workers: process.env.CIRCLE_NODE_TOTAL || 2,
                 },
               },
               {
@@ -271,9 +262,7 @@ module.exports = {
                 options: {
                   babelrc: false,
                   compact: false,
-                  presets: [
-                    require.resolve('babel-preset-react-app/dependencies'),
-                  ],
+                  presets: [require.resolve('babel-preset-react-app/dependencies')],
                   cacheDirectory: true,
                   // Don't waste time on Gzipping the cache
                   cacheCompression: false,
@@ -286,19 +275,17 @@ module.exports = {
           {
             test: /\.svg$/,
             use: [
-              "babel-loader",
+              'babel-loader',
               {
-                loader: "react-svg-loader",
+                loader: 'react-svg-loader',
                 options: {
                   svgo: {
-                    plugins: [
-                      { removeTitle: false }
-                    ],
-                    floatPrecision: 2
-                  }
-                }
-              }
-            ]
+                    plugins: [{ removeTitle: false }],
+                    floatPrecision: 2,
+                  },
+                },
+              },
+            ],
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -343,7 +330,7 @@ module.exports = {
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
-              'sass-loader'
+              'sass-loader',
             ),
           },
           // "file" loader makes sure those assets get served by WebpackDevServer.
@@ -436,7 +423,6 @@ module.exports = {
         formatter: typescriptFormatter,
       }),
   ].filter(Boolean),
-  
 
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.

@@ -92,16 +92,9 @@ const getStyleLoaders = (cssOptions, preProcessor) => {
   return loaders;
 };
 
-const getCSSModuleLocalIdent = (
-  context,
-  localIdentName,
-  localName,
-  options
-) => {
+const getCSSModuleLocalIdent = (context, localIdentName, localName, options) => {
   // Use the filename or folder name, based on some uses the index.js / index.module.(css|scss|sass) project style
-  const fileNameOrFolder = context.resourcePath.match(
-    /index\.module\.(css|scss|sass)$/
-  )
+  const fileNameOrFolder = context.resourcePath.match(/index\.module\.(css|scss|sass)$/)
     ? '[folder]'
     : '[name]';
   // Use loaderUtils to find the file or folder name
@@ -138,9 +131,7 @@ module.exports = {
     publicPath: publicPath,
     // Point sourcemap entries to original disk location (format as URL on Windows)
     devtoolModuleFilenameTemplate: info =>
-      path
-        .relative(paths.appSrc, info.absoluteResourcePath)
-        .replace(/\\/g, '/'),
+      path.relative(paths.appSrc, info.absoluteResourcePath).replace(/\\/g, '/'),
   },
   optimization: {
     minimizer: [
@@ -215,7 +206,7 @@ module.exports = {
     // https://github.com/facebook/create-react-app/issues/253
     modules: ['node_modules'].concat(
       // It is guaranteed to exist because we tweak it in `env.js`
-      process.env.NODE_PATH.split(path.delimiter).filter(Boolean)
+      process.env.NODE_PATH.split(path.delimiter).filter(Boolean),
     ),
     // These are the reasonable defaults supported by the Node ecosystem.
     // We also include JSX as a common component filename extension to support
@@ -278,19 +269,24 @@ module.exports = {
             use: [
               // This loader parallelizes code compilation, it is optional but
               // improves compile time on larger projects
-              require.resolve('thread-loader'),
+              {
+                loader: require.resolve('thread-loader'),
+                options: {
+                  // the number of spawned workers, defaults to (number of cpus - 1) or
+                  // fallback to 1 when require('os').cpus() is undefined
+                  workers: process.env.CIRCLE_NODE_TOTAL || 2,
+                },
+              },
               {
                 loader: require.resolve('babel-loader'),
                 options: {
-
                   plugins: [
                     [
                       require.resolve('babel-plugin-named-asset-import'),
                       {
                         loaderMap: {
                           svg: {
-                            ReactComponent:
-                              '@svgr/webpack?-prettier,-svgo![path]',
+                            ReactComponent: '@svgr/webpack?-prettier,-svgo![path]',
                           },
                         },
                       },
@@ -318,9 +314,7 @@ module.exports = {
                 options: {
                   babelrc: false,
                   compact: false,
-                  presets: [
-                    require.resolve('babel-preset-react-app/dependencies'),
-                  ],
+                  presets: [require.resolve('babel-preset-react-app/dependencies')],
                   cacheDirectory: true,
                   // Save disk space when time isn't as important
                   cacheCompression: true,
@@ -333,19 +327,17 @@ module.exports = {
           {
             test: /\.svg$/,
             use: [
-              "babel-loader",
+              'babel-loader',
               {
-                loader: "react-svg-loader",
+                loader: 'react-svg-loader',
                 options: {
                   svgo: {
-                    plugins: [
-                      { removeTitle: false }
-                    ],
-                    floatPrecision: 2
-                  }
-                }
-              }
-            ]
+                    plugins: [{ removeTitle: false }],
+                    floatPrecision: 2,
+                  },
+                },
+              },
+            ],
           },
           // "postcss" loader applies autoprefixer to our CSS.
           // "css" loader resolves paths in CSS and adds assets as dependencies.
@@ -384,7 +376,7 @@ module.exports = {
                 importLoaders: 2,
                 sourceMap: shouldUseSourceMap,
               },
-              'sass-loader'
+              'sass-loader',
             ),
           },
           // Adds support for CSS Modules, but using SASS
@@ -398,7 +390,7 @@ module.exports = {
                 modules: true,
                 getLocalIdent: getCSSModuleLocalIdent,
               },
-              'sass-loader'
+              'sass-loader',
             ),
           },
           // "file" loader makes sure assets end up in the `build` folder.
@@ -442,8 +434,7 @@ module.exports = {
     }),
     // Inlines the webpack runtime script. This script is too small to warrant
     // a network request.
-    shouldInlineRuntimeChunk &&
-      new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
+    shouldInlineRuntimeChunk && new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
     // Makes some environment variables available in index.html.
     // The public URL is available as %PUBLIC_URL% in index.html, e.g.:
     // <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
@@ -470,14 +461,14 @@ module.exports = {
       test: /\.(js|json|css|html|svg)$/,
       threshold: 10240,
       minRatio: 0.8,
-      quality: 11
+      quality: 11,
     }),
     new BrotliGzipPlugin({
       asset: '[path].gz[query]',
       algorithm: 'gzip',
       test: /\.(js|json|css|html|svg)$/,
       threshold: 10240,
-      minRatio: 0.8
+      minRatio: 0.8,
     }),
     // Generate a manifest file which contains a mapping of all asset filenames
     // to their corresponding output file so that tools can pick it up without
@@ -537,7 +528,7 @@ module.exports = {
         formatter: typescriptFormatter,
       }),
   ].filter(Boolean),
-  
+
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
   node: {
