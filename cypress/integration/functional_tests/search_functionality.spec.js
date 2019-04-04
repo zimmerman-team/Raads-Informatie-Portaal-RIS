@@ -26,12 +26,6 @@ context('Test general search functionality', () => {
     cy.get('.remove-filters-span').click({ force: true });
     cy.wait(3000);
   });
-  it('Change views', () => {
-    cy.queryByText('Tijdslijn').click({ force: true });
-    cy.wait(1000);
-    cy.queryByText('Lijst').click({ force: true });
-    cy.wait(1000);
-  });
   it('Change sorting', () => {
     cy.get('.sort-by-menu').click({ force: true });
     cy.wait(1000);
