@@ -46,15 +46,20 @@ jobs:
           at: ~/RAADS-INFORMATIE-PORTAAL-RIS
       - run: sed -i -e "s/'X'/'Almere'/g" src/config.js
       - run: sed -i -e "s/'X'/'Almere'/g" src/styles/variables.scss
+      - run: 
+          name: Set CI env var
+          command: |
+            echo 'export CI=""' >> $BASH_ENV
+            source $BASH_ENV
       - run: yarn build
-      - run: sudo apt install rsync
-      - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
-      - add_ssh_keys:
-          name: Add SSH KEY
-          fingerprints:
-            - $FINGERPRINT
-      - run: eval ssh-agent -s
-      - run: rsync -ave ssh ~/RAADS-INFORMATIE-PORTAAL-RIS/build/ $SSH_USER@$SSH_HOST:~/RAADS-INFORMATIE-PORTAAL-RIS/build
+      # - run: sudo apt install rsync
+      # - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
+      # - add_ssh_keys:
+      #     name: Add SSH KEY
+      #     fingerprints:
+      #       - $FINGERPRINT
+      # - run: eval ssh-agent -s
+      # - run: rsync -ave ssh ~/RAADS-INFORMATIE-PORTAAL-RIS/build/ $SSH_USER@$SSH_HOST:~/RAADS-INFORMATIE-PORTAAL-RIS/build
 
   #  EVALUATE BROWSER PERFORMANCE WITH LIGHTHOUSE
   test_performance:

@@ -19,12 +19,18 @@ const PublicAgenda = AsyncComponent(() => import('./containers/Agenda/PublicAgen
 const AgendaDetail = AsyncComponent(() => import('./containers/Agenda/AgendaDetail/AgendaDetail'));
 const DocumentDetail = AsyncComponent(() => import('./containers/DocumentDetail/DocumentDetail'));
 const Profile = AsyncComponent(() => import('./containers/Profile/Profile'));
-const ActivatePage = AsyncComponent(() => import('./containers/Activation/ActivateInfoPage/ActivatePage'));
+const ActivatePage = AsyncComponent(() =>
+  import('./containers/Activation/ActivateInfoPage/ActivatePage'),
+);
 const Login = AsyncComponent(() => import('./containers/Login/Login'));
-const ActivateAccount = AsyncComponent(() => import('./containers/Activation/ActivateAccount/ActivateAccount'));
+const ActivateAccount = AsyncComponent(() =>
+  import('./containers/Activation/ActivateAccount/ActivateAccount'),
+);
 const PasswordReset = AsyncComponent(() => import('./containers/PasswordReset'));
 const NotFound = AsyncComponent(() => import('./containers/NotFound'));
-const MyNotifications = AsyncComponent(() => import('./containers/Dashboard/MyNotifications/MyNotifications'));
+const MyNotifications = AsyncComponent(() =>
+  import('./containers/Dashboard/MyNotifications/MyNotifications'),
+);
 const MyNotes = AsyncComponent(() => import('./containers/Dashboard/MyNotes/MyNotes'));
 const MyAgenda = AsyncComponent(() => import('./containers/Dashboard/MyAgenda/MyAgenda'));
 const FolderInvitation = AsyncComponent(() => import('./containers/FolderInvitation'));
