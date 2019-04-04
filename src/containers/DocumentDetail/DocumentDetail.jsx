@@ -24,7 +24,7 @@ import {
   setDossierModal,
   setAddNote,
   setSelectedCombinedItemID,
-  removeSelectedCombinedItemID,
+  removeSelectedCombinedItemID
 } from '../../actions/generalActions';
 import { changeDocumentPublishStatus } from '../../actions/publisherActions';
 import { loadUserDossiers, addToDossier, addFavorite } from '../../actions/userActions';
@@ -57,7 +57,7 @@ class DocumentDetail extends React.Component {
       selectedColor: appResources.pickerColors[0],
       item_id_to_new_dossier: 0,
       docDetails: [],
-      docStyle: styles.document_normal,
+      docStyle: styles.document_normal
     };
 
     this.onDocumentLoad = this.onDocumentLoad.bind(this);
@@ -114,7 +114,7 @@ class DocumentDetail extends React.Component {
           fileUrl:
             !isLocalHost && data.url.charAt(4) !== 's'
               ? data.url.replace('http', 'https')
-              : data.url,
+              : data.url
         };
       case 1:
         return {
@@ -132,7 +132,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.document.url.charAt(4) !== 's'
                 ? data.document.url.replace('http', 'https')
                 : data.document.url
-              : '',
+              : ''
         };
       case 2:
         return {
@@ -150,7 +150,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.question_document.url.charAt(4) !== 's'
                 ? data.question_document.url.replace('http', 'https')
                 : data.question_document.url
-              : '',
+              : ''
         };
       case 3:
         return {
@@ -168,7 +168,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.question_document.url.charAt(4) !== 's'
                 ? data.question_document.url.replace('http', 'https')
                 : data.question_document.url
-              : '',
+              : ''
         };
       case 4:
         return {
@@ -186,7 +186,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.document.url.charAt(4) !== 's'
                 ? data.document.url.replace('http', 'https')
                 : data.document.url
-              : '',
+              : ''
         };
       case 5:
         return {
@@ -194,7 +194,7 @@ class DocumentDetail extends React.Component {
           category: 'Presidium besluitenlijsten',
           status: 'Onvoldoende Besproken',
           name: data.title,
-          date: data.publication_date,
+          date: data.document_date,
           notes: data.notes,
           type: 'Presidium besluitenlijsten',
           type2: 'policy_document',
@@ -204,7 +204,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.document.url.charAt(4) !== 's'
                 ? data.document.url.replace('http', 'https')
                 : data.document.url
-              : '',
+              : ''
         };
       case 6:
         return {
@@ -212,7 +212,7 @@ class DocumentDetail extends React.Component {
           category: 'Raadsbrieven',
           status: 'Onvoldoende Besproken',
           name: data.title,
-          date: data.publication_date,
+          date: data.document_date,
           notes: data.notes,
           type: 'Raadsbrieven',
           type2: 'management_document',
@@ -222,7 +222,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.document.url.charAt(4) !== 's'
                 ? data.document.url.replace('http', 'https')
                 : data.document.url
-              : '',
+              : ''
         };
       case 7:
         return {
@@ -240,7 +240,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.document.url.charAt(4) !== 's'
                 ? data.document.url.replace('http', 'https')
                 : data.document.url
-              : '',
+              : ''
         };
       case 8:
         return {
@@ -258,7 +258,7 @@ class DocumentDetail extends React.Component {
               ? !isLocalHost && data.new_document.url.charAt(4) !== 's'
                 ? data.new_document.url.replace('http', 'https')
                 : data.new_document.url
-              : '',
+              : ''
         };
       default:
         return '';
@@ -272,7 +272,12 @@ class DocumentDetail extends React.Component {
     axios
       .get(url)
       .then(response => {
-        if (!response.data.published && !_this.props.is_admin && !_this.props.is_author && !_this.props.is_raadslid) {
+        if (
+          response.data.published === false &&
+          !_this.props.is_admin &&
+          !_this.props.is_author &&
+          !_this.props.is_raadslid
+        ) {
           browserHistory.push('/zoeken');
         }
         const docDetails = _this.getDocDetails(response.data);
@@ -281,22 +286,25 @@ class DocumentDetail extends React.Component {
         _this.setState({
           docDetails,
           docCombinedID: response.data.combined_id,
-          docURL: appResources.municipality === 'Utrecht'
-            ? "https://cors-anywhere.herokuapp.com/".concat(docDetails.fileUrl.replace('almere.notubiz.nl', 'api.notubiz.nl'))
-            : docDetails.fileUrl.replace('almere.notubiz.nl', 'api.notubiz.nl'),
+          docURL:
+            appResources.municipality === 'Utrecht'
+              ? 'https://cors-anywhere.herokuapp.com/'.concat(
+                  docDetails.fileUrl.replace('almere.notubiz.nl', 'api.notubiz.nl')
+                )
+              : docDetails.fileUrl.replace('almere.notubiz.nl', 'api.notubiz.nl'),
           downloadURL: docDetails.fileUrl.replace('almere.notubiz.nl', 'api.notubiz.nl'),
           docName: docDetails.name,
           docDate: moment(docDetails.date).format('DD-MM-YYYY'),
           docType: docDetails.type,
           docType2: docDetails.type2,
           docAuthor: docDetails.author,
-          docPublished: response.data.published,
+          docPublished: response.data.published
           // docNotes: docDetails.notes
         });
       })
       .catch(error => {
         _this.setState({
-          pdfMessage: 'Geen gegevens in dit document.',
+          pdfMessage: 'Geen gegevens in dit document.'
         });
       });
   }
@@ -320,7 +328,7 @@ class DocumentDetail extends React.Component {
           browserHistory.replace(
             `/document/${this.props.params.type}/${this.props.params.docID}?p=${
               this.state.pageIndex
-            }`,
+            }`
           );
           this.setState({ pageIndex: this.state.pageIndex - 1, prevDisabled: false });
         } else {
@@ -336,7 +344,7 @@ class DocumentDetail extends React.Component {
         if (this.state.pageIndex !== this.state.totalPages - 1) {
           browserHistory.replace(
             `/document/${this.props.params.type}/${this.props.params.docID}?p=${this.state
-              .pageIndex + 2}`,
+              .pageIndex + 2}`
           );
           this.setState({ pageIndex: this.state.pageIndex + 1, nextDisabled: false });
         } else {
@@ -387,17 +395,17 @@ class DocumentDetail extends React.Component {
       switch (this.state.docStyle) {
         case styles.document_normal:
           this.setState({
-            docStyle: styles.document_increased,
+            docStyle: styles.document_increased
           });
           break;
         case styles.document_increased:
           this.setState({
-            docStyle: styles.document_double_increased,
+            docStyle: styles.document_double_increased
           });
           break;
         case styles.document_double_increased:
           this.setState({
-            docStyle: styles.document_normal,
+            docStyle: styles.document_normal
           });
           break;
         default:
@@ -442,7 +450,7 @@ class DocumentDetail extends React.Component {
         primaryText="Add new map"
         leftIcon={<ContentAdd />}
         onClick={() => this.props.setDossierModal(this.state.docCombinedID)}
-      />,
+      />
     );
 
     const icon_menu = (
@@ -455,7 +463,7 @@ class DocumentDetail extends React.Component {
           title: docName,
           type: docType,
           download_url: downloadURL,
-          url: `/document/${params.type}/${params.docID}`,
+          url: `/document/${params.type}/${params.docID}`
         }}
         dossiers={dossiers}
       />
@@ -474,18 +482,22 @@ class DocumentDetail extends React.Component {
                     labelStyle={{
                       fontSize: 21,
                       color: '#0c74d5',
-                      width: 'calc(100% - 30px)',
+                      width: 'calc(100% - 30px)'
                     }}
                     label="publiceren naar RIS portaal"
                     onToggle={(e, value) => {
-                      this.props.changeDocumentPublishStatus(parseInt(params.docID, 10), this.state.docType2, value);
+                      this.props.changeDocumentPublishStatus(
+                        parseInt(params.docID, 10),
+                        this.state.docType2,
+                        value
+                      );
                       this.setState({ docPublished: value });
                     }}
                     style={{
                       display: 'inline-flex',
                       marginRight: 20,
                       width: 'fit-content',
-                      height: 'fit-content',
+                      height: 'fit-content'
                     }}
                   />
                 </div>
@@ -538,7 +550,9 @@ class DocumentDetail extends React.Component {
                         file={docURL}
                         onLoadSuccess={this.onDocumentLoad}
                         loading={<div className={styles.documentLoading}>PDF laden ...</div>}
-                        noData={<div className={styles.documentLoading}>{this.state.pdfMessage}</div>}
+                        noData={
+                          <div className={styles.documentLoading}>{this.state.pdfMessage}</div>
+                        }
                         error={
                           <div className={styles.documentLoading}>
                             Dit type document kunt u niet in deze applicatie openen,{' '}
@@ -587,19 +601,22 @@ function mapStateToProps(state) {
     dossiers: user.dossiers,
     is_admin: user.is_admin,
     is_author: user.type === 'auteur',
-    is_raadslid: user.type === 'raadslid',
+    is_raadslid: user.type === 'raadslid'
   };
 }
 
-export default connect(mapStateToProps, {
-  setSnackBar,
-  addFavorite,
-  addToDossier,
-  setDossierModal,
-  setAddNote,
-  loadUserDossiers,
-  loadMyNotes,
-  setSelectedCombinedItemID,
-  removeSelectedCombinedItemID,
-  changeDocumentPublishStatus,
-})(DocumentDetail);
+export default connect(
+  mapStateToProps,
+  {
+    setSnackBar,
+    addFavorite,
+    addToDossier,
+    setDossierModal,
+    setAddNote,
+    loadUserDossiers,
+    loadMyNotes,
+    setSelectedCombinedItemID,
+    removeSelectedCombinedItemID,
+    changeDocumentPublishStatus
+  }
+)(DocumentDetail);

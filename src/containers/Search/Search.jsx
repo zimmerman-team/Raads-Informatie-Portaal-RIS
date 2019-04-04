@@ -232,21 +232,8 @@ class Search extends React.Component {
         className: 'search-generic-cell'
       },
       {
-        Header: 'Evenement datum',
+        Header: 'Evenement/Doc datum',
         accessor: 'event_date',
-        Cell: props => (
-          <GeneralTitleCell
-            paddingTop={10}
-            value={props.value}
-            hasDescription={props.original.title.description !== ''}
-          />
-        ),
-        headerClassName: 'search-generic-header',
-        className: 'search-generic-cell'
-      },
-      {
-        Header: 'Laatst gewijzigd',
-        accessor: 'last_modified',
         Cell: props => (
           <GeneralTitleCell
             paddingTop={10}
