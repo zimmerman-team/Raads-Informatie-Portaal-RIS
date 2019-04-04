@@ -29,7 +29,7 @@ const appleIcon = require('../../images/applecalendar.png');
 
 const decision_icon_style = {
   color: '#fa511e',
-  float: 'left',
+  float: 'left'
 };
 const opened_folder_icon = <Glyphicon glyph="folder-open" className="folder-item-icon" />;
 const calendar_icon = (
@@ -202,7 +202,7 @@ export class SavedQuerriesCell extends React.Component {
       tab: data.original.tab,
       page: data.original.page,
       sortBy: data.original.sort_by,
-      filters: data.original.filters,
+      filters: data.original.filters
     };
     return (
       <div className="title-cell">
@@ -215,7 +215,7 @@ export class SavedQuerriesCell extends React.Component {
             style={{
               color: appResources.in_content_color,
               fontWeight: 'bold',
-              verticalAlign: 'sub',
+              verticalAlign: 'sub'
             }}
           >
             {data.original.title}
@@ -353,7 +353,7 @@ export class MyAgendaMenuCell extends React.Component {
                 primaryText="Shareable link"
                 leftIcon={<ContentLink />}
                 onClick={() => share('Link', `/evenement/${data.id}`, 'agenda', 'Link')}
-              />,
+              />
             ]}
           />
         </IconMenu>
@@ -477,10 +477,9 @@ export class MenuCell extends React.Component {
       favoriteAction,
       addToDossier,
       iconStyle,
-      addAgenda,
       addNotification,
       deleteFile,
-      removeItemFromDossier,
+      removeItemFromDossier
     } = this.props;
     let item_menu = '';
     const item = data[0] ? data[0] : data.original;
@@ -506,7 +505,7 @@ export class MenuCell extends React.Component {
           primaryText="Add new map"
           leftIcon={<ContentAdd />}
           onClick={() => handleOpenNewDossier(item.options.combined_id)}
-        />,
+        />
       );
     }
 
@@ -516,7 +515,7 @@ export class MenuCell extends React.Component {
         description: item.title.title,
         location: `Gemeente ${appResources.municipality}`,
         startTime: item.created_at,
-        endTime: item.created_at,
+        endTime: item.created_at
       };
 
       item_menu = (
@@ -552,7 +551,7 @@ export class MenuCell extends React.Component {
                     item.type,
                     getItemDetailUrl(item.type, item.options.origin_id),
                     item.title.title,
-                    'Email',
+                    'Email'
                   )
                 }
               />,
@@ -564,10 +563,10 @@ export class MenuCell extends React.Component {
                     item.type,
                     getItemDetailUrl(item.type, item.options.origin_id),
                     item.title.title,
-                    'Link',
+                    'Link'
                   )
                 }
-              />,
+              />
             ]}
           />
           <MenuItem
@@ -625,17 +624,8 @@ export class MenuCell extends React.Component {
                 primaryText="Apple Calendar"
                 leftIcon={<img src={appleIcon} alt="apple icon" width="32" height="32" />}
                 onClick={() => downloadEvent(calEvent, 'Apple')}
-              />,
+              />
             ]}
-          />
-          <MenuItem
-            primaryText={'Toevoegen aan persoonlijke agenda'}
-            leftIcon={
-              <i className="material-icons" style={{ color: '#808080' }}>
-                event_available
-              </i>
-            }
-            onClick={() => addAgenda(item.options.origin_id)}
           />
         </IconMenu>
       );
@@ -714,7 +704,7 @@ export class MenuCell extends React.Component {
                     item.type,
                     getItemDetailUrl(item.type, item.options.origin_id),
                     item.title.title,
-                    'Email',
+                    'Email'
                   )
                 }
               />,
@@ -726,10 +716,10 @@ export class MenuCell extends React.Component {
                     item.type,
                     getItemDetailUrl(item.type, item.options.origin_id),
                     item.title.title,
-                    'Link',
+                    'Link'
                   )
                 }
-              />,
+              />
             ]}
           />
           <MenuItem

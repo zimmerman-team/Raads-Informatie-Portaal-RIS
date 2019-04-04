@@ -22,7 +22,6 @@ import {
   loadUserDossiers,
   addToDossier,
   addFavorite,
-  addAgenda,
   addNotification
 } from '../../actions/userActions';
 import HeaderIcon from '../../components/icons/Search';
@@ -443,7 +442,6 @@ export default withRouter(
       specifySearch,
       setDossierModal,
       removeAllFilters,
-      addAgenda,
       loadUserDossiers,
       addNotification,
       setDocumentModal,

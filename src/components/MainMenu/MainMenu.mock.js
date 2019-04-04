@@ -7,7 +7,7 @@ const data = [
     route: '/close',
     bottomBorder: false,
     controller: true,
-    highlight: true,
+    highlight: true
   },
   {
     title: 'Raadszoekmachine',
@@ -15,28 +15,28 @@ const data = [
     route: '/',
     bottomBorder: false,
     controller: false,
-    highlight: true,
+    highlight: true
   },
   {
     title: 'Zoeken',
     icon: 'search',
     route: '/zoeken',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Agenda',
     icon: 'calendar',
     route: '/agenda',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Publieke dossiers',
     icon: 'public_dossiers',
     route: '/publieke-dossiers',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Over de Raad',
@@ -44,57 +44,50 @@ const data = [
     route: '/over-de-raad',
     bottomBorder: true,
     controller: false,
-    externalLink: appResources.externalAboutLink,
+    externalLink: appResources.externalAboutLink
   },
   {
     title: 'Notificaties',
     icon: 'notifications',
     route: '/notificaties',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Bewaarde zoekopdrachten',
     icon: 'queries',
     route: '/bewaarde_zoekopdrachten',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Favorieten',
     icon: 'favorites',
     route: '/favorieten',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Mijn folders',
     icon: 'folders',
     route: '/folders',
     bottomBorder: false,
-    controller: false,
-  },
-  {
-    title: 'Mijn Kalender',
-    icon: 'my_agenda',
-    route: '/mijn_kalender',
-    bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Mijn notities',
     icon: 'my_notes',
     route: '/mijn_notities',
     bottomBorder: false,
-    controller: false,
+    controller: false
   },
   {
     title: 'Profiel aanpassen',
     icon: 'profile',
     route: '/profiel',
     bottomBorder: true,
-    controller: false,
-  },
+    controller: false
+  }
 ];
 
 export default data;

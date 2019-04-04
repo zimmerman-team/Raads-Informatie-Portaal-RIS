@@ -25,11 +25,10 @@ export default function generalOptions(
   setDossierModal,
   addFavorite,
   addToDossier,
-  addAgenda,
   addNotification,
   deleteFile = undefined,
   editDocFunc = undefined,
-  delDocFunc = undefined,
+  delDocFunc = undefined
 ) {
   const menuItems = [];
 
@@ -40,7 +39,7 @@ export default function generalOptions(
       primaryText="Add new map"
       leftIcon={<ContentAdd />}
       onClick={() => setDossierModal(item.uid)}
-    />,
+    />
   ];
 
   dossierMenu.push(
@@ -54,21 +53,20 @@ export default function generalOptions(
           onClick={() => addToDossier(dossier.id, item.uid)}
         />
       );
-    }),
+    })
   );
 
   menuItems.push(
     //DOWNLOAD DOC
-    item.type !== 'event' &&
-      item.download_url && (
-        <MenuItem
-          className="option-menu-item"
-          key={'1'}
-          primaryText={'Downloaden'}
-          leftIcon={<FileDownload />}
-          onClick={() => window.open(item.download_url)}
-        />
-      ),
+    item.type !== 'event' && item.download_url && (
+      <MenuItem
+        className="option-menu-item"
+        key={'1'}
+        primaryText={'Downloaden'}
+        leftIcon={<FileDownload />}
+        onClick={() => window.open(item.download_url)}
+      />
+    ),
     // SHARE
     <MenuItem
       className="option-menu-item"
@@ -89,7 +87,7 @@ export default function generalOptions(
           primaryText={'Shareable link'}
           leftIcon={<ContentLink />}
           onClick={() => share(item.type, item.url, item.title, 'Link')}
-        />,
+        />
       ]}
     />,
     // ADD TO FOLDER
@@ -127,7 +125,7 @@ export default function generalOptions(
       />
     ) : (
       ''
-    ),
+    )
   );
   // AGENDA SPECIFIC ITEMS
   if (
@@ -169,21 +167,9 @@ export default function generalOptions(
             primaryText={'Apple Calendar'}
             leftIcon={<img src={appleIcon} alt="apple icon" width="32" height="32" />}
             onClick={() => downloadEvent(item, 'Apple')}
-          />,
+          />
         ]}
-      />,
-      // ADD TO MY AGENDA
-      <MenuItem
-        className="option-menu-item"
-        key={'8'}
-        primaryText={'Toevoegen aan persoonlijke agenda'}
-        leftIcon={
-          <i className="material-icons" style={{ color: '#808080' }}>
-            event_available
-          </i>
-        }
-        onClick={() => addAgenda(item.id)}
-      />,
+      />
     );
   }
 
@@ -202,7 +188,7 @@ export default function generalOptions(
         primaryText={'Bewerk document'}
         leftIcon={<ModeEdit />}
         onClick={editDocFunc}
-      />,
+      />
     );
     menuItems.push(
       // EDIT DOCUMENT
@@ -212,7 +198,7 @@ export default function generalOptions(
         primaryText={'Document verwijderen'}
         leftIcon={<ActionDelete />}
         onClick={delDocFunc}
-      />,
+      />
     );
   }
 

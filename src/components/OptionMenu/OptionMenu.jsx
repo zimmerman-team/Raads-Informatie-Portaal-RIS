@@ -20,12 +20,11 @@ import {
   addFavorite,
   addNoteToDossier,
   addToDossier,
-  addAgenda,
   addNotification,
   deleteDossier,
   unshareDossier,
   removeFavorite,
-  removeAgenda,
+  removeAgenda
 } from '../../actions/userActions';
 import { setDossierModal } from '../../actions/generalActions';
 import { removeNote } from '../../actions/notesActions';
@@ -39,14 +38,14 @@ const propTypes = {
   anchorOrigin: PropTypes.object,
   targetOrigin: PropTypes.object,
   extraStyle: PropTypes.object,
-  iconColor: PropTypes.string,
+  iconColor: PropTypes.string
 };
 
 const defaultProps = {
   anchorOrigin: appResources.itemMenuAnchorOrigin,
   targetOrigin: appResources.itemMenuTargetOrigin,
   extraStyle: {},
-  iconColor: '#444',
+  iconColor: '#444'
 };
 
 class OptionMenu extends React.Component {
@@ -54,7 +53,7 @@ class OptionMenu extends React.Component {
     super(props);
 
     this.state = {
-      showOptionMenu: false,
+      showOptionMenu: false
     };
 
     this.formatMenuData = this.formatMenuData.bind(this);
@@ -75,7 +74,7 @@ class OptionMenu extends React.Component {
         title: temp.title.title,
         download_url: temp.url,
         url: getItemDetailUrl(temp.options.type, temp.options.origin_id),
-        authorizedUser,
+        authorizedUser
       };
     } else if (type === 'my_agenda') {
       const temp = data.original;
@@ -84,7 +83,7 @@ class OptionMenu extends React.Component {
         type: temp.parent_event ? 'child_event' : 'event',
         id: temp.id,
         uid: temp.combined_id,
-        title: temp.name,
+        title: temp.name
       };
       item.url = getItemDetailUrl(item.type, item.id);
     } else if (
@@ -118,7 +117,6 @@ class OptionMenu extends React.Component {
       userID,
       addFavorite,
       addToDossier,
-      addAgenda,
       addNotification,
       deleteDossier,
       unshareDossier,
@@ -133,7 +131,7 @@ class OptionMenu extends React.Component {
       delName,
       editName,
       delDocFunc,
-      addNoteToDossier,
+      addNoteToDossier
     } = this.props;
 
     const item = this.formatMenuData(data, optionType);
@@ -148,7 +146,7 @@ class OptionMenu extends React.Component {
           <div className="option-close-text"> Sluiten </div>
           <i className="material-icons">close</i>
         </span>
-      </div>,
+      </div>
     );
 
     menuItems.push(<hr key={shortid.generate()} className="divider-line" />);
@@ -168,7 +166,7 @@ class OptionMenu extends React.Component {
           leftIcon={<Delete />}
           primaryText="Evenement verwijderen"
           onClick={this.props.delete}
-        />,
+        />
       );
     }
 
@@ -180,7 +178,7 @@ class OptionMenu extends React.Component {
           leftIcon={<Delete />}
           primaryText="Agendapunt document verwijderen"
           onClick={this.props.delete}
-        />,
+        />
       );
     }
 
@@ -192,7 +190,7 @@ class OptionMenu extends React.Component {
           leftIcon={<Delete />}
           primaryText="Gerelateerde document verwijderen"
           onClick={this.props.delete}
-        />,
+        />
       );
     }
 
@@ -204,7 +202,7 @@ class OptionMenu extends React.Component {
           leftIcon={<Delete />}
           primaryText="Agendapunt dossier verwijderen"
           onClick={this.props.delete}
-        />,
+        />
       );
     }
 
@@ -226,8 +224,8 @@ class OptionMenu extends React.Component {
           deleteDossier,
           unshareDossier,
           optionType,
-          extraFunction,
-        ),
+          extraFunction
+        )
       );
     }
     // PUBLIC FOLDERS ITEMS
@@ -239,7 +237,7 @@ class OptionMenu extends React.Component {
           leftIcon={<SocialShare />}
           primaryText="Delen"
           onClick={this.props.share}
-        />,
+        />
       );
       if (this.props.is_admin) {
         menuItems.push(
@@ -256,7 +254,7 @@ class OptionMenu extends React.Component {
             leftIcon={<Delete />}
             primaryText="Verwijder dossier"
             onClick={this.props.delete}
-          />,
+          />
         );
       }
     }
@@ -267,7 +265,7 @@ class OptionMenu extends React.Component {
     // MY NOTE ITEMS
     else if (optionType === 'notes') {
       menuItems.push(
-        notesOptions(item, _dossiers, removeNote, extraFunction, setDossierModal, addNoteToDossier),
+        notesOptions(item, _dossiers, removeNote, extraFunction, setDossierModal, addNoteToDossier)
       );
     }
     // FOR FOLDER CONTENT ITEMS
@@ -284,10 +282,9 @@ class OptionMenu extends React.Component {
             setDossierModal,
             addFavorite,
             addToDossier,
-            addAgenda,
             addNotification,
-            extraFunction,
-          ),
+            extraFunction
+          )
         );
       }
     } else if (optionType === 'folder_note_content') {
@@ -298,7 +295,7 @@ class OptionMenu extends React.Component {
           primaryText="Verwijderen uit folder"
           leftIcon={<ActionDelete />}
           onClick={extraFunction}
-        />,
+        />
       );
     }
     // FOR DOSSIER CONTENT ITEMS
@@ -313,8 +310,8 @@ class OptionMenu extends React.Component {
             addFavorite,
             addToDossier,
             null,
-            addNotification,
-          ),
+            addNotification
+          )
         );
       } else {
         // PUBLIC DOSSIER DOCUMENT ITEMS
@@ -326,8 +323,8 @@ class OptionMenu extends React.Component {
             addFavorite,
             addToDossier,
             null,
-            addNotification,
-          ),
+            addNotification
+          )
         );
       }
     } else if (optionType === 'agenda_point') {
@@ -346,7 +343,7 @@ class OptionMenu extends React.Component {
             leftIcon={<Delete />}
             primaryText="Agendapunt verwijderen"
             onClick={this.props.delete}
-          />,
+          />
         );
       }
     } else if (optionType === 'agenda_dossier') {
@@ -357,7 +354,7 @@ class OptionMenu extends React.Component {
           leftIcon={<SocialShare />}
           primaryText="Delen"
           onClick={this.props.share}
-        />,
+        />
       );
     }
     // FOR ALL PUBLICLY AVAILABLE ITEMS
@@ -369,12 +366,11 @@ class OptionMenu extends React.Component {
           setDossierModal,
           addFavorite,
           addToDossier,
-          addAgenda,
           addNotification,
           undefined,
           editDocFunc,
-          delDocFunc,
-        ),
+          delDocFunc
+        )
       );
     }
 
@@ -421,20 +417,22 @@ function mapStateToProps(state) {
   return {
     userID: user.userID,
     userType: user.type,
-    is_admin: user.is_admin,
+    is_admin: user.is_admin
   };
 }
 
-export default connect(mapStateToProps, {
-  addFavorite,
-  addToDossier,
-  addNoteToDossier,
-  addAgenda,
-  addNotification,
-  removeFavorite,
-  deleteDossier,
-  unshareDossier,
-  setDossierModal,
-  removeAgenda,
-  removeNote,
-})(OptionMenu);
+export default connect(
+  mapStateToProps,
+  {
+    addFavorite,
+    addToDossier,
+    addNoteToDossier,
+    addNotification,
+    removeFavorite,
+    deleteDossier,
+    unshareDossier,
+    setDossierModal,
+    removeAgenda,
+    removeNote
+  }
+)(OptionMenu);
