@@ -25,7 +25,7 @@ import {
   FORMATED_MOTION,
   FORMATED_COMMITMENT,
   FORMATED_CHILD_EVENT,
-  PUBLIC_DOSSIER,
+  PUBLIC_DOSSIER
 } from './constants';
 import * as Colors from '@material-ui/core/colors';
 
@@ -69,13 +69,13 @@ export function datetify(datetimeObj) {
     'september',
     'oktober',
     'november',
-    'december',
+    'december'
   ];
   const dt = datetimeObj.replace(
     /(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):\d{2}/,
     ($0, $1, $2, $3, $4, $5) => {
       return `${$3} ${MM[$2 - 1]}, ${$1}`;
-    },
+    }
   );
   return dt.split('.')[0];
 }
@@ -182,7 +182,7 @@ function calculateDuration(startTime, endTime) {
   const start = _moment2.default.utc(startTime).format('DD/MM/YYYY HH:mm:ss');
 
   const difference = (0, _moment2.default)(end, 'DD/MM/YYYY HH:mm:ss').diff(
-    (0, _moment2.default)(start, 'DD/MM/YYYY HH:mm:ss'),
+    (0, _moment2.default)(start, 'DD/MM/YYYY HH:mm:ss')
   );
 
   const duration = _moment2.default.duration(difference);
@@ -257,7 +257,7 @@ export function downloadEvent(event, calendar) {
         `DESCRIPTION:${event.description}`,
         `LOCATION:${event.location}`,
         'END:VEVENT',
-        'END:VCALENDAR',
+        'END:VCALENDAR'
       ].join('\n');
       var blob = new Blob([calendarUrl], { type: 'text/calendar;charset=utf-8' });
       FileSaver.saveAs(blob, `${event.title}.ics`);
@@ -271,7 +271,33 @@ function copyToClipboard(value) {
   textArea.style.position = 'absolute';
   textArea.style.opacity = '0';
   document.body.appendChild(textArea);
-  textArea.select();
+
+  // handle iOS as a special case
+  if (navigator.userAgent.match(/ipad|ipod|iphone/i)) {
+    // save current contentEditable/readOnly status
+    const editable = textArea.contentEditable;
+    const readOnly = textArea.readOnly;
+
+    // convert to editable with readonly to stop iOS keyboard opening
+    textArea.contentEditable = true;
+    textArea.readOnly = true;
+
+    // create a selectable range
+    const range = document.createRange();
+    range.selectNodeContents(textArea);
+
+    // select the range
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+    textArea.setSelectionRange(0, 999999);
+
+    // restore contentEditable/readOnly to original state
+    textArea.contentEditable = editable;
+    textArea.readOnly = readOnly;
+  } else {
+    textArea.select();
+  }
 
   try {
     const successful = document.execCommand('copy');
@@ -294,7 +320,7 @@ export function share(item_type, item_url, item_name, type) {
       } en wilde dit graag met je delen.%0D%0A%0D%0AHartelijke groet,%0D%0A`;
       window.open(
         `mailto:?subject=RIS ${appResources.municipality}: ${item_name}&body=${body}`,
-        '_self',
+        '_self'
       );
       break;
     case 'Link':
@@ -323,7 +349,7 @@ export function getUserDossiers() {
 export function getCounts() {
   axios
     .get(`accounts/user_items/`, {
-      headers: { Authorization: `Token ${sessionStorage.getItem('token')}` },
+      headers: { Authorization: `Token ${sessionStorage.getItem('token')}` }
     })
     .then(response => {
       sessionStorage.setItem('notifications_count', response.data[0].notifications_count);
@@ -439,7 +465,7 @@ export function getItemCounts() {
       sessionStorage.setItem('public_documents_count', response.data[0].public_documents_count);
       sessionStorage.setItem(
         'management_documents_count',
-        response.data[0].management_documents_count,
+        response.data[0].management_documents_count
       );
       sessionStorage.setItem('policy_documents_count', response.data[0].policy_documents_count);
     })
@@ -463,7 +489,7 @@ export function getItemCounts() {
 export function getUserInfo() {
   axios
     .get(`accounts/user/`, {
-      headers: { Authorization: `Token ${sessionStorage.getItem('token')}` },
+      headers: { Authorization: `Token ${sessionStorage.getItem('token')}` }
     })
     .then(response => {
       sessionStorage.setItem('user_id', response.data.pk);
