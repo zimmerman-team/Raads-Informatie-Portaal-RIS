@@ -46,6 +46,11 @@ jobs:
           at: ~/RAADS-INFORMATIE-PORTAAL-RIS
       - run: sed -i -e "s/'X'/'Almere'/g" src/config.js
       - run: sed -i -e "s/'X'/'Almere'/g" src/styles/variables.scss
+      - run: 
+          name: Set CI env var
+          command: |
+            echo 'export CI=""' >> $BASH_ENV
+            source $BASH_ENV
       - run: yarn build
       - run: sudo apt install rsync
       - run: ssh-keyscan $SSH_HOST >> ~/.ssh/known_hosts
