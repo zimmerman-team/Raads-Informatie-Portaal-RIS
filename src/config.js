@@ -21,7 +21,7 @@ const getMunicipalityStyle = function(municipality) {
 const getBackendUrl = function(municipality) {
   switch (municipality) {
     case 'Almere':
-      return 'https://ris2-almere.zz-demos.net/api/';
+      return 'https://api.almere.ris.nyuki.io/api/';
     case 'Utrecht':
       return 'https://ris2-utrecht.zz-demos.net/api/';
     case 'Rotterdam':
