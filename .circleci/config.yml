@@ -79,7 +79,7 @@ jobs:
       - attach_workspace:
           at: ~/RAADS-INFORMATIE-PORTAAL-RIS
       - run: yarn add cypress
-      - run: export "CYPRESS_backendUrl=https://ris2-almere.zz-demos.net"
+      - run: export "CYPRESS_backendUrl=https://api.almere.ris.nyuki.io"
       - run: sed -i -e "s/'X'/'Almere'/g" src/config.js
       - run: sed -i -e "s/'X'/'Almere'/g" src/styles/variables.scss
       - run:

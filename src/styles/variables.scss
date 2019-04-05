@@ -1,4 +1,4 @@
-$municipality: 'X'; // Almere | Utrecht | Rotterdam
+$municipality: 'Almere'; // Almere | Utrecht | Rotterdam
 
 @mixin drawerbtncolor(){
     @if $municipality == 'Rotterdam' {
