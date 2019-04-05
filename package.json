@@ -198,7 +198,7 @@
     "cy:record": "cypress run --record --key 00f20b88-5b8e-4512-91af-be1bab7c731a",
     "cy:open": "cypress open",
     "validate:dependencies": "nsp check",
-    "lighthouse": "lighthouse-ci https://ris2-almere-test.zz-demos.net/",
+    "lighthouse": "lighthouse-ci https://app.almere.ris.test.nyuki.io/",
     "e2e": "cypress run",
     "e2e:chrome": "cypress run --browser chrome",
     "e2e:record": "cypress run --record",

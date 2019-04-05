@@ -99,6 +99,6 @@ workflows:
       - test_performance:
           requires:
             - build_&_deploy
-      - test_e2e:
-          requires:
-            - build_&_deploy
+      # - test_e2e:
+      #     requires:
+      #       - build_&_deploy
