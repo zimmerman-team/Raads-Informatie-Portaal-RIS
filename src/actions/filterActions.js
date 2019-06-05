@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import remove from 'lodash/remove';
 import * as types from './actionTypes';
 import { generateID } from '../helpers';
 import { loadCombined } from './combinedActions';
@@ -16,7 +16,7 @@ function fetchAddFilter(_filters, type, value, label) {
   return function(dispatch, getState) {
     const filters = _filters;
     if (type === 'date') {
-      _.remove(_filters, { type });
+      remove(_filters, { type });
     }
     filters.push({
       type,
@@ -38,13 +38,13 @@ export function removeFilter(type, id, loadData = true) {
   return function(dispatch, getState) {
     const { filters } = getState();
     dispatch(fetchRemoveFilter(filters, type, id));
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 
 function fetchRemoveFilter(filters, type, id) {
   return function(dispatch) {
-    _.remove(filters, { type, id });
+    remove(filters, { type, id });
     dispatch(removeFilterSuccess(filters));
   };
 }
@@ -58,7 +58,7 @@ export function removeFilterSuccess(filters) {
 export function removeAllFilters(loadData = true) {
   return function(dispatch, getState) {
     dispatch(fetchRemoveAllFilters());
-    if (loadData) dispatch(loadCombined());
+    // if (loadData) dispatch(loadCombined());
   };
 }
 
@@ -77,7 +77,7 @@ export function removeAllFilterSuccess() {
 export function setFilters(filters) {
   return function(dispatch, getState) {
     dispatch(fetchSetFilters(filters));
-    dispatch(loadCombined());
+    // dispatch(loadCombined());
   };
 }
 

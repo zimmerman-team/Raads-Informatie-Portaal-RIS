@@ -1,6 +1,6 @@
 import React from 'react';
 import moment from 'moment/moment';
-import _ from 'lodash';
+import sortBy from 'lodash/sortBy';
 import styles from './VideoSpeakers.module.scss';
 
 class VideoSpeakers extends React.Component {
@@ -9,7 +9,7 @@ class VideoSpeakers extends React.Component {
 
     return (
       <div className={styles.speakersContainer}>
-        {_.sortBy(speakers, 'start_time').map((speaker, i) => {
+        {sortBy(speakers, 'start_time').map((speaker, i) => {
           const time = moment('2015-01-01')
             .startOf('day')
             .seconds(speaker.start_time)

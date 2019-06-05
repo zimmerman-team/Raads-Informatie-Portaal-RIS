@@ -3,7 +3,7 @@ import almere from './styles/municipalities/almere';
 import utrecht from './styles/municipalities/utrecht';
 import generalX from './styles/municipalities/generalX';
 
-const muni = 'X'; // Almere | Utrecht | Rotterdam
+const muni = 'Almere'; // Almere | Utrecht | Rotterdam
 
 const getMunicipalityStyle = function(municipality) {
   switch (municipality) {
@@ -21,7 +21,7 @@ const getMunicipalityStyle = function(municipality) {
 const getBackendUrl = function(municipality) {
   switch (municipality) {
     case 'Almere':
-      return 'https://ris2-almere.zz-demos.net/api/';
+      return 'https://api.almere.ris.nyuki.io/api/';
     case 'Utrecht':
       return 'https://ris2-utrecht.zz-demos.net/api/';
     case 'Rotterdam':

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
-import _ from 'lodash';
+import find from 'lodash/find';
+import filter from 'lodash/filter';
 import moment from 'moment';
 import vis from 'vis';
 import cx from 'classnames';
@@ -71,10 +72,10 @@ class HorizontalTimeline extends React.Component {
     )
       .toISOString()
       .substring(0, 10);
-    const search_text = _.filter(filters, { type: 'search' })
+    const search_text = filter(filters, { type: 'search' })
       .map(f => f.value)
       .join();
-    const typeParameter = _.filter(filters, { type: 'type' });
+    const typeParameter = filter(filters, { type: 'type' });
 
     const combinedUrl = `${
       appResources.backendUrl
@@ -157,7 +158,7 @@ class HorizontalTimeline extends React.Component {
     }
     timeline.on('click', properties => {
       if (properties.what === 'item') {
-        const item = _.find(_this.state.items, { id: properties.item });
+        const item = find(_this.state.items, { id: properties.item });
         if (item.has_content || item.group !== 1) {
           browserHistory.push(item.link);
         } else {

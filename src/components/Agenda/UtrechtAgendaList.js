@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import find from 'lodash/find';
 import moment from 'moment';
 import ItemMenu from '../OptionMenu/OptionMenu';
 import appResources from '../../appResources';
@@ -50,7 +50,7 @@ class UtrechtAgendaList extends React.Component {
       url: document.location.href,
     };
 
-    let selectedAgendaIndex = agendas.indexOf(_.find(agendas, { id: selectedAgendaItem }));
+    let selectedAgendaIndex = agendas.indexOf(find(agendas, { id: selectedAgendaItem }));
     selectedAgendaIndex = selectedAgendaIndex === -1 ? 1 : selectedAgendaIndex + 1;
 
     const room_end_time = room.end_time

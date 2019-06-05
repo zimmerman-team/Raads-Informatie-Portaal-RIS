@@ -8,28 +8,25 @@ export default function combinedReducer(state = combined, action) {
         ...state,
         resultsCount: action.data.resultsCount,
         data: action.data.data,
-        timelineData: action.data.timelineData,
-        timelineStart: action.data.timelineStart,
-        timelineEnd: action.data.timelineEnd,
-        isLoading: state.apiCallCount - 1 !== 0,
-        apiCallCount: state.apiCallCount - 1,
+        isLoading: false,
+        apiCallCount: state.apiCallCount - 1
       };
     case types.LOAD_COMBINED_REQUEST:
       return {
         ...state,
         apiCallCount: state.apiCallCount + 1,
-        isLoading: true,
+        isLoading: true
       };
     case types.LOAD_COMBINED_FAILURE:
       return {
         ...state,
         apiCallCount: state.apiCallCount + 1,
-        isLoading: false,
+        isLoading: false
       };
     case types.SPECIFY_SEARCH:
       return {
         ...state,
-        searchType: action.typez,
+        searchType: action.typez
       };
     default:
       return state;

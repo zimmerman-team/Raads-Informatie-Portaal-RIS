@@ -37,6 +37,10 @@ class AddUserModal extends React.Component {
     this.getDisabledTip = this.getDisabledTip.bind(this);
   }
 
+  componentDidMount() {
+    window.addEventListener('beforeunload', e => { this.handleClose(); });
+  }
+
   componentDidUpdate(prevProps) {
     if (!isEqual(this.props.userToEdit, prevProps.userToEdit)) {
       if (this.props.userToEdit) {

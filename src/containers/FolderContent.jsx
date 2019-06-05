@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
+import isEqual from 'lodash/isEqual';
+import find from 'lodash/find';
+import remove from 'lodash/remove';
 import moment from 'moment';
 import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
@@ -26,14 +29,13 @@ import {
   removeFavorite,
   addToDossier,
   deleteDossier,
-  addAgenda,
   addNotification,
   uploadFile,
   deleteFile,
   removeFromDossier,
   unshareDossier,
   loadDossierContents,
-  removeNoteFromDossier,
+  removeNoteFromDossier
 } from '../actions/userActions';
 import { setDossierModal, setAddNote } from '../actions/generalActions';
 import ItemMenu from '../components/OptionMenu/OptionMenu';
@@ -58,12 +60,12 @@ class FolderContent extends React.Component {
         last_modified: '2000-01-01T00:00:00',
         owner: { id: -1, username: '', email: '', first_name: '', last_name: '' },
         shared_users: [],
-        title: '_none_',
+        title: '_none_'
       },
       publicFolder: false,
       showUploadDialog: false,
       inputLabelColor: '#000',
-      showShareComponent: false,
+      showShareComponent: false
     };
 
     this.onEnter = this.onEnter.bind(this);
@@ -74,7 +76,7 @@ class FolderContent extends React.Component {
     this._addToDossier = this._addToDossier.bind(this);
     this.filterContent = this.filterContent.bind(this);
     this.searchBtnClick = this.searchBtnClick.bind(this);
-    this.getSuggestions = _.debounce(this.getSuggestions.bind(this), 500);
+    this.getSuggestions = debounce(this.getSuggestions.bind(this), 500);
     this.getSuggestionValue = this.getSuggestionValue.bind(this);
     this.getSectionSuggestions = this.getSectionSuggestions.bind(this);
     this.onSuggestionsClearRequested = this.onSuggestionsClearRequested.bind(this);
@@ -86,8 +88,8 @@ class FolderContent extends React.Component {
   componentWillMount() {
     if (this.props.location.pathname.indexOf('publieke-dossiers') !== -1) {
       this.setState({
-        folder: _.find(appResources.sampleDossiers, { id: parseInt(this.props.params.id, 10) }),
-        publicFolder: true,
+        folder: find(appResources.sampleDossiers, { id: parseInt(this.props.params.id, 10) }),
+        publicFolder: true
       });
     } else {
       if (this.props.dossiers.length > 0) {
@@ -95,10 +97,10 @@ class FolderContent extends React.Component {
           parseInt(this.props.params.id, 10),
           this.state.activePage,
           this.state.sort_by,
-          this.state.chips,
+          this.state.chips
         );
         this.setState({
-          folder: _.find(this.props.dossiers, { id: parseInt(this.props.params.id, 10) }),
+          folder: find(this.props.dossiers, { id: parseInt(this.props.params.id, 10) })
         });
       } else {
         browserHistory.push('/folders');
@@ -108,18 +110,18 @@ class FolderContent extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     const { content } = this.props;
-    if (!_.isEqual(prevProps.content, content)) {
+    if (!isEqual(prevProps.content, content)) {
       this.setState({
-        files: formatFileResults(content),
+        files: formatFileResults(content)
       });
     }
   }
 
   componentWillReceiveProps(nextProps) {
     const { content } = this.props;
-    if (!_.isEqual(nextProps.content, content)) {
+    if (!isEqual(nextProps.content, content)) {
       this.setState({
-        files: formatFileResults(nextProps.content),
+        files: formatFileResults(nextProps.content)
       });
     }
   }
@@ -128,7 +130,7 @@ class FolderContent extends React.Component {
     document.title = `${appResources.documentTitle} | Mijn Folder`;
     const { content } = this.props;
     this.setState({
-      files: formatFileResults(content),
+      files: formatFileResults(content)
     });
   }
 
@@ -142,7 +144,7 @@ class FolderContent extends React.Component {
       parseInt(this.props.params.id, 10),
       this.state.activePage,
       value,
-      this.state.chips,
+      this.state.chips
     );
   }
 
@@ -152,14 +154,14 @@ class FolderContent extends React.Component {
       id: generateID(),
       type,
       value,
-      label,
+      label
     });
     this.setState({ chips }, this.filterContent);
   }
 
   deleteChip(id, type) {
     const { chips } = this.state;
-    const _chips = _.remove(chips, c => {
+    const _chips = remove(chips, c => {
       return c.id !== id;
     });
     this.setState({ chips: _chips }, this.filterContent);
@@ -171,7 +173,7 @@ class FolderContent extends React.Component {
       parseInt(this.props.params.id, 10),
       this.state.activePage,
       this.state.sort_by,
-      chips,
+      chips
     );
   }
 
@@ -195,7 +197,7 @@ class FolderContent extends React.Component {
       .get(
         `/dossier/content/${this.state.folder.id}/?page_size=${5}&page=${1}&ordering=${
           this.state.sort_by
-        }&q=${[event.value]}`,
+        }&q=${[event.value]}`
       )
       .then(response => {
         const filtered = formatFileResults(response.data.results);
@@ -205,16 +207,16 @@ class FolderContent extends React.Component {
             name: r.title.title,
             date: r.date,
             type: r.type,
-            item_id: r.id,
+            item_id: r.id
           };
         });
         _this.setState({
           suggestions: [
             {
               title: 'Search',
-              data: suggestions,
-            },
-          ],
+              data: suggestions
+            }
+          ]
         });
       });
   }
@@ -234,7 +236,7 @@ class FolderContent extends React.Component {
   handleFileUpload(event) {
     if (event.target.files[0] && parseInt(event.target.files[0].size, 10) > 10000000) {
       this.setState({
-        inputLabelColor: '#FF0000',
+        inputLabelColor: '#FF0000'
       });
     } else if (event.target.files[0]) {
       this.props.uploadFile(
@@ -242,7 +244,7 @@ class FolderContent extends React.Component {
         this.state.folder.id,
         this.state.activePage,
         this.state.sort_by,
-        this.state.chips,
+        this.state.chips
       );
       this.setState({ showUploadDialog: false, inputLabelColor: '#000000' });
     }
@@ -253,10 +255,10 @@ class FolderContent extends React.Component {
       parseInt(this.props.params.id, 10),
       pagez,
       this.state.sort_by,
-      this.state.chips,
+      this.state.chips
     );
     this.setState({
-      activePage: pagez,
+      activePage: pagez
     });
   }
 
@@ -295,7 +297,7 @@ class FolderContent extends React.Component {
       showShareComponent,
       showUploadDialog,
       inputLabelColor,
-      showAllUsers,
+      showAllUsers
     } = this.state;
 
     const customSearch = {
@@ -305,7 +307,7 @@ class FolderContent extends React.Component {
       getSuggestionValue: this.getSuggestionValue,
       getSectionSuggestions: this.getSectionSuggestions,
       getSuggestions: this.getSuggestions,
-      suggestions: this.state.suggestions,
+      suggestions: this.state.suggestions
     };
 
     const columns = [
@@ -314,7 +316,7 @@ class FolderContent extends React.Component {
         accessor: 'title',
         Cell: props => <FolderItemTitleCell data={props} editNote={this.editNote} />,
         headerClassName: 'folder-content-big-header',
-        className: 'folder-content-big-cell',
+        className: 'folder-content-big-cell'
       },
       {
         Header: 'Type document',
@@ -323,7 +325,7 @@ class FolderContent extends React.Component {
           <GeneralTitleCell paddingTop={8} value={props.value} hasDescription={false} />
         ),
         headerClassName: 'folder-content-generic-header',
-        className: 'folder-content-generic-cell',
+        className: 'folder-content-generic-cell'
       },
       {
         Header: 'Evenement datum',
@@ -332,7 +334,7 @@ class FolderContent extends React.Component {
           <GeneralTitleCell paddingTop={8} value={props.value} hasDescription={false} />
         ),
         headerClassName: 'folder-content-generic-header',
-        className: 'folder-content-generic-cell',
+        className: 'folder-content-generic-cell'
       },
       {
         Header: 'Laatst gewijzigd',
@@ -341,7 +343,7 @@ class FolderContent extends React.Component {
           <GeneralTitleCell paddingTop={8} value={props.value} hasDescription={false} />
         ),
         headerClassName: 'folder-content-generic-header',
-        className: 'folder-content-generic-cell',
+        className: 'folder-content-generic-cell'
       },
       {
         Header: 'Opties',
@@ -357,15 +359,15 @@ class FolderContent extends React.Component {
                 props.original.options.type === 'Geupload document'
                   ? this.props.deleteFile(props.original.options.origin_id, folder.id)
                   : props.original.content_id
-                    ? this.props.removeFromDossier(folder.id, props.original.content_id)
-                    : this.props.removeNoteFromDossier(folder.id, props.original.id);
+                  ? this.props.removeFromDossier(folder.id, props.original.content_id)
+                  : this.props.removeNoteFromDossier(folder.id, props.original.id);
               }}
             />
           </div>
         ),
         headerClassName: 'small-header',
-        className: 'small-cell',
-      },
+        className: 'small-cell'
+      }
     ];
 
     const renderChips = (
@@ -386,7 +388,7 @@ class FolderContent extends React.Component {
         data={folder}
         extraFunction={() =>
           this.setState({
-            showShareComponent: true,
+            showShareComponent: true
           })
         }
       />
@@ -442,37 +444,35 @@ class FolderContent extends React.Component {
           <label htmlFor="file">Kies een bestand</label>
         </Dialog>
         <Grid fluid>
-          {folder &&
-            folder.owner.id === this.props.userID &&
-            folder.shared_users.length > 0 && (
-              <Row className="show-grid shared-users-list">
-                <Col sm={12} md={12} lg={12}>
-                  <label>Shared users:</label>
-                  <ul>
-                    {folder.shared_users.slice(0, 5).map(user => {
+          {folder && folder.owner.id === this.props.userID && folder.shared_users.length > 0 && (
+            <Row className="show-grid shared-users-list">
+              <Col sm={12} md={12} lg={12}>
+                <label>Shared users:</label>
+                <ul>
+                  {folder.shared_users.slice(0, 5).map(user => {
+                    return (
+                      <li key={user.id}>
+                        <b>{user.username}</b> - {user.email}
+                      </li>
+                    );
+                  })}
+                  {showAllUsers &&
+                    folder.shared_users.slice(5).map(user => {
                       return (
                         <li key={user.id}>
                           <b>{user.username}</b> - {user.email}
                         </li>
                       );
                     })}
-                    {showAllUsers &&
-                      folder.shared_users.slice(5).map(user => {
-                        return (
-                          <li key={user.id}>
-                            <b>{user.username}</b> - {user.email}
-                          </li>
-                        );
-                      })}
-                  </ul>
-                  {folder.shared_users.length > 5 && (
-                    <a onClick={() => this.setState({ showAllUsers: !showAllUsers })}>
-                      {showAllUsers ? 'Minder' : 'Meer'}...
-                    </a>
-                  )}
-                </Col>
-              </Row>
-            )}
+                </ul>
+                {folder.shared_users.length > 5 && (
+                  <a onClick={() => this.setState({ showAllUsers: !showAllUsers })}>
+                    {showAllUsers ? 'Minder' : 'Meer'}...
+                  </a>
+                )}
+              </Col>
+            </Row>
+          )}
 
           {showShareComponent && (
             <Row className="show-grid">
@@ -551,23 +551,25 @@ function mapStateToProps(state) {
     userID: user.userID,
     loading: user.isLoading,
     content: user.content,
-    count: user.count,
+    count: user.count
   };
 }
 
-export default connect(mapStateToProps, {
-  addAgenda,
-  setAddNote,
-  addFavorite,
-  addToDossier,
-  deleteDossier,
-  removeFavorite,
-  addNotification,
-  uploadFile,
-  deleteFile,
-  removeFromDossier,
-  unshareDossier,
-  loadDossierContents,
-  setDossierModal,
-  removeNoteFromDossier,
-})(FolderContent);
+export default connect(
+  mapStateToProps,
+  {
+    setAddNote,
+    addFavorite,
+    addToDossier,
+    deleteDossier,
+    removeFavorite,
+    addNotification,
+    uploadFile,
+    deleteFile,
+    removeFromDossier,
+    unshareDossier,
+    loadDossierContents,
+    setDossierModal,
+    removeNoteFromDossier
+  }
+)(FolderContent);

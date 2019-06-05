@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
+import remove from 'lodash/remove';
 import ChipInput from 'material-ui-chip-input';
 import RaisedButton from 'material-ui/RaisedButton';
 import { RadioButton, RadioButtonGroup } from 'material-ui/RadioButton';
@@ -86,7 +86,7 @@ class FolderShare extends React.Component {
   handleRequestDelete(chip) {
     const chips = this.state.emails;
     this.setState({
-      emails: _.remove(chips, c => {
+      emails: remove(chips, c => {
         return c !== chip;
       }),
     });

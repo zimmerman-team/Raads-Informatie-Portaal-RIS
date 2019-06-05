@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, browserHistory, withRouter } from 'react-router';
-import _ from 'lodash';
+import orderBy from 'lodash/orderBy';
+import filter from 'lodash/filter';
+import find from 'lodash/find';
 import moment from 'moment';
 import ReactHLS from 'react-hls';
 import ContainerDimensions from 'react-container-dimensions';
@@ -45,8 +47,8 @@ class AgendaTile extends React.Component {
         this.setState({ videoPosition: parseInt(videoURLparam, 10) });
       }
       if (this.props.selectedAgendaItem !== nextProps.selectedAgendaItem) {
-        const speakers = _.orderBy(
-          _.filter(this.props.speakers, { agenda_id: nextProps.selectedAgendaItem }),
+        const speakers = orderBy(
+          filter(this.props.speakers, { agenda_id: nextProps.selectedAgendaItem }),
           ['start_time'],
           ['asc'],
         );
@@ -100,10 +102,10 @@ class AgendaTile extends React.Component {
       const docs =
         room.agenda.length > 0
           ? selectedAgendaItem !== undefined && selectedAgendaItem !== -1
-            ? _.filter(_.find(room.agenda, { id: selectedAgendaItem }).media, m => {
+            ? filter(find(room.agenda, { id: selectedAgendaItem }).media, m => {
                 return m.link_item_type !== 'public_dossier';
               })
-            : _.filter(room.agenda[0].media, m => {
+            : filter(room.agenda[0].media, m => {
                 return m.link_item_type !== 'public_dossier';
               })
           : room.documents;
@@ -209,10 +211,10 @@ class AgendaTile extends React.Component {
       const public_dossiers =
         room.agenda.length > 0
           ? selectedAgendaItem !== undefined && selectedAgendaItem !== -1
-            ? _.filter(_.find(room.agenda, { id: selectedAgendaItem }).media, {
+            ? filter(find(room.agenda, { id: selectedAgendaItem }).media, {
                 link_item_type: 'public_dossier',
               })
-            : _.filter(room.agenda[0].media, { link_item_type: 'public_dossier' })
+            : filter(room.agenda[0].media, { link_item_type: 'public_dossier' })
           : [];
       return {
         name: 'Publieke dossiers',
@@ -254,14 +256,25 @@ class AgendaTile extends React.Component {
 
       if (room.event_media) {
         if (room.event_media.length !== 0) {
-          video = room.event_media[0].httpstream;
+          if (room.event_media.length > 1) {
+            // If there's more than 1 video stream show the latest one
+            let maxEventMediaID = -1;
+            room.event_media.forEach(em => {
+              if (em.id > maxEventMediaID) {
+                video = em.httpstream;
+                maxEventMediaID = em.id;
+              }
+            });
+          } else {
+            video = room.event_media[0].httpstream;
+          }
         }
       }
       return {
         name: 'Video verslag',
         speaker_content: video !== '' && (
           <VideoSpeakers
-            speakers={_.filter(speakers, { agenda_id: selectedAgendaItem })}
+            speakers={filter(speakers, { agenda_id: selectedAgendaItem })}
             onSpeakerClick={this.onSpeakerClick}
           />
         ),

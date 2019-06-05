@@ -4,29 +4,30 @@ module.exports = {
   // So parent files don't get applied
   root: true,
   globals: {
-    preval: false,
+    preval: false
   },
   env: {
     es6: true,
     browser: true,
     node: true,
-    mocha: false,
+    mocha: false
   },
   extends: ['plugin:import/recommended', 'airbnb', 'problems'],
   parser: 'babel-eslint',
   parserOptions: {
     ecmaVersion: 7,
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: ['babel', 'import', 'jsx-a11y', 'prettier'],
   settings: {
     'import/resolver': {
       webpack: {
-        config: path.join(__dirname, './docs/webpackBaseConfig.js'),
-      },
-    },
+        config: path.join(__dirname, './docs/webpackBaseConfig.js')
+      }
+    }
   },
   rules: {
+    'react/jsx-filename-extension': [0, { extensions: ['.js', '.jsx'] }],
     'linebreak-style': 'off', // Don't play nicely with Windows.
     'arrow-body-style': 'off', // Not our taste?
     'arrow-parens': 'off', // Incompatible with prettier
@@ -42,8 +43,8 @@ module.exports = {
       100,
       2,
       {
-        ignoreUrls: true,
-      },
+        ignoreUrls: true
+      }
     ], // airbnb is allowing some edge cases
     'no-console': 'error', // airbnb is using warn
     'no-alert': 'error', // airbnb is using warn
@@ -62,8 +63,8 @@ module.exports = {
       'error',
       {
         groups: [['index', 'sibling', 'parent', 'internal', 'external', 'builtin']],
-        'newlines-between': 'never',
-      },
+        'newlines-between': 'never'
+      }
     ],
 
     'react/jsx-indent': 'off', // Incompatible with prettier
@@ -75,8 +76,8 @@ module.exports = {
       {
         // airbnb is disabling this rule
         eventHandlerPrefix: 'handle',
-        eventHandlerPropPrefix: 'on',
-      },
+        eventHandlerPropPrefix: 'on'
+      }
     ],
     'react/require-default-props': 'off', // airbnb use error
     'react/forbid-prop-types': 'off', // airbnb use error
@@ -88,10 +89,8 @@ module.exports = {
     'react/sort-prop-types': 'error', // airbnb do nothing here.
     'react/default-props-match-prop-types': 'off', // Buggy
     'react/jsx-curly-brace-presence': 'off', // Buggy
-    'react/prop-types': [ "enabled",
-      { "ignore": "ignore", "customValidators": "customValidator" }
-    ],
-
-    'prettier/prettier': ['error'],
-  },
+    'react/prop-types': ['enabled', { ignore: 'ignore', customValidators: 'customValidator' }],
+    'react/no-multi-comp': 'off',
+    'prettier/prettier': ['error']
+  }
 };

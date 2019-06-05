@@ -13,7 +13,11 @@ context('Test general search functionality', () => {
     cy.get('.filters-label').click({ force: true });
     cy.queryByText('Type Raadsdocument').click();
     cy.wait(1000);
-    cy.get('.options-div > div').eq(1).children().eq(0).click({ force: true });
+    cy.get('.options-div > div')
+      .eq(1)
+      .children()
+      .eq(0)
+      .click({ force: true });
     cy.contains('Toon').click();
     cy.wait(1000);
     cy.queryByText('Type: Documenten').should('exist');
@@ -21,12 +25,6 @@ context('Test general search functionality', () => {
   it('Clear filters', () => {
     cy.get('.remove-filters-span').click({ force: true });
     cy.wait(3000);
-  });
-  it('Change views', () => {
-    cy.queryByText('Tijdslijn').click({ force: true });
-    cy.wait(1000);
-    cy.queryByText('Lijst').click({ force: true });
-    cy.wait(1000);
   });
   it('Change sorting', () => {
     cy.get('.sort-by-menu').click({ force: true });
@@ -37,7 +35,9 @@ context('Test general search functionality', () => {
   it('Click on 2nd page', () => {
     cy.get('#content-wrap').scrollTo('bottom');
     cy.wait(1000);
-    cy.get('.pagination > li').eq(3).click({ force: true });
+    cy.get('.pagination > li')
+      .eq(3)
+      .click({ force: true });
     cy.wait(1000);
   });
 });

@@ -23,8 +23,7 @@ import {
   addFavorite,
   addToDossier,
   removeFavorite,
-  addAgenda,
-  addNotification,
+  addNotification
 } from '../../actions/userActions';
 import Favorite from '../../icons/Favorite';
 
@@ -51,7 +50,7 @@ class ItemMenu extends React.Component {
   }
 
   render() {
-    const { data, favoriteMenuItemType, dossiers, addAgenda, addNotification } = this.props;
+    const { data, favoriteMenuItemType, dossiers, addNotification } = this.props;
     const item = data;
     let item_menu;
     const action_id = favoriteMenuItemType === 'Add' ? item.uid : item.fav_id;
@@ -72,7 +71,7 @@ class ItemMenu extends React.Component {
         primaryText="Add new map"
         leftIcon={<ContentAdd />}
         onClick={() => this.props.setDossierModal(item.uid)}
-      />,
+      />
     );
 
     if (item.type.toLowerCase() === 'event' || item.type.toLowerCase() === 'child_event') {
@@ -81,7 +80,7 @@ class ItemMenu extends React.Component {
         description: item.name,
         location: `Gemeente ${municipality}`,
         startTime: item.date,
-        endTime: item.date,
+        endTime: item.date
       };
 
       item_menu = (
@@ -113,7 +112,7 @@ class ItemMenu extends React.Component {
                 primaryText="Shareable link"
                 leftIcon={<ContentLink />}
                 onClick={() => share(item.type, item.url, item.name, 'Link')}
-              />,
+              />
             ]}
           />
           <MenuItem
@@ -170,17 +169,8 @@ class ItemMenu extends React.Component {
                 primaryText="Apple Calendar"
                 leftIcon={<img src={appleIcon} alt="apple icon" width="32" height="32" />}
                 onClick={() => downloadEvent(calEvent, 'Apple')}
-              />,
+              />
             ]}
-          />
-          <MenuItem
-            primaryText={'Toevoegen aan persoonlijke agenda'}
-            leftIcon={
-              <i className="material-icons" style={{ color: '#808080' }}>
-                event_available
-              </i>
-            }
-            onClick={() => addAgenda(item.id)}
           />
         </IconMenu>
       );
@@ -225,7 +215,7 @@ class ItemMenu extends React.Component {
                 onClick={() =>
                   share(item.type, getItemDetailUrl(item.type, item.id), item.name, 'Link')
                 }
-              />,
+              />
             ]}
           />
           <MenuItem
@@ -264,15 +254,17 @@ class ItemMenu extends React.Component {
 function mapStateToProps(state, ownProps) {
   const { user } = state;
   return {
-    dossiers: user.dossiers,
+    dossiers: user.dossiers
   };
 }
 
-export default connect(mapStateToProps, {
-  addAgenda,
-  addFavorite,
-  addToDossier,
-  removeFavorite,
-  setDossierModal,
-  addNotification,
-})(ItemMenu);
+export default connect(
+  mapStateToProps,
+  {
+    addFavorite,
+    addToDossier,
+    removeFavorite,
+    setDossierModal,
+    addNotification
+  }
+)(ItemMenu);

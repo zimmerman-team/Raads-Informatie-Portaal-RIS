@@ -1,5 +1,5 @@
 import React from 'react';
-import _ from 'lodash';
+import find from 'lodash/find';
 import Menu from 'material-ui/Menu';
 import MenuItem from 'material-ui/MenuItem';
 import { ListItem } from 'material-ui/List';
@@ -83,10 +83,10 @@ class RoomsDropdown extends React.Component {
               {selectedRoom === -1
                 ? 'Selecteer een vergaderzaal'
                 : appResources.municipality !== 'Utrecht'
-                  ? _.find(rooms, i => {
+                  ? find(rooms, i => {
                       return i.id === selectedRoom;
                     }).classification
-                  : _.find(rooms, i => {
+                  : find(rooms, i => {
                       return i.id === selectedRoom;
                     }).name}
             </div>

@@ -2,7 +2,8 @@ import React from 'react';
 import classNames from 'classnames';
 import { connect } from 'react-redux';
 import { withRouter, browserHistory } from 'react-router';
-import _ from 'lodash';
+import isEqual from 'lodash/isEqual';
+import filter from 'lodash/filter';
 import { Chip, CircularProgress, RadioButton, RadioButtonGroup, Toggle } from 'material-ui';
 import Grid from 'react-bootstrap/lib/Grid';
 import Row from 'react-bootstrap/lib/Row';
@@ -14,21 +15,14 @@ import Table from '../../components/Table/Table';
 import { TitleCell, GeneralTitleCell } from '../../components/Table/';
 import ItemMenu from '../../components/OptionMenu/OptionMenu';
 import Pagination from '../../components/general/Pagination';
-import HorizontalTimeline from '../../components/HorizontalTimeline/HorizontalTimeline';
 import { loadCombined, specifySearch } from '../../actions/combinedActions';
 import { addFilter, removeFilter, removeAllFilters, setFilters } from '../../actions/filterActions';
-import {
-  setSortBy,
-  setActivePage,
-  setActiveTab,
-  setDossierModal,
-} from '../../actions/generalActions';
+import { setSortBy, setActivePage, setDossierModal } from '../../actions/generalActions';
 import {
   loadUserDossiers,
   addToDossier,
   addFavorite,
-  addAgenda,
-  addNotification,
+  addNotification
 } from '../../actions/userActions';
 import HeaderIcon from '../../components/icons/Search';
 import PageHeader from '../../components/PageHeader/PageHeader';
@@ -39,7 +33,7 @@ import {
   setDocumentModal,
   changeEventPublishStatus,
   changeDocumentPublishStatus,
-  setPublicDossierPublishStatus,
+  setPublicDossierPublishStatus
 } from '../../actions/publisherActions';
 import {
   COMMITMENT,
@@ -52,14 +46,14 @@ import {
   POLICY_DOCUMENT,
   PUBLIC_DOSSIER,
   RECEIVED_DOCUMENT,
-  WRITTEN_QUESTION,
+  WRITTEN_QUESTION
 } from '../../constants';
 
 const radioStyle = {
   width: 'fit-content',
   display: 'inline-flex',
   whiteSpace: 'nowrap',
-  marginRight: 30,
+  marginRight: 30
 };
 
 class Search extends React.Component {
@@ -68,8 +62,7 @@ class Search extends React.Component {
 
     this.state = {
       focused: false,
-      goBackToToday: 0,
-      filters: props.filters ? props.filters : [],
+      filters: props.filters ? props.filters : []
     };
 
     this.onCheck = this.onCheck.bind(this);
@@ -98,9 +91,9 @@ class Search extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!_.isEqual(this.props.filters, nextProps)) {
+    if (!isEqual(this.props.filters, nextProps)) {
       this.setState({
-        filters: this.props.filters,
+        filters: this.props.filters
       });
     }
   }
@@ -131,19 +124,19 @@ class Search extends React.Component {
     this.props.setActivePage(1, false);
     this.props.addFilter(type, value, label);
     this.setState({
-      filters: this.props.filters,
+      filters: this.props.filters
     });
     browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
   }
 
   removeFilter(type, id) {
     this.props.removeFilter(type, id);
-    browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, this.props.page));
+    browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
   }
 
   removeAllFilters() {
     this.props.removeAllFilters();
-    browserHistory.push(setURLfilters([], this.props.sortBy, this.props.page));
+    browserHistory.push(setURLfilters([], this.props.sortBy, 1));
   }
 
   onPageChange(page) {
@@ -204,24 +197,11 @@ class Search extends React.Component {
   render() {
     const { focused, filters } = this.state;
 
-    const {
-      data,
-      page,
-      tab,
-      sortBy,
-      resultsCount,
-      timelineData,
-      timelineStart,
-      dossiers,
-      isLoading,
-      searchType,
-    } = this.props;
+    const { data, page, sortBy, resultsCount, dossiers, isLoading, searchType } = this.props;
 
-    const isSearch = _.filter(filters, f => {
+    const isSearch = filter(filters, f => {
       return f.type === 'search';
     });
-
-    const hideComp4Timeline = tab === 'timeline' && window.innerWidth < 768;
 
     const columns = [
       {
@@ -235,7 +215,7 @@ class Search extends React.Component {
           : 'search-big-header-admin',
         className: !(this.props.is_admin || this.props.is_author)
           ? 'search-big-cell'
-          : 'search-big-cell-admin',
+          : 'search-big-cell-admin'
       },
       {
         Header: 'Type document',
@@ -248,10 +228,10 @@ class Search extends React.Component {
           />
         ),
         headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
+        className: 'search-generic-cell'
       },
       {
-        Header: 'Evenement datum',
+        Header: 'Evenement/Doc datum',
         accessor: 'event_date',
         Cell: props => (
           <GeneralTitleCell
@@ -261,20 +241,7 @@ class Search extends React.Component {
           />
         ),
         headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
-      },
-      {
-        Header: 'Laatst gewijzigd',
-        accessor: 'last_modified',
-        Cell: props => (
-          <GeneralTitleCell
-            paddingTop={10}
-            value={props.value}
-            hasDescription={props.original.title.description !== ''}
-          />
-        ),
-        headerClassName: 'search-generic-header',
-        className: 'search-generic-cell',
+        className: 'search-generic-cell'
       },
       {
         Header: 'Gepubliceerd op RIS portaal',
@@ -289,7 +256,7 @@ class Search extends React.Component {
               this.onPublishToggle(
                 props.original.options.type,
                 value,
-                props.original.options.origin_id,
+                props.original.options.origin_id
               );
             }}
           />
@@ -297,7 +264,7 @@ class Search extends React.Component {
         headerClassName: 'search-generic-header search-toggle',
         className: 'search-generic-cell search-toggle',
         style: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {},
-        headerStyle: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {},
+        headerStyle: !(this.props.is_admin || this.props.is_author) ? { display: 'none' } : {}
       },
       {
         Header: 'Opties',
@@ -317,15 +284,15 @@ class Search extends React.Component {
           </div>
         ),
         headerClassName: 'small-header',
-        className: 'small-cell',
-      },
+        className: 'small-cell'
+      }
     ];
 
     const searchPageClass = classNames('search-page-container', {
-      focused,
+      focused
     });
     const searchResultsClass = classNames('show-grid', 'search-results', {
-      hide: focused,
+      hide: focused
     });
     const renderChips = (
       <div className={styles.searchChipsContainer}>
@@ -359,65 +326,57 @@ class Search extends React.Component {
           </div>
         )}
         <Grid fluid>
-          {!hideComp4Timeline && (
-            <span>
-              <PageHeader icon={<HeaderIcon />} title={HeaderTitle} />
-              <Row className="show-grid">
-                <Col sm={12} md={12} lg={12}>
-                  <SearchBlock
-                    setFocus={this.setFocus}
-                    unsetFocus={this.unsetFocus}
-                    isSearchPage
-                    hintText="Zoek op motie’s, agenda’s, of documenten"
-                    addURLParam={() => {
-                      browserHistory.push(
-                        setURLfilters(this.props.filters, this.props.sortBy, this.props.page),
-                      );
-                    }}
-                  />
-                  <div className={styles.searchCheckboxDiv}>
-                    <RadioButtonGroup
-                      name="search_type"
-                      onChange={this.onCheck}
-                      defaultSelected={searchType}
-                    >
-                      <RadioButton
-                        value="q"
-                        label="Alle raadsinformatie doorzoeken"
-                        labelStyle={{ color: '#717171' }}
-                        iconStyle={{
-                          fill: searchType === 'q' ? appResources.in_content_color : '#ccc',
-                          marginRight: 6,
-                        }}
-                        style={radioStyle}
-                      />
-                      <RadioButton
-                        value="name__icontains"
-                        label="Alleen titels doorzoeken"
-                        labelStyle={{ color: '#717171' }}
-                        iconStyle={{
-                          fill:
-                            searchType === 'name__icontains'
-                              ? appResources.in_content_color
-                              : '#ccc',
-                          marginRight: 6,
-                        }}
-                        style={radioStyle}
-                      />
-                    </RadioButtonGroup>
-                    {filters.length > 0 && renderChips}
-                  </div>
-                </Col>
-              </Row>
-              <br />
-            </span>
-          )}
+          <span>
+            <PageHeader icon={<HeaderIcon />} title={HeaderTitle} />
+            <Row className="show-grid">
+              <Col sm={12} md={12} lg={12}>
+                <SearchBlock
+                  setFocus={this.setFocus}
+                  unsetFocus={this.unsetFocus}
+                  isSearchPage
+                  hintText="Zoek op motie’s, agenda’s, of documenten"
+                  addURLParam={() => {
+                    browserHistory.push(setURLfilters(this.props.filters, this.props.sortBy, 1));
+                  }}
+                />
+                <div className={styles.searchCheckboxDiv}>
+                  <RadioButtonGroup
+                    name="search_type"
+                    onChange={this.onCheck}
+                    defaultSelected={searchType}
+                  >
+                    <RadioButton
+                      value="q"
+                      label="Alle raadsinformatie doorzoeken"
+                      labelStyle={{ color: '#717171' }}
+                      iconStyle={{
+                        fill: searchType === 'q' ? appResources.in_content_color : '#ccc',
+                        marginRight: 6
+                      }}
+                      style={radioStyle}
+                    />
+                    <RadioButton
+                      value="name__icontains"
+                      label="Alleen titels doorzoeken"
+                      labelStyle={{ color: '#717171' }}
+                      iconStyle={{
+                        fill:
+                          searchType === 'name__icontains' ? appResources.in_content_color : '#ccc',
+                        marginRight: 6
+                      }}
+                      style={radioStyle}
+                    />
+                  </RadioButtonGroup>
+                  {filters.length > 0 && renderChips}
+                </div>
+              </Col>
+            </Row>
+            <br />
+          </span>
           <Row className={searchResultsClass}>
             <Col sm={12} md={12} lg={12}>
               <AppliedFilters
-                activeTab={tab}
                 isLoading={isLoading}
-                setActiveTab={this.props.setActiveTab}
                 resultsCount={resultsCount}
                 filters={JSON.parse(JSON.stringify(filters))}
                 setFilter={this.addFilter}
@@ -429,34 +388,20 @@ class Search extends React.Component {
                   this.props.setFilters(filters);
                   setTimeout(() => {
                     browserHistory.replace(
-                      setURLfilters(this.props.filters, this.props.sortBy, this.props.page),
+                      setURLfilters(this.props.filters, this.props.sortBy, this.props.page)
                     );
                   }, 1000);
                 }}
-                goBackToTodayTimeline={() =>
-                  this.setState({ goBackToToday: this.state.goBackToToday + 1 })
-                }
-                hideComp4Timeline={hideComp4Timeline}
               />
-              {tab === 'list' && (
-                <div>
-                  <Table data={data} columns={columns} pageSize={10} />
-                  <Pagination
-                    activePage={page}
-                    itemsCount={parseInt(resultsCount, 10)}
-                    color={appResources.in_content_color}
-                    onPageChange={this.onPageChange}
-                  />
-                </div>
-              )}
-              {tab === 'timeline' && (
-                <HorizontalTimeline
-                  height="500px"
-                  start={timelineStart}
-                  timelineData={timelineData}
-                  goBackToToday={this.state.goBackToToday}
+              <div>
+                <Table data={data} columns={columns} pageSize={10} />
+                <Pagination
+                  activePage={page}
+                  itemsCount={parseInt(resultsCount, 10)}
+                  color={appResources.in_content_color}
+                  onPageChange={this.onPageChange}
                 />
-              )}
+              </div>
             </Col>
           </Row>
         </Grid>
@@ -472,40 +417,38 @@ function mapStateToProps(state) {
     is_author: user.type === 'auteur',
     resultsCount: combined.resultsCount,
     data: combined.data,
-    timelineData: combined.timelineData,
-    timelineStart: combined.timelineStart,
-    timelineEnd: combined.timelineEnd,
     isLoading: combined.isLoading,
     filters,
     sortBy,
     page,
     tab,
     dossiers: user.dossiers,
-    searchType: combined.searchType,
+    searchType: combined.searchType
   };
 }
 
 export default withRouter(
-  connect(mapStateToProps, {
-    addFilter,
-    setSortBy,
-    setFilters,
-    addFavorite,
-    loadCombined,
-    removeFilter,
-    addToDossier,
-    setActiveTab,
-    setActivePage,
-    specifySearch,
-    setDossierModal,
-    removeAllFilters,
-    addAgenda,
-    loadUserDossiers,
-    addNotification,
-    setDocumentModal,
-    deleteCouncilDoc,
-    changeEventPublishStatus,
-    changeDocumentPublishStatus,
-    setPublicDossierPublishStatus,
-  })(Search),
+  connect(
+    mapStateToProps,
+    {
+      addFilter,
+      setSortBy,
+      setFilters,
+      addFavorite,
+      loadCombined,
+      removeFilter,
+      addToDossier,
+      setActivePage,
+      specifySearch,
+      setDossierModal,
+      removeAllFilters,
+      loadUserDossiers,
+      addNotification,
+      setDocumentModal,
+      deleteCouncilDoc,
+      changeEventPublishStatus,
+      changeDocumentPublishStatus,
+      setPublicDossierPublishStatus
+    }
+  )(Search)
 );

@@ -4,7 +4,7 @@ import Collapse from 'react-collapse';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import CheckBoxOutline from '@material-ui/icons/CheckBoxOutlineBlank';
 import moment from 'moment';
-import _ from 'lodash';
+import find from 'lodash/find';
 import areIntlLocalesSupported from 'intl-locales-supported';
 
 let DateTimeFormat;
@@ -93,7 +93,7 @@ class FilterExpandableBlock extends React.Component {
 
   checkboxClick(value, obj, type) {
     const { filters, setFilter, removeFilter } = this.props;
-    const foundSameFilter = _.find(filters, f => {
+    const foundSameFilter = find(filters, f => {
       return f.type === type && f.value === obj.value;
     });
     if (foundSameFilter === undefined) {
@@ -154,7 +154,7 @@ class FilterExpandableBlock extends React.Component {
             label={o.label}
             value={o.obj}
             onClick={() => {
-              const foundSameFilter = _.find(filters, f => {
+              const foundSameFilter = find(filters, f => {
                 return f.type === type && f.label === o.label;
               });
               if (this.state.selectedValue.key === i && foundSameFilter !== undefined) {
@@ -175,7 +175,7 @@ class FilterExpandableBlock extends React.Component {
           uncheckedIcon={<CheckBoxOutline />}
           onCheck={(e, value) => this.checkboxClick(value, o.obj, type)}
           defaultChecked={
-            _.find(selectedFilters, f => {
+            find(selectedFilters, f => {
               return f === o.obj.value;
             }) !== undefined
           }

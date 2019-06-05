@@ -1,13 +1,13 @@
 import React from 'react';
-import _ from 'lodash';
+import find from 'lodash/find';
 import { withStyles } from '@material-ui/core/styles';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import Glyphicon from 'react-bootstrap/lib/Glyphicon';
-import appResources from '../../../appResources';
 import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
+import Glyphicon from 'react-bootstrap/lib/Glyphicon';
+import appResources from '../../../appResources';
 
 class RoomsDropdown extends React.Component {
   constructor(props) {
@@ -92,7 +92,7 @@ class RoomsDropdown extends React.Component {
               >
                 {selectedRoom === -1
                   ? 'Selecteer een vergaderzaal'
-                  : _.find(rooms, i => {
+                  : find(rooms, i => {
                       return i.id === selectedRoom;
                     }).name}
               </div>

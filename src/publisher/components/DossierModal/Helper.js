@@ -15,7 +15,7 @@ export function getPublicDossier(id, that) {
         published: response.data.published,
         selectedPublicDossierTitle: response.data.title,
         selectedPublicDossierDocuments: response.data.documents,
-        selectedPublicDossierDossiers: response.data.parent_dossiers,
+        selectedPublicDossierDossiers: response.data.dossiers,
       });
     })
     .catch(e => {});

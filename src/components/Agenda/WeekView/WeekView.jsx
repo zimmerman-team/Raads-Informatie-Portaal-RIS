@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { browserHistory } from 'react-router';
 import axios from 'axios';
 import { Snackbar } from 'material-ui';
-import _ from 'lodash';
+import filter from 'lodash/filter';
 import moment from 'moment';
 import ItemMenu from '../../OptionMenu/OptionMenu';
 import dates from '../../../../node_modules/react-big-calendar/lib/utils/dates';
@@ -110,7 +110,7 @@ class WeekView extends React.Component {
     return (
       <div className="weekly-view-container">
         {weekDays.map(day => {
-          const dayEvents = _.filter(events, e => {
+          const dayEvents = filter(events, e => {
             if (moment(e.date).day() === day.key) {
               return e;
             }

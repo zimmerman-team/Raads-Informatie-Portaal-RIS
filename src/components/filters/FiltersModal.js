@@ -1,10 +1,10 @@
 import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import Button from '@material-ui/core/Button';
-import FilterExpandableBlock from './FilterExpandableBlock';
 import moment from 'moment';
+import find from 'lodash/find';
+import FilterExpandableBlock from './FilterExpandableBlock';
 import appResources from '../../appResources';
-import _ from 'lodash';
 
 const filtersObjects = [
   {
@@ -170,10 +170,10 @@ class FiltersModal extends React.Component {
           <hr />
           <div className="filter-list-div">
             {filtersObjects.slice(0, 2).map((f, i) => {
-              const selectedOption = _.find(chips, { type: f.type });
+              const selectedOption = find(chips, { type: f.type });
               const x =
                 selectedOption !== undefined && f.type !== 'date'
-                  ? _.find(f.options, { obj: { value: selectedOption.value } })
+                  ? find(f.options, { obj: { value: selectedOption.value } })
                   : 'none';
               return (
                 <div key={i}>

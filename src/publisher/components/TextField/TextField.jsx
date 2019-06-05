@@ -40,6 +40,7 @@ const propTypes = {
   initialValue: PropTypes.string,
   inputType: PropTypes.string,
   modalType: PropTypes.string,
+  isReadOnly: PropTypes.bool,
 };
 
 const defaultProps = {
@@ -54,6 +55,7 @@ const defaultProps = {
   initialValue: '',
   inputType: 'text',
   modalType: '',
+  isReadOnly: false,
 };
 
 class TextField extends React.Component {
@@ -240,6 +242,12 @@ class TextField extends React.Component {
     //   this.checkIfTitleExists(event.target.value);
     // }
     if (
+      this.props.type === 'status' ||
+      this.props.type === 'subject' ||
+      this.props.type === 'portfolio'
+    ) {
+      this.props.reduxItemsAdd({ id: event.target.value, name: event.target.value });
+    } else if (
       this.props.type !== 'public_dossier' &&
       this.props.type !== 'document' &&
       this.props.type !== 'agenda_item'
@@ -335,7 +343,7 @@ class TextField extends React.Component {
   render() {
     const { value, focused } = this.state;
     let suggestions = this.state.suggestions;
-    if (this.props.initialItems) {
+    if (this.props.initialItems && (this.props.type !== 'public_dossier' && this.props.modalType !== 'dossier')) {
       for (let i = 0; i < this.props.initialItems.length; i++) {
         for (let x = 0; x < suggestions.length; x++) {
           if (
@@ -376,6 +384,7 @@ class TextField extends React.Component {
         this.nameInput = input;
       },
       rows: this.props.type === 'description' ? (value.length > 0 ? 5 : 1) : 1,
+      readOnly: this.props.isReadOnly,
     };
     if (this.props.type === 'number') {
       inputProps.min = this.props.min;
@@ -472,9 +481,9 @@ class TextField extends React.Component {
               <DossierTreeView
                 data={suggestions.map(s => {
                   return {
-                    id: s.id,
+                    id: this.props.modalType === 'dossier' ? s.item_id : s.id,
                     name: s.name,
-                    item_id: s.item_id,
+                    item_id: this.props.modalType === 'dossier' ? s.id : s.item_id,
                     has_dossiers: s.has_dossiers,
                     child_dossiers_count: s.child_dossiers_count,
                   };
@@ -489,6 +498,7 @@ class TextField extends React.Component {
                 }}
                 initialItems={this.props.initialItems}
                 editInitialItem={this.props.editInitialItem}
+                editingDossierID={this.props.selectedPublicDossierID}
               />
             )}
             {this.state.loading && <div className={styles.loadingMessage}>Loading...</div>}

@@ -306,7 +306,7 @@ function mapStateToProps(state, ownProps) {
 }
 
 export default compose(
-  withStyles(),
+  withStyles({}),
   connect(mapStateToProps, {
     login,
     setSnackBar,

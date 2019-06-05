@@ -29,6 +29,7 @@ Cypress.Commands.add('navMenuItemClick', (index, route) => {
     .click({ force: true });
   cy.wait(1000);
   cy.location('pathname').should('include', route);
+  cy.wait(2000);
 });
 
 Cypress.Commands.add('upload_file', (fileName, selector) => {
