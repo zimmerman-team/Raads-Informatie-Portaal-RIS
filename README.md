@@ -11,7 +11,7 @@ UK | The local council information Portal (RIS) is open-source software that can
 ## About the project
 --------
 * Authors: <a href="https://www.zimmermanzimmerman.nl/" target="_blank">Zimmerman & Zimmerman</a>
-* Municipalities: <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> and <a href="https://www.utrecht.nl/bestuur-en-organisatie/gemeenteraad/" target="_blank">Municipality of Utrecht</a> 
+* Municipalities: <a href="https://gemeenteraad.almere.nl/" target="_blank">Municipality of Almere</a> 
 * License: AGPLv3 (see included <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/blob/master/License.md" target="_blank">LICENSE</a> file for full license)
 * Github Repo: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/</a>
 * Bug Tracker: <a href="https://github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues" target="_blank">github.com/zimmerman-zimmerman/Raads-Informatie-Portaal-RIS/issues</a>
@@ -39,11 +39,11 @@ Change municipality
 
  In `src/config.js` there is a variable called `muni`
  
- Adjust the variable's value with one of these options `Almere | Utrecht | Rotterdam`
+ Adjust the variable's value with one of these options `Almere`
   
  In `src/styles/variables.scss` there is a variable called `$municipality`
  
- Adjust the variable's value with one of these options `Almere | Utrecht | Rotterdam`
+ Adjust the variable's value with one of these options `Almere`
 
 
 ## Run
