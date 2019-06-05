@@ -30,7 +30,7 @@
     "@types/shortid": "^0.0.29",
     "add": "2.0.6",
     "autoprefixer": "9.1.5",
-    "axios": "^0.19.0",
+    "axios": "0.19.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
