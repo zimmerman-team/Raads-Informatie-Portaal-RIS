@@ -110,7 +110,7 @@
     "mini-css-extract-plugin": "0.4.3",
     "module-resolver": "^1.0.0",
     "moment": "^2.22.2",
-    "node-sass": "4.9.3",
+    "node-sass": "7.0.0",
     "node-sass-chokidar": "1.2.2",
     "npm-run-all": "^4.0.2",
     "nsp": "^3.2.1",
